@@ -1,4 +1,6 @@
-
+import 'core-js/es7/reflect';
+import "regenerator-runtime/runtime";
+import 'core-js/modules/es6.symbol';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
