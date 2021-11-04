@@ -12,6 +12,7 @@
 <body>
 
     <!-- React root DOM -->
+    </nav>
     <div id="app" style="overflow:hidden">
     </div>
 

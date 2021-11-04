@@ -19,12 +19,32 @@ import CompanyUpdate from './components/forms/CompanyUpdate';
 import Booking from './components/Booking';
 import BookingByDate from './components/BookingByDate';
 import BookingUpdate from './components/forms/BookingUpdate';
+import UserCompanyList from './components/UserCompanyList';
+import UserCompanyDetails from './components/UserCompanyDetails';
+import UserAvailableSlotDetail from './components/UserAvailableSlotDetail';
+import UserAvailableSlotByDate from './components/UserAvailableSlotByDate';
+import NotFound404 from './components/NotFound';
 const App = () =>{
     return (
         <Router>
             <Switch>
                 <Route exact path= "/">
                     <User/>
+                </Route>
+                <Route exact path="/slot">
+                    <UserAvailableSlotDetail />
+                </Route>
+                <Route exact path="/slot/date">
+                    <UserAvailableSlotByDate />
+                </Route>
+                <Route exact path="/company">
+                    <UserCompanyList />
+                </Route>
+                <Route exact path="/company/details">
+                    <UserCompanyDetails />
+                </Route>
+                <Route exact path="/company/slot">
+                    <UserAvailableSlotDetail />
                 </Route>
                 
                 <Route exact path= "/admin">
@@ -49,11 +69,14 @@ const App = () =>{
                 <Route exact path= "/taxi-care/booking">
                     <Booking/>
                 </Route>
-                <Route exact path= "/taxi-care/booking/edit">
+                <Route exact path= "/taxi-care/booking/date">
                     <BookingByDate/>
                 </Route>
+                <Route exact path="/taxi-care/booking/edit">
+                    <BookingUpdate />
+                </Route>
                 <Route path="*">
-                    <Admin/>
+                    <NotFound404/>
                 </Route>
             </Switch>
         </Router>
