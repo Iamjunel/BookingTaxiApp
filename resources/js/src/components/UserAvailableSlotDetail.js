@@ -1,12 +1,13 @@
 
 import React, { useEffect, useState } from 'react';
-import { Button, Modal } from 'react-bootstrap';
+import { Form, Button, FormGroup, FormControl, ControlLabel, Modal } from "react-bootstrap";
 import { BsFillArrowLeftSquareFill } from 'react-icons/bs';
 import { FaHome } from 'react-icons/fa';
 
 import {
     Link
 } from 'react-router-dom';
+import CalendarBooking from './calendar/calendar';
 const UserAvailableSlotDetail = () => {
 
 
@@ -16,11 +17,43 @@ const UserAvailableSlotDetail = () => {
                 <div >
                     <div className="col-md-12 col-sm-12">
                         <h2 className="text-center"><Link to={'/'} className="text-dark pr-2"><BsFillArrowLeftSquareFill /></Link>Available Slot</h2>
+                        <div className="row justify-content-center align-items-center">
+                            <Form>
+                                {['checkbox'].map((type) => (
+                                    <div key={`inline-${type}`} className="mt-4
+                                    mb-3">
+                                        <Form.Check
+                                            inline
+                                            label="Nursing/caregiving"
+                                            name="group1"
+                                            type={type}
+                                            id={`inline-${type}-1`}
+                                        />
+                                        <Form.Check
+                                            inline
+                                            label="helper"
+                                            name="group1"
+                                            type={type}
+                                            id={`inline-${type}-2`}
+                                        />
+                                        <Form.Check
+                                            inline
+                                            label="ventilator"
+                                            type={type}
+                                            id={`inline-${type}-3`}
+                                        />
+                                        <Form.Check
+                                            inline
+                                            label="oxygen"
+                                            type={type}
+                                            id={`inline-${type}-3`}
+                                        />
+                                    </div>
+                                ))}
+                            </Form>
+                        </div>
                         <div className="row">
-
-                            <div className="col-md-12 bg-primary">
-                                <Link to={'/slot/date'} className="text-dark pr-2">Available Slot by Date</Link>
-                            </div>
+                            <CalendarBooking user="user"/>
                         </div>
 
                     </div>
