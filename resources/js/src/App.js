@@ -1,3 +1,4 @@
+import 'react-app-polyfill/ie11';
 import 'core-js/es7/reflect';
 import "regenerator-runtime/runtime";
 import 'core-js/modules/es6.symbol';

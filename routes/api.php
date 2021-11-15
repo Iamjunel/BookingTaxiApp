@@ -14,6 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+Route::get('company', 'App\Http\Controllers\CompanyController@getAllCompany');
+Route::post('company', 'App\Http\Controllers\CompanyController@store');
+Route::delete('company/{id}', 'App\Http\Controllers\CompanyController@deleteCompanyById');
+
+/* Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});
+}); */
