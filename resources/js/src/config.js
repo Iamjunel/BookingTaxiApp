@@ -6,5 +6,6 @@ export default {
         axios.delete(`${BASE_API_URL}/company/${id}`),
     addCompany: payload => 
         axios.post(`${BASE_API_URL}/company`, payload),
-    
+    getCompanyById: id => 
+        axios.get(`${BASE_API_URL}/company/details/${id}`),
 };

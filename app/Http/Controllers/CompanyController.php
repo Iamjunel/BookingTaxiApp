@@ -14,6 +14,14 @@ class CompanyController extends Controller
             'data'   => $company
         )); 
     }
+    public function getCompanyById($id)
+    {
+        $company = Company::where('id',$id)->first();
+        return response()->json(array(
+            'success' => true,
+            'data'   => $company
+        ));
+    }
     public function deleteCompanyById($id)
     {
         $company = Company::find($id);

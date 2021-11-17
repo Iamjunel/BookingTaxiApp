@@ -41,7 +41,7 @@ const App = () =>{
                 <Route exact path="/company">
                     <UserCompanyList />
                 </Route>
-                <Route exact path="/company/details">
+                <Route exact path="/company/details/:id">
                     <UserCompanyDetails />
                 </Route>
                 <Route exact path="/company/slot">
