@@ -7,12 +7,26 @@ use App\Models\Company;
 class CompanyController extends Controller
 {
     //
+    public function login(){
+        return view('admin.login');
+    }
+
+    public function index()
+    {
+        return view('admin.index');
+    }
+    public function companyRegister()
+    {
+        return view('admin.register');
+    }
     public function getAllCompany(){
         $company = Company::orderBy('id')->get();
-        return response()->json(array(
+        
+        return view('admin.company_list',compact('company'));
+        /* return response()->json(array(
             'success' => true,
             'data'   => $company
-        )); 
+        ));  */
     }
     public function getCompanyById($id)
     {
@@ -26,22 +40,18 @@ class CompanyController extends Controller
     {
         $company = Company::find($id);
         $company->delete();
-        $company = Company::orderBy('id')->get();
-        return response()->json(array(
+        return redirect()->back()->with('message', 'Company successfully removed.');
+        /* return response()->json(array(
             'success' => true,
             'data'   => $company
-        )); 
+        ));  */
     }
     public function store(Request $request)
     {
         $data = $request->all();
         $company = Company::where('cid', $data["cid"])->first();
         if ($company) {
-            return response()->json(array(
-                'success' => false,
-                'message' => 'This company id is already added.',
-                'data'   => [],
-            ));
+            return redirect()->back()->with('message', 'Company already exist.');
         } else {
             $company = new Company();
             $company->name = $data["name"];
@@ -62,10 +72,13 @@ class CompanyController extends Controller
                 $user->save();
             } */
         }
-
-        return response()->json(array(
+        return redirect()->back()->with('message', 'Company successfully added.');
+        /* return response()->json(array(
             'success' => true,
             'message' => 'Company added successfully.',
-        ));
+        )); */
+    }
+    public function update(Request $request, $id){
+        var_dump($request);die;
     }
 }

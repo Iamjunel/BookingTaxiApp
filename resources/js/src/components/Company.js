@@ -63,18 +63,18 @@ const Company= () =>{
             >
                 <Modal.Header closeButton>
                     <Modal.Title id="contained-modal-title-vcenter">
-                        Delete {props.data.name} Company
+                        消去 {props.data.name}
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body>
-                    <h4>Are you sure you want to delete this company?</h4>
+                    <h4>この会社を削除してもよろしいですか？</h4>
                 </Modal.Body>
                 <Modal.Footer style={{
                     display: "flex",
                     justifyContent: "center",
                 }}>
-                    <Button className="px-4 mr-5" variant="light" onClick={props.onHide}>No</Button>
-                    <Button className="px-4" onClick={() => handleDelete(props.data.id)}>Yes</Button>
+                    <Button className="px-4 mr-5" variant="light" onClick={props.onHide}>番号</Button>
+                    <Button className="px-4" onClick={() => handleDelete(props.data.id)}>はい</Button>
                 </Modal.Footer>
             </Modal>
         );
@@ -95,15 +95,15 @@ const Company= () =>{
                     </div>
                     <div className="col-md-12 col-sm-12 clearfix">
 
-                        <h2 className="float-left"><Link to ={'/admin'} className="text-dark"><BsFillArrowLeftSquareFill /></Link>Company List</h2>
-                    <a href="#" className="btn btn-primary float-right">Add Company</a>
+                        <h2 className="float-left"><Link to={'/admin'} className="text-dark"><BsFillArrowLeftSquareFill /></Link>会社リスト</h2>
+                   {/*  <a href="#" className="btn btn-primary float-right">Add Company</a> */}
                         <table className="table table-striped bg-white table-bordered ">
                         <thead>
                         <tr className="text-center">
-                            <th>Company Name</th>
+                            <th>会社名</th>
                             <th>ID</th>
-                            <th>Password</th>
-                            <th>Actions</th>
+                            <th>パスワード</th>
+                            <th>行動</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -113,7 +113,7 @@ const Company= () =>{
                                 <td>{item.cid}</td>
                                 <td>{item.cpass}</td>
                                 <td><Button variant="danger" onClick={()=>setDelete(true,item)}>
-                                    Delete
+                                            消去
                                 </Button></td>
                             </tr>
                         ))

@@ -1,4 +1,5 @@
 
+import { format } from 'date-fns';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import Calendar from 'react-calendar';
@@ -24,11 +25,11 @@ const CalendarBooking = (props) => {
             console.log(date.getDate());
             console.log(user);
         ///}
-
+        var $this_date = format(new Date(), 'yyyy-MM-dd');
         if(user == 'taxi'){
             history.push(`/taxi-care/booking/date`);
         }else{
-            history.push(`/slot/date`);
+            history.push(`/slot/date/` + $this_date);
         }
     }
     

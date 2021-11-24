@@ -1,0 +1,22 @@
+@extends('layout.admin_layout')
+ @section('content')
+     <div className="col-md-12 col-sm-12 clearfix">
+                        <form action="/admin" method="GET">
+                            @csrf
+                            
+                            <div class="mb-2">
+                                <label class="form-label">ID:</label>
+                                <input type="type" name="cid" class="form-control" id="exampleInputEmail2" value=""/>
+                            </div>
+                            <div className="mb-2">
+                                <label class="form-label">パスワード:</label>
+                                <input type="password" name="password" class="form-control" id="exampleInputPassword1" value=""/>
+                            </div>
+                            <div class="mb-2 mt-2">
+                                <input type="submit" class="btn btn-block btn-secondary text-center" value="登録" />
+                            </div>
+                            
+                        </form>
+                    </div>
+ 
+ @endsection

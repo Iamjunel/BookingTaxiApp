@@ -8,4 +8,6 @@ export default {
         axios.post(`${BASE_API_URL}/company`, payload),
     getCompanyById: id => 
         axios.get(`${BASE_API_URL}/company/details/${id}`),
+    updateCompanyById: (id, payload) =>
+        axios.patch(`${BASE_API_URL}/company/${id}`,payload),
 };

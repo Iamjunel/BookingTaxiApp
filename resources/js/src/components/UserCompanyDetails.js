@@ -3,11 +3,36 @@ import React, { useEffect, useState } from 'react';
 import { Button, Modal } from 'react-bootstrap';
 import { BsFillArrowLeftSquareFill } from 'react-icons/bs';
 import { FaHome } from 'react-icons/fa';
-
+import { useParams } from 'react-router-dom';
+import { Zoom } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css'
+import config from '../config';
 import {
     Link
 } from 'react-router-dom';
+
 const UserCompanyDetails = () => {
+    const { id } = useParams();
+    const [data, setData] = useState([]);
+    const images = [
+        'images/slide_2.jpg',
+        'images/slide_3.jpg',
+        'images/slide_4.jpg',
+        'images/slide_5.jpg',
+        'images/slide_6.jpg',
+        'images/slide_7.jpg'
+    ];
+    useEffect(() => {
+        window.addEventListener('mousemove', () => { });
+        config.getCompanyById(id)
+            .then(res => {
+                console.log(res);
+                setData(res.data.data);
+            })
+        return () => {
+            // componentWillUnmount events
+        }
+    }, []);
 
 
     return (
@@ -22,8 +47,14 @@ const UserCompanyDetails = () => {
                         
                         </div>
                         <div className="container  float-none bg-info">
-                            <div className=" row align-items-center   " style={{ width: "300px", height: "400px" }}>
-                                Image
+                            <div className=" row align-items-center clearfix  " style={{ width: "300px", height: "400px" }}>
+                                <div className="slide-container">
+                                    <Zoom scale={0.4}>
+                                        {
+                                            images.map((each, index) => <img key={index} style={{ width: "100%" }} src={each} />)
+                                        }
+                                    </Zoom>
+                                </div>
                             </div>
 
                         </div>
@@ -38,44 +69,42 @@ const UserCompanyDetails = () => {
                                 </tr>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</th>
+                                    <th>{data.cid}</th>
 
 
                                 </tr>
                                 <tr>
                                     <td>PW</td>
-                                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                                    <td>{data.cpass}</td>
 
                                 </tr>
                                 <tr>
                                     <td>Email</td>
-                                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                                    <td>{data.email}</td>
 
                                 </tr>
                                 <tr>
                                     <td>Phone number</td>
-                                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                                    <td>{data.phone}</td>
 
                                 </tr>
                                 <tr>
                                     <td>Cab Name</td>
-                                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                                    <td>{data.name}</td>
                                 </tr>
                                 <tr>
                                     <td>Holidays</td>
-                                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                                    <td>{data.holidays}</td>
 
                                 </tr>
                                 <tr>
                                     <td>Page</td>
-                                    <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</td>
+                                    <td>{data.hp}</td>
 
                                 </tr>
                                 <tr className="p-5">
                                     
-                                    <td colSpan="2">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus porttitor iaculis imperdiet. Ut tristique dui sit amet consectetur lacinia. Integer quis euismod ex. Sed molestie arcu a urna euismod, at aliquet augue faucibus. Fusce sed augue ac mi semper fermentum. Cras sit amet mollis ex. Aliquam id suscipit odio. Ut ultricies mattis libero, quis sagittis metus. Nunc mattis id lacus sit amet dignissim.
-
-                                        Maecenas suscipit luctus justo eget sollicitudin. Suspendisse ut enim sit amet lectus mattis aliquam. Nulla aliquam sit amet leo a gravida. Fusce hendrerit mattis fringilla. Donec posuere dui tempor, elementum mauris ac, scelerisque nibh. Quisque in felis viverra, rutrum leo nec, tincidunt lorem. Nullam vitae dui velit.</td>
+                                    <td colSpan="2"><p>{data.email}</p></td>
 
                                 </tr>
 

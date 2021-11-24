@@ -85,10 +85,10 @@ const CompanyRegistration = () => {
                         }
                     </div>
                     <div className="col-md-12 col-sm-12 clearfix">
-                        <h2><Link to={'/admin'} className="text-dark mr-1"><BsFillArrowLeftSquareFill /></Link>Register a Company</h2>
+                        <h2><Link to={'/admin'} className="text-dark mr-1"><BsFillArrowLeftSquareFill /></Link>会社を登録する</h2>
                         <form onSubmit={handleSubmit}>
                             <div className="mb-2">
-                                <label className="form-label">Company Name:</label>
+                                <label className="form-label">会社名:</label>
                                 <input type="text" name="company_name" className="form-control" id="exampleInputEmail1" onChange={onChangeCompanyName} value={fields.name}/>
                             </div>
                             <div className="mb-2">
@@ -96,11 +96,11 @@ const CompanyRegistration = () => {
                                 <input type="type" name="id" className="form-control" id="exampleInputEmail2" onChange={onChangeCid} value={fields.cid}/>
                             </div>
                             <div className="mb-2">
-                                <label  className="form-label">Password:</label>
+                                <label className="form-label">パスワード:</label>
                                 <input type="password" className="form-control" id="exampleInputPassword1" onChange={onChangePassword} value={fields.password}/>
                             </div>
                             <div className="mb-2">
-                                <input type="submit" className="btn btn-block btn-secondary text-center" />
+                                <input type="submit" className="btn btn-block btn-secondary text-center" value="登録" />
                             </div>
                             
                         </form>
