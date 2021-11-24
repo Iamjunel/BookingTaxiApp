@@ -1,4 +1,4 @@
- @extends('layout.admin_layout')
+ @extends('layout.taxi_layout');
  @section('content')
  <div class="container">
      <div class="col-md-12 col-sm-12 clearfix">    

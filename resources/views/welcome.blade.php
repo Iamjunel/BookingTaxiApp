@@ -1,23 +1,9 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{env('APP_NAME')}}</title>
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-</head>
-<body>
-
-    <!-- React root DOM -->
-    </nav>
-    <div id="app" style="overflow:hidden">
-    </div>
-
-    <!-- React JS -->
-    <script src="{{ asset('js/app.js') }}"></script>
-
-</body>
-</html>
+@extends('layout.user_layout')
+ @section('content')
+     <div class="col-md-3 m-3">
+     <a href="user" class="p-3 btn btn-lg btn-outline  text-dark btn-block border-dark">ユーザー</a>
+     <a href="care-taxi" class="p-3 btn btn-lg btn-outline  text-dark btn-block border-dark">ケアタクシー</a>
+     <a href="admin/login" class=" p-3 btn btn-lg btn-outline text-dark  btn-block border-dark">管理者</a>
+ </div>
+ 
+ @endsection

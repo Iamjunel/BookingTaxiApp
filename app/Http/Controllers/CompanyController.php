@@ -10,7 +10,6 @@ class CompanyController extends Controller
     public function login(){
         return view('admin.login');
     }
-
     public function index()
     {
         return view('admin.index');
@@ -81,4 +80,6 @@ class CompanyController extends Controller
     public function update(Request $request, $id){
         var_dump($request);die;
     }
+    
+
 }

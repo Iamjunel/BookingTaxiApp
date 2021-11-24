@@ -20,6 +20,9 @@ use Illuminate\Support\Facades\Route;
 //Route::get('/admin', function () {
 //    return view('welcome');
 //});
+Route::get('/', function() {
+    return view('welcome');
+});
 Route::get('admin/login', 'App\Http\Controllers\CompanyController@login');
 Route::get('admin', 'App\Http\Controllers\CompanyController@index');
 Route::get('admin/company', 'App\Http\Controllers\CompanyController@getAllCompany');
@@ -34,4 +37,9 @@ Route::get('company/details/{id}', 'App\Http\Controllers\CompanyController@getCo
 Route::patch('company/{id}', 'App\Http\Controllers\CompanyController@update');
 
 
-Route::get('care-taxi', 'App\Http\Controllers\CompanyController@careTaxi');
+Route::get('care-taxi', 'App\Http\Controllers\CareTaxiController@index');
+Route::get('care-taxi/booking', 'App\Http\Controllers\CareTaxiController@availableSlot');
+//Route::get('care-taxi/booking/date', 'App\Http\Controllers\CareTaxiController@slotDetailDate');
+//Route::get('care-taxi/booking/date/{id}/{date}', 'App\Http\Controllers\CareTaxiController@slotDetailDate');
+Route::get('care-taxi/company/edit/{id}', 'App\Http\Controllers\CareTaxiController@edit');
+Route::post('care-taxi/company/update', 'App\Http\Controllers\CareTaxiController@update');

@@ -30,4 +30,8 @@ class Company extends Model
         'created_at',
         'updated_at'
     ];
+
+    public function business_hours(){
+        return $this->hasOne('App\Models\BusinessHours','company_id');
+    }
 }
