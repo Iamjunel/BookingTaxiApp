@@ -10,9 +10,10 @@
 
 </head>
 <body style="background-color:rgb(231 226 190 / 38%);overflow:hidden">
-    <nav>
-        <p>Booking App System</p><hr/>
+    <nav class="container pt-2">
+        <a href="/" class="text-dark" style="text-decoration: none">Booking App System</a>
     </nav>
+    <hr/>
     <div class="">
         <div class="row justify-content-center pt-2">
             @if(Session::has('message'))

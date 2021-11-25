@@ -6,24 +6,35 @@ use App\Models\BusinessHours;
 use Illuminate\Http\Request;
 use App\Models\Company;
 use stdClass;
-
+use Illuminate\Support\Facades\Session;
 class CareTaxiController extends Controller
 {
     //
+
     public function login()
     {
         return view('care-taxi.login');
     }
     public function index()
     {
-        return view('care-taxi.index');
+        if(!session()->has('cid')){
+             return redirect('care-taxi/login');
+        }
+        $id = session()->get('id');
+        return view('care-taxi.index',compact('id'));
     }
     public function availableSlot()
     {
+        if (!session()->has('cid')) {
+            return redirect('care-taxi/login');
+        }
         return view('care-taxi.booking');
     }
 
     public function slotDetailDate(){
+        if (!session()->has('cid')) {
+            return redirect('care-taxi/login');
+        }
         return view('care-taxi.show_status');
     }
     public function edit($id){
@@ -60,12 +71,12 @@ class CareTaxiController extends Controller
         $company->holidays = $data["holidays"];
         $company->hp = $data["hp"];
         $company->update();
-        $bus_hours = BusinessHours::where('id', $data["id"])->first();
+        $bus_hours = BusinessHours::where('company_id', $data["id"])->first();
         if(!empty($bus_hours)){
             $bus_hours->monday_start = $data["mon_start"];
             $bus_hours->monday_end = $data["mon_end"];
             $bus_hours->tuesday_start = $data["tue_start"];
-            $bus_hours->tuesday_start = $data["tue_end"];
+            $bus_hours->tuesday_end = $data["tue_end"];
             $bus_hours->wednesday_start = $data["wed_start"];
             $bus_hours->wednesday_end = $data["wed_end"];
             $bus_hours->thursday_start = $data["thu_start"];
@@ -97,40 +108,29 @@ class CareTaxiController extends Controller
             $bus_hours->save();   
         }
         return redirect()->back()->with('message', 'Company successfully updated.');
-    }   
+    }
 
-    public function companyRegister()
+    public function checkLogin(Request $request)
     {
-        return view('admin.register');
-    }
-    public function getAllCompany()
-    {
-        $company = Company::orderBy('id')->get();
 
-        return view('admin.company_list', compact('company'));
-        /* return response()->json(array(
-            'success' => true,
-            'data'   => $company
-        ));  */
+        $request->validate([
+            'cid' => ['required'],
+            'cpass' => ['required']
+        ]);
+
+        $user = Company::where('cid', $request->cid)->where('cpass', $request->cpass)->first();
+        if (!empty($user)) {
+                $request->session()->put('cid', $user->cid);
+                $request->session()->put('name', $user->name);
+                $request->session()->put('id', $user->id);
+                $request->session()->save();
+                return redirect('/care-taxi');
+        } else {
+               return redirect('care-taxi/login')->with('message', 'Incorrect login credentials');
+        }
+        
     }
-    public function getCompanyById($id)
-    {
-        $company = Company::where('id', $id)->first();
-        return response()->json(array(
-            'success' => true,
-            'data'   => $company
-        ));
-    }
-    public function deleteCompanyById($id)
-    {
-        $company = Company::find($id);
-        $company->delete();
-        return redirect()->back()->with('message', 'Company successfully removed.');
-        /* return response()->json(array(
-            'success' => true,
-            'data'   => $company
-        ));  */
-    }
+
     public function store(Request $request)
     {
         $data = $request->all();
@@ -143,25 +143,18 @@ class CareTaxiController extends Controller
             $company->cid = $data["cid"];
             $company->cpass = $data["password"];
             $company->save();
-
-            /* if ($request->loginId) {
-                $checkuser = User::where('name', $request->groupCode)->first();
-                if ($checkuser) {
-                    $checkuser->delete();
-                }
-                $user = new User();
-                $user->name = $request->loginId;
-                $user->email = $request->loginId;
-                $user->access_number = 1;
-                $user->password = Hash::make($request->password);
-                $user->save();
-            } */
         }
         return redirect()->back()->with('message', 'Company successfully added.');
         /* return response()->json(array(
             'success' => true,
             'message' => 'Company added successfully.',
         )); */
+    }
+
+    public function logout()
+    {
+        Session::flush();
+        return redirect('care-taxi/login');
     }
     
 }

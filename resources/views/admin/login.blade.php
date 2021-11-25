@@ -1,6 +1,7 @@
 @extends('layout.admin_layout')
  @section('content')
      <div className="col-md-12 col-sm-12 clearfix">
+                        <h3>管理者ログイン</h3>
                         <form action="/admin" method="GET">
                             @csrf
                             
@@ -13,7 +14,7 @@
                                 <input type="password" name="password" class="form-control" id="exampleInputPassword1" value=""/>
                             </div>
                             <div class="mb-2 mt-2">
-                                <input type="submit" class="btn btn-block btn-secondary text-center" value="登録" />
+                                <input type="submit" class="btn btn-block btn-secondary text-center" value="ログインする" />
                             </div>
                             
                         </form>
