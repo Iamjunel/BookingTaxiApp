@@ -1,5 +1,6 @@
 @extends('layout.taxi_layout')
  @section('content')
+    
      <div className="col-md-12 col-sm-12 clearfix">
                         <h3>ケアタクシーログイン</h3>
                         <form action="/care-taxi/checklogin" method="POST">
@@ -18,4 +19,5 @@
                             </div>
                         </form>
                     </div>
+                
  @endsection
