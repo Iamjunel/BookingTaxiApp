@@ -10,45 +10,20 @@
             <tr>
         
             <th>会社名</th>
-            <th>ID</th>
-            <th>パスワード</th>
+            <th>タイムスロット</th>
             <th>行動</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($company as $com)
+            @if($com->business_hours)
             <tr>
             <td>{{$com->name}}</td>
-            <td>{{$com->cid}}</td>
-            <td>{{$com->cpass}}</td>
-            <td><button class="btn btn-danger" data-toggle="modal" data-target="#sample-{{$com->id}}">消去</button></td>
-            <div class="modal fade" id="sample-{{$com->id}}" tabindex="-1" role="dialog" aria- 
-            labelledby="demoModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-sm" role="document">
-                    <form action="company/{{$com->id}}" method="post">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title" id="demoModalLabel">{{$com->name}}</h5>
-								<button type="button" class="close" data-dismiss="modal" aria- 
-                                label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-						</div>
-						<div class="modal-body">
-								<h4>この会社を削除してもよろしいですか？</h4>
-						</div>
-						<div class="modal-footer">
-                            @method('DELETE')
-                             @csrf
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">番号</button>
-						    <button type="submit" class="btn btn-primary">はい</button>
-        
-						</div>
-					</div>
-                    </form>
-				</div>
-			</div>
+            <td>{{$com->business_hours[$day.'_start']}} ~ {{$com->business_hours[$day.'_end']}}</td>
+              <td><a class="btn btn-danger" href="/user/company/detail/{{$com->id}}">見る</a></td>
             </tr>
+            @endif
+          
             @endforeach
             
             

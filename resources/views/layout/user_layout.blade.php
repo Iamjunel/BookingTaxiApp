@@ -15,7 +15,7 @@
 }
         </style>
 </head>
-<body style="overflow:hidden">
+<body style="overflow:auto">
     <nav class="container pt-2">
         <a href="/" class="text-dark" style="text-decoration: none">Booking App System</a>
         
@@ -51,7 +51,7 @@
         $(document).ready(function () {
 
             var SITEURL = "{{ url('/') }}";
-            var id = {{Session::get('id')}};
+            //var id = {{Session::get('id')}};
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -79,7 +79,7 @@
                 },
                 select: function (date,event_start, event_end, allDay) {
                         var this_day = $.fullCalendar.formatDate(date, "Y-MM-DD");
-                 window.location.href = '/care-taxi/slot/'+ id +'/' + this_day;
+                 window.location.href = '/user/slot/' + this_day;
                     /* var event_name = prompt('Event Name:');
                     if (event_name) {
                         var event_start = $.fullCalendar.formatDate(event_start, "Y-MM-DD HH:mm:ss");
