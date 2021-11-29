@@ -458,10 +458,6 @@ class CareTaxiController extends Controller
 
        
         return redirect()->back()->with('message', 'Company status successfully updated.'); 
-        return response()->json(array(
-            'success' => true,
-            'message' => $data,
-        ));
     }
 
     public function logout()
