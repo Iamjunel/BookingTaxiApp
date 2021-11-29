@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\BusinessHours;
 use Illuminate\Http\Request;
 use App\Models\Company;
+use App\Models\CompanyStatus;
 use stdClass;
 use Illuminate\Support\Facades\Session;
 class CareTaxiController extends Controller
@@ -31,11 +32,282 @@ class CareTaxiController extends Controller
         return view('care-taxi.booking');
     }
 
-    public function slotDetailDate(){
+    public function slotDetailDate($id,$date){
         if (!session()->has('cid')) {
             return redirect('care-taxi/login');
         }
-        return view('care-taxi.show_status');
+        $company = Company::with('business_hours')->where('id', $id)->first();
+        $bus_hours = $company->business_hours;
+        $day = date('l', strtotime($date));
+        $time = array();
+        $time_start =null;
+        $time_end =null;
+        if($day == "Monday"){
+            $time_start = $bus_hours->monday_start;
+            $time_end = $bus_hours->monday_end;
+        }else if($day == "Tuesday"){
+            $time_start = $bus_hours->tuesday_start;
+            $time_end   = $bus_hours->tuesday_end;
+        } else if ($day == "Wednesday") {
+            $time_start = $bus_hours->wednesday_start;
+            $time_end   = $bus_hours->wednesday_end;
+        } else if ($day == "Thursday") {
+            $time_start = $bus_hours->thursday_start;
+            $time_end   = $bus_hours->thursday_end;
+        } else if ($day == "Friday") {
+            $time_start = $bus_hours->friday_start;
+            $time_end   = $bus_hours->friday_end;
+        } else if ($day == "Saturday") {
+            $time_start = $bus_hours->saturday_start;
+            $time_end   = $bus_hours->saturday_end;
+        } else if ($day == "Sunday") {
+            $time_start = $bus_hours->sunday_start;
+            $time_end   = $bus_hours->sunday_end;
+        }else {
+            $time_start = "00:00";
+            $time_end = "00:00";
+        }
+        $company_status = CompanyStatus::Where('company_id', $id)->where('date', $date)->get();
+        if (empty($company_status)) {
+            $status = "times";
+            $comment = "";
+            $curr_time = $date . ' ' . $time_start;
+            array_push($time, [
+                'time' => date('h:ia', strtotime($curr_time)),
+                'status' => $status,
+                'comment' => $comment,
+            ]);
+            $current = strtotime($curr_time);
+            $start = strtotime($time_start);
+            $end = strtotime($time_end);
+
+
+            while ($current >= $start && $current < $end) {
+                $added_time = strtotime("+30 minutes", $current);
+                if ($added_time < $end) {
+                    array_push($time, [
+                        'time' => date('h:ia', $added_time),
+                        'status' => $status,
+                        'comment' => $comment,
+                    ]);
+                } else {
+                    array_push($time, [
+                        'time' => date('h:ia', $end),
+                        'status' => $status,
+                        'comment' => $comment,
+                    ]);
+                    break;
+                }
+                $current = $added_time;
+            }
+        } else {
+            $status = "times";
+            $comment = "";
+            $curr_time = $date . ' ' . $time_start;
+            foreach ($company_status as $company) {
+
+                if ($company->time == date('h:ia', strtotime($curr_time))) {
+                    $status = $company->status;
+                    $comment = $company->comment;
+                    break;
+                }
+            }
+            array_push($time, [
+                'time' => date('h:ia', strtotime($curr_time)),
+                'status' => $status,
+                'comment' => $comment,
+            ]);
+            $current = strtotime($curr_time);
+            $start = strtotime($time_start);
+            $end = strtotime($time_end);
+
+            while ($current >= $start && $current < $end) {
+                $added_time = strtotime("+30 minutes", $current);
+                if ($added_time < $end) {
+
+                    foreach ($company_status as $company) {
+
+                        if ($company->time == date('h:ia', $added_time)) {
+                            $status = $company->status;
+                            $comment = $company->comment;
+                            break;
+                        }
+                    }
+                    array_push(
+                        $time,
+                        [
+                            'time' => date('h:ia', $added_time),
+                            'status' => $status,
+                            'comment' => $comment,
+
+                        ]
+                    );
+                } else {
+                    foreach ($company_status as $company) {
+                        if ($company->time == date('h:ia', $added_time)) {
+                            $status = $company->status;
+                            $comment = $company->comment;
+                            break;
+                        }
+                    }
+                    array_push($time, [
+                        'time' => date('h:ia', $end),
+                        'status' => $status,
+                        'comment' => $comment,
+                    ]);
+                    break;
+                }
+                $current = $added_time;
+            }
+        }
+       
+
+        /* return response()->json(array(
+            'success' => true,
+            'data'   => $company,
+            'day'    => $time,
+            'curr'   => date('h:i', strtotime($curr_time))
+        ));  */
+        return view('care-taxi.show_status', compact('time','date','company','id'));
+    }
+    public function editDetailDate($id, $date)
+    {
+        if (!session()->has('cid')) {
+            return redirect('care-taxi/login');
+        }
+        $company = Company::with('business_hours')->where('id', $id)->first();
+        $bus_hours = $company->business_hours;
+        $day = date('l', strtotime($date));
+        $time = array();
+        $time_start = null;
+        $time_end = null;
+        if ($day == "Monday"
+        ) {
+            $time_start = $bus_hours->monday_start;
+            $time_end = $bus_hours->monday_end;
+        } else if ($day == "Tuesday") {
+            $time_start = $bus_hours->tuesday_start;
+            $time_end   = $bus_hours->tuesday_end;
+        } else if ($day == "Wednesday") {
+            $time_start = $bus_hours->wednesday_start;
+            $time_end   = $bus_hours->wednesday_end;
+        } else if ($day == "Thursday") {
+            $time_start = $bus_hours->thursday_start;
+            $time_end   = $bus_hours->thursday_end;
+        } else if ($day == "Friday") {
+            $time_start = $bus_hours->friday_start;
+            $time_end   = $bus_hours->friday_end;
+        } else if ($day == "Saturday") {
+            $time_start = $bus_hours->saturday_start;
+            $time_end   = $bus_hours->saturday_end;
+        } else if ($day == "Sunday") {
+            $time_start = $bus_hours->sunday_start;
+            $time_end   = $bus_hours->sunday_end;
+        } else {
+            $time_start = "00:00";
+            $time_end = "00:00";
+        }
+        
+        
+        $company_status = CompanyStatus::Where('company_id',$id)->where('date',$date)->get();
+        if(empty($company_status)){
+            $status = "times";
+            $comment = "";
+            $curr_time = $date . ' ' . $time_start;
+            array_push($time, [
+                'time' => date('h:ia', strtotime($curr_time)),
+                'status' => $status,
+                'comment' => $comment,
+            ]);
+            $current = strtotime($curr_time);
+            $start = strtotime($time_start);
+            $end = strtotime($time_end);
+
+           
+            while ($current >= $start && $current < $end) {
+                $added_time = strtotime("+30 minutes", $current);
+                if ($added_time < $end) {
+                    array_push($time, [
+                        'time' => date('h:ia', $added_time),
+                        'status' => $status,
+                        'comment' => $comment,            
+                    ]);
+                } else {
+                    array_push($time, [
+                        'time' => date('h:ia', $end),
+                        'status' => $status,
+                        'comment' => $comment,
+                        ]);
+                    break;
+                }
+                $current = $added_time;
+            }
+        }else{
+            $status = "times";
+            $comment = "";
+            $curr_time = $date . ' ' . $time_start;
+            foreach ($company_status as $company) {
+
+                if ($company->time == date('h:ia', strtotime($curr_time))) {
+                    $status = $company->status;
+                    $comment = $company->comment;
+                    break;
+                }
+            }
+            array_push($time, [
+                'time' => date('h:ia', strtotime($curr_time)),
+                'status' => $status,
+                'comment' => $comment,
+            ]);
+            $current = strtotime($curr_time);
+            $start = strtotime($time_start);
+            $end = strtotime($time_end);
+            
+            while ($current >= $start && $current < $end) {
+                $added_time = strtotime("+30 minutes", $current);
+                if ($added_time < $end) {
+                    
+                    foreach($company_status as $company){
+                        
+                        if($company->time == date('h:ia', $added_time)){
+                            $status = $company->status;
+                            $comment = $company->comment;
+                            break;
+                        }
+                    }
+                    array_push(
+                        $time, [
+                            'time' => date('h:ia', $added_time),
+                            'status' => $status,
+                            'comment' => $comment,
+                        
+                ]);
+                } else {
+                    foreach ($company_status as $company) {
+                        if ($company->time == date('h:ia', $added_time)) {
+                            $status = $company->status;
+                            $comment = $company->comment;
+                            break;
+                        }
+                    }
+                    array_push($time, [
+                        'time' => date('h:ia', $end),
+                        'status' => $status,
+                        'comment' => $comment,
+                        ]);
+                    break;
+                }
+                $current = $added_time;
+            }
+        }
+       
+        
+        /* return response()->json(array(
+            'success' => true,
+            'data'   => $company_status,
+            'day'    => $time,
+        ));  */
+        return view('care-taxi.update_status', compact('time', 'date', 'company','id'));
     }
     public function edit($id){
         $company = Company::with('business_hours')->where('id',$id)->first();
@@ -149,6 +421,47 @@ class CareTaxiController extends Controller
             'success' => true,
             'message' => 'Company added successfully.',
         )); */
+    }
+    public function statusUpdate(Request $request)
+    {
+        $data=array();
+        $current_date = $request->get('date');
+        $company_id =  $request->get('id');
+
+        foreach ($request->all() as $key => $value) {
+            if($key !="_token" && $key != 'date' && $key != 'id'){
+                $time = explode('-', $key);
+              //
+              if(count($time)>1){
+                    $status = 'status-' . $time[1];
+                    $comment = 'comment-' . $time[1];
+                    if ($key == $status) {
+                        $company_status = CompanyStatus::Where('company_id', $company_id)->where('date', $current_date)->where('time', $time[1])->first();
+                        if (!empty($company_status->id)) {
+                            $company_status->status = $request->get($status);
+                            $company_status->comment = $request->get($comment);
+                            $company_status->update();
+                        } else {
+                            $company_status = new CompanyStatus();
+                            $company_status->time = $time[1];
+                            $company_status->status = $request->get($status);
+                            $company_status->comment = $request->get($comment);
+                            $company_status->company_id = $company_id;
+                            $company_status->date = $current_date;
+                            $company_status->save();
+                        }
+                     }    
+                }
+             
+            }
+        }
+
+       
+        return redirect()->back()->with('message', 'Company status successfully updated.'); 
+        return response()->json(array(
+            'success' => true,
+            'message' => $data,
+        ));
     }
 
     public function logout()

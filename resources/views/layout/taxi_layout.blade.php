@@ -9,8 +9,13 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
+    <style>
+        .fc-past {
+    background-color: rgb(231, 230, 230);
+}
+        </style>
 </head>
-<body style="background-color:#1885f5ad;overflow-y:auto;overflow-x:hidden">
+<body style="background-color:#1885f5ad;overflow-y:auto;">
     <nav class="container pt-2">
         @if(Session::get('cid'))
             <a class=" text-dark float-right" href="{{url('care-taxi/logout')}}">ログアウト</a>
@@ -55,7 +60,7 @@
         $(document).ready(function () {
 
             var SITEURL = "{{ url('/') }}";
-
+            var id = {{Session::get('id')}};
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -76,7 +81,14 @@
                 },
                 selectable: true,
                 selectHelper: true,
-                select: function (event_start, event_end, allDay) {
+                selectAllow: function(info) {
+                        if (info.start.isBefore(moment().subtract(1, 'days')))
+                            return false; 
+                        return true;          
+                },
+                select: function (date,event_start, event_end, allDay) {
+                        var this_day = $.fullCalendar.formatDate(date, "Y-MM-DD");
+                 window.location.href = '/care-taxi/slot/'+ id +'/' + this_day;
                     /* var event_name = prompt('Event Name:');
                     if (event_name) {
                         var event_start = $.fullCalendar.formatDate(event_start, "Y-MM-DD HH:mm:ss");
@@ -105,6 +117,18 @@
                         });
                     } */
                 },
+                /* dayClick: function(date, jsEvent, view) {
+
+        alert('Clicked on: ' + date.format());
+
+        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
+
+        alert('Current view: ' + view.name);
+
+        // change the day's background color just for fun
+        $(this).css('background-color', 'red');
+
+        }, */
                 eventDrop: function (event, delta) {
                     var event_start = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
                     var event_end = $.fullCalendar.formatDate(event.end, "Y-MM-DD");

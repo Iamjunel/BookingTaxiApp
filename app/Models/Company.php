@@ -34,4 +34,8 @@ class Company extends Model
     public function business_hours(){
         return $this->hasOne('App\Models\BusinessHours','company_id');
     }
+    public function status()
+    {
+        return $this->hasOne('App\Models\CompanyStatus', 'company_id');
+    }
 }

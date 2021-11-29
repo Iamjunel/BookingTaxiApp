@@ -40,12 +40,21 @@ Route::patch('company/{id}', 'App\Http\Controllers\CompanyController@update');
 Route::get('care-taxi', 'App\Http\Controllers\CareTaxiController@index');
 Route::get('care-taxi/login', 'App\Http\Controllers\CareTaxiController@login');
 Route::get('care-taxi/booking', 'App\Http\Controllers\CareTaxiController@availableSlot');
+Route::get('care-taxi/slot/{id}/{date}', 'App\Http\Controllers\CareTaxiController@slotDetailDate');
+Route::get('care-taxi/slot/edit/{id}/{date}', 'App\Http\Controllers\CareTaxiController@editDetailDate');
+Route::post('care-taxi/slot/status/update', 'App\Http\Controllers\CareTaxiController@statusUpdate');
 //Route::get('care-taxi/booking/date', 'App\Http\Controllers\CareTaxiController@slotDetailDate');
 //Route::get('care-taxi/booking/date/{id}/{date}', 'App\Http\Controllers\CareTaxiController@slotDetailDate');
 Route::get('care-taxi/company/edit/{id}', 'App\Http\Controllers\CareTaxiController@edit');
 Route::post('care-taxi/company/update', 'App\Http\Controllers\CareTaxiController@update');
+
 Route::post('care-taxi/checklogin', 'App\Http\Controllers\CareTaxiController@checkLogin');
 Route::get('care-taxi/logout', 'App\Http\Controllers\CareTaxiController@logout');
 
 Route::get('calendar-event', [CalenderController::class, 'index']);
 Route::post('calendar-crud-ajax', [CalenderController::class, 'calendarEvents']);
+
+
+Route::get('user', 'App\Http\Controllers\UserController@index');
+Route::get('user/companylist', 'App\Http\Controllers\UserController@getAllCompany');
+Route::get('user/slot', 'App\Http\Controllers\UserController@availableSlot');
