@@ -457,7 +457,7 @@ class CareTaxiController extends Controller
         }
 
        
-        return back()->with('message', 'Company status successfully updated.'); 
+        return redirect('/care-taxi/slot/edit/'.$company_id.'/'.$current_date)->with('message', 'Company status successfully updated.'); 
     }
 
     public function logout()
