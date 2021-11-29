@@ -50,8 +50,8 @@ Route::post('care-taxi/company/update', 'App\Http\Controllers\CareTaxiController
 Route::post('care-taxi/checklogin', 'App\Http\Controllers\CareTaxiController@checkLogin');
 Route::get('care-taxi/logout', 'App\Http\Controllers\CareTaxiController@logout');
 
-Route::get('calendar-event', [CalenderController::class, 'index']);
-Route::post('calendar-crud-ajax', [CalenderController::class, 'calendarEvents']);
+Route::get('calendar-event', 'App\Http\Controllers\CalenderController@index');
+Route::post('calendar-crud-ajax','App\Http\Controllers\CalenderController@calendarEvents');
 
 
 Route::get('user', 'App\Http\Controllers\UserController@index');
