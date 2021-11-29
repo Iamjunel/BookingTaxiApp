@@ -61,4 +61,4 @@ Route::get('user/slot', 'App\Http\Controllers\UserController@availableSlot');
 
 
 
-Route::get('pagenotfound', ['as' => 'notfound', 'uses' => 'UserController@pagenotfound']);
+//Route::get('pagenotfound', ['as' => 'notfound', 'uses' => 'UserController@pagenotfound']);
