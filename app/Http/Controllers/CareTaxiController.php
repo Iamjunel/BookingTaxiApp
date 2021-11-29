@@ -284,7 +284,6 @@ class CareTaxiController extends Controller
     }
     public function statusUpdate(Request $request)
     {
-        var_dump('ffdfdf');
         $data=array();
         $current_date = $request->get('date');
         $company_id =  $request->get('id');
@@ -316,12 +315,8 @@ class CareTaxiController extends Controller
              
             }
         }
-        var_dump('fdfdfdfd');die;
-        return response()->json(array(
-            'success' => true,
-            'message' => 'Company added successfully.',
-        ));
- 
+        return redirect()->back()->with('message', 'Company status succefully updated.');
+        
     }
 
 
