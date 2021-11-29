@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Route;
 | routes are loaded by the RouteServiceProvider within a group which
 | contains the "web" middleware group. Now create something great!
 |
-*/
+*
 
 
 /* Route::get('/{any}', function() {
@@ -41,7 +41,7 @@ Route::get('care-taxi', 'App\Http\Controllers\CareTaxiController@index');
 Route::get('care-taxi/login', 'App\Http\Controllers\CareTaxiController@login');
 Route::get('care-taxi/booking', 'App\Http\Controllers\CareTaxiController@availableSlot');
 
-Route::post('care-taxi/slot/status/update', 'App\Http\Controllers\CareTaxiController@statusUpdate');
+Route::post('care-taxi/status/update', 'App\Http\Controllers\CareTaxiController@statusUpdate');
 //Route::get('care-taxi/booking/date', 'App\Http\Controllers\CareTaxiController@slotDetailDate');
 //Route::get('care-taxi/booking/date/{id}/{date}', 'App\Http\Controllers\CareTaxiController@slotDetailDate');
 Route::get('care-taxi/company/edit/{id}', 'App\Http\Controllers\CareTaxiController@edit');

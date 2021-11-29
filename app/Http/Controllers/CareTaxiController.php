@@ -284,7 +284,8 @@ class CareTaxiController extends Controller
     }
     public function statusUpdate(Request $request)
     {
-                $data=array();
+        var_dump('ffdfdf');
+        $data=array();
         $current_date = $request->get('date');
         $company_id =  $request->get('id');
 
