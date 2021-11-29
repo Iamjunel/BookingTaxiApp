@@ -280,10 +280,7 @@ class CareTaxiController extends Controller
             $company->save();
         }
         return redirect()->back()->with('message', 'Company successfully added.');
-        /* return response()->json(array(
-            'success' => true,
-            'message' => 'Company added successfully.',
-        )); */
+        
     }
     public function statusUpdate(Request $request)
     {
@@ -318,10 +315,13 @@ class CareTaxiController extends Controller
              
             }
         }
-
-       
-        return redirect('/care-taxi/slot/edit/'.$company_id.'/'.$current_date)->with('message', 'Company status successfully updated.'); 
+        return response()->json(array(
+            'success' => true,
+            'message' => 'Company added successfully.',
+        ));
+ 
     }
+
 
     public function logout()
     {
@@ -334,7 +334,6 @@ class CareTaxiController extends Controller
             return redirect('care-taxi/login');
         }
         $company = Company::with('business_hours')->where('id', $id)->first();
-        var_dump($company);
         if($company->business_hours){
             $bus_hours = $company->business_hours;
             $day = date('l', strtotime($date));
