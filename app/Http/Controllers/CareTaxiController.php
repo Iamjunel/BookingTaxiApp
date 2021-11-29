@@ -315,6 +315,7 @@ class CareTaxiController extends Controller
              
             }
         }
+        var_dump('fdfdfdfd');die;
         return response()->json(array(
             'success' => true,
             'message' => 'Company added successfully.',
