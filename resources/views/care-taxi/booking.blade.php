@@ -2,10 +2,12 @@
  @section('content')
  <div class="container ">
      <div class="col-md-12 col-sm-12 clearfix m-5">
-         <div class="flex align-content-md-center">    
-         <h3 class="text-center mb-2"><a href="/care-taxi" className="text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
-  <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
-</svg></a>Available Slot</h3>
+         <div class="mb-3" >    
+         <a href="/care-taxi" class="text-dark mr-2"><i class="fas fa-3x fa-caret-left text-secondary"></i></a>
+        <h3 class="d-inline">利用可能なスロット</h3>
+         </div>
+        {{--  <div class="flex align-content-md-center">    
+         <a href="/care-taxi" class="text-dark"><i class="fas fa-3x fa-caret-left text-secondary"></i></a><h3 class="text-center mb-2">Available Slot</h3> --}}
 
         <div id='full_calendar_events' class="bg-light"></div>
          </div>
