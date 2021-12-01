@@ -39,6 +39,8 @@ class CareTaxiController extends Controller
             return redirect('care-taxi/login');
         }
         $company = Company::with('business_hours')->where('id', $id)->first();
+        $previous_date =  date('Y-m-d', strtotime($date . ' -1 day'));
+        $next_date = date('Y-m-d', strtotime($date . ' +1 day'));
         $bus_hours = $company->business_hours;
         $day = date('l', strtotime($date));
         $time = array();
@@ -83,8 +85,8 @@ class CareTaxiController extends Controller
                 'comment' => $comment,
             ]);
             $current = strtotime($curr_time);
-            $start = strtotime($time_start);
-            $end = strtotime($time_end);
+            $start = strtotime($date . ' ' . $time_start);
+            $end = strtotime($date . ' ' . $time_end);
 
            
             while ($current >= $start && $current < $end) {
@@ -123,8 +125,8 @@ class CareTaxiController extends Controller
                 'comment' => $comment,
             ]);
             $current = strtotime($curr_time);
-            $start = strtotime($time_start);
-            $end = strtotime($time_end);
+            $start = strtotime($date . ' ' . $time_start);
+            $end = strtotime($date . ' ' . $time_end);
             
             while ($current >= $start && $current < $end) {
                 $added_time = strtotime("+30 minutes", $current);
@@ -163,6 +165,12 @@ class CareTaxiController extends Controller
                 $current = $added_time;
             }
         }
+        $not_current = true;
+        if ($date == date('Y-m-d')) {
+            $not_current = false;
+        }
+
+        $date_jp = date('Y年m月d日', strtotime($date));
        
         
         /* return response()->json(array(
@@ -170,7 +178,7 @@ class CareTaxiController extends Controller
             'data'   => $company_status,
             'day'    => $time,
         ));  */
-        return view('care-taxi.update_status', compact('time', 'date', 'company','id'));
+        return view('care-taxi.update_status', compact('time', 'date', 'company','id','not_current','previous_date','next_date','date_jp'));
     }
     public function edit($id){
         $company = Company::with('business_hours')->where('id',$id)->first();
@@ -203,7 +211,12 @@ class CareTaxiController extends Controller
         $company->cpass = $data["cpass"];
         $company->email = $data["email"];
         $company->phone = $data["phone"];
-        $company->holidays = $data["holidays"];
+        $company->call_start = $data["call_start"];
+        $company->call_end = $data["call_end"];
+        $company->nursing_status = $data["nursing_status"];
+        $company->helper_status = $data["helper_status"];
+        $company->oxygen_status = $data["oxygen_status"];
+        $company->ventilator_status = $data["ventilator_status"];
         $company->hp = $data["hp"];
         $company->update();
         $bus_hours = BusinessHours::where('company_id', $data["id"])->first();
@@ -331,6 +344,8 @@ class CareTaxiController extends Controller
             return redirect('care-taxi/login');
         }
         $company = Company::with('business_hours')->where('id', $id)->first();
+        $previous_date =  date('Y-m-d', strtotime($date . ' -1 day'));
+        $next_date = date('Y-m-d', strtotime($date . ' +1 day'));
         if($company->business_hours){
             $bus_hours = $company->business_hours;
             $day = date('l', strtotime($date));
@@ -362,8 +377,10 @@ class CareTaxiController extends Controller
                 $time_start = "00:00";
                 $time_end = "00:00";
             }
+
             $company_status = CompanyStatus::Where('company_id', $id)->where('date', $date)->get();
-            if (empty($company_status)) {
+           
+            if (count($company_status) == 0) {
                 $status = "times";
                 $comment = "";
                 $curr_time = $date . ' ' . $time_start;
@@ -373,13 +390,13 @@ class CareTaxiController extends Controller
                     'comment' => $comment,
                 ]);
                 $current = strtotime($curr_time);
-                $start = strtotime($time_start);
-                $end = strtotime($time_end);
-
+                $start = strtotime($date . ' ' .$time_start);
+                $end = strtotime($date . ' ' .$time_end);
 
                 while ($current >= $start && $current < $end) {
                     $added_time = strtotime("+30 minutes", $current);
                     if ($added_time < $end) {
+                       
                         array_push($time, [
                             'time' => date('h:ia', $added_time),
                             'status' => $status,
@@ -413,8 +430,8 @@ class CareTaxiController extends Controller
                     'comment' => $comment,
                 ]);
                 $current = strtotime($curr_time);
-                $start = strtotime($time_start);
-                $end = strtotime($time_end);
+                $start = strtotime($date . ' ' . $time_start);
+                $end = strtotime($date . ' ' . $time_end);
 
                 while ($current >= $start && $current < $end) {
                     $added_time = strtotime("+30 minutes", $current);
@@ -456,16 +473,19 @@ class CareTaxiController extends Controller
                 }
             }
         }
+        $not_current =true;
+        if($date == date('Y-m-d')){
+            $not_current=false;
+        }
         
+        $date_jp =date('Y年m月d日', strtotime($date));
 
-
-        /* return response()->json(array(
+       /*  return response()->json(array(
             'success' => true,
             'data'   => $company,
-            'day'    => $time,
-            'curr'   => date('h:i', strtotime($curr_time))
+            'day'    => $time
         ));  */
-        return view('care-taxi.show_status', compact('time', 'date', 'company', 'id'));
+        return view('care-taxi.show_status', compact('time', 'date', 'company', 'id','previous_date','next_date','not_current','date_jp'));
     }
     
 }

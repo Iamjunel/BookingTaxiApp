@@ -1,17 +1,28 @@
  @extends('layout.taxi_layout')
  @section('content')
- 
-     <div class="col-md-8 col-sm-12 clearfix p-5">
-         <h3 class=""><a href="/care-taxi/slot/{{$id}}/{{$date}}" class="text-dark pr-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
-  <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
-</svg></a>{{$date}}</h3>
+    
+   
+    <div class="col-md-8 col-sm-12 clearfix mt-1 mb-5">
+     <a href="/care-taxi/booking" class="pr-1 text-dark float-right">カレンダーに戻る</a>
+    <div class ="d-flex justify-content-between mt-5">
+    @if($not_current)    
+    <a href="/care-taxi/slot/edit/{{$id}}/{{$previous_date}}" class="text-dark pr-1"><i class="fas fa-3x fa-caret-left text-secondary"></i></a>
+    @else
+     <span class="text-dark pr-1"><i class="fas fa-3x fa-caret-left text-secondary"></i></span>
+    @endif
+    <span style="font-size: 18px">{{$date_jp}}</span>
+    <a href="/care-taxi/slot/edit/{{$id}}/{{$next_date}}" class="text-dark pr-1"><i class="fas fa-3x fa-caret-right text-secondary"></i></a>
+    
+    </div>
+         {{-- <h3 class=""><a href="/care-taxi/slot/{{$id}}/{{$date}}" class="text-dark pr-1"></a></h3> --}}
+    
     <form action="/care-taxi/status/update"  method="POST">
         @csrf
         
-        <input type="submit" class="btn btn-warning btn-block" value="アップデート" />
+        <input type="submit" class="btn btn-warning btn-block mb-1" value="アップデート" />
         <input type="hidden" name="id" value="{{$id}}" /></td>
          <input type="hidden" name="date" value="{{$date}}" /></td>
-        <table class="table table-hover table-bordered bg-light">
+        <table class="table table-hover table-bordered bg-light" style="margin-bottom: 0px !important">
             <th>時間</th>
             <th>状態</th>
             <th>コメント</th>
@@ -73,6 +84,7 @@
            
            </tbody>
         </table>
+        <input type="submit" class="btn btn-warning btn-block mt-1" value="アップデート" />
     </form>
      </div>
  
