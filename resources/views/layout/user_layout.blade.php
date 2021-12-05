@@ -47,6 +47,7 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+ <script src="jquery.ui.touch.js"></script>
  <script>
      $('div.alert').delay(3000).slideUp(300);
      </script>
@@ -68,6 +69,7 @@
                 events: SITEURL + "/calendar-event",
                 displayEventTime: true,
                 eventRender: function (event, element, view) {
+                    $(element).addTouch();
                     if (event.allDay === 'true') {
                         event.allDay = true;
                     } else {
