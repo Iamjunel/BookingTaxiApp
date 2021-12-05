@@ -2,14 +2,41 @@
  @section('content')
  <div class="container">
      <div class="col-md-12 col-sm-12 clearfix">
-         <a href="/user/slot/detail/{{$company->id}}" class="float-right btn btn-danger">利用可能なスロット</a>
-         <h3 className="float-left"><a href="/user/companylist" className="text-dark"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
-  <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
-</svg></a>会社リスト</h3>
+         <a href="/user/slot/detail/{{$company->id}}/{{date('Y-m-d', strtotime('last monday'))}}" class="float-right btn btn-danger">利用可能なスロット</a>
+         <h3 className="float-left"><a href="/user" class="text-dark pr-1"><i class="fas fa-2x fa-caret-left text-secondary"></i></a>会社リスト</h3>
+        
         <div class="row ">
-            <div class="container col-md-12 col-sm-12">
-            <img src="https://pasadenanaturalhealth.com/wp-content/uploads/2017/08/placeholder-image-600x400.jpg" class="img-fluid w-100"/>
+            @if(empty($company_images))
+            <div class="container col-md-12 col-sm-12 ">
+            <img src="https://www.nuvali.ph/wp-content/themes/consultix/images/no-image-found-360x250.png" class="img-fluid" style="height:300px"/>
             </div>
+            @else
+            <div class="container col-md-12 col-sm-12">
+                    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                    @foreach( $company_images as $photo )
+                        <li data-target="#carouselExampleIndicators" data-slide-to="{{ $loop->index }}" class="{{ $loop->first ? 'active' : '' }}"></li>
+                    @endforeach
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        @foreach( $company_images as $photo )
+                        <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
+                            <img class="d-block img-fluid" src="{{ asset('images/'.$photo->url) }}" alt="{{ $photo->url }}">
+                                
+                        </div>
+                        @endforeach
+                    </div>
+                    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon text-dark" aria-hidden="true"></span>
+                        <span class="sr-only ">Previous</span>
+                    </a>
+                    <a class="carousel-control-next " href="#carouselExampleControls" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon text-dark" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
+            </div>
+            @endif
         </div>
         <div class="row">
             <div class="container col-md-12 col-sm-12">
@@ -20,12 +47,12 @@
                     </tr>   
 
                     <tr>
-                    <td>住所</td>
-                    <td>{{$company->address}}</td>
+                    <td>CEO名</td>
+                    <td>{{$company->in_charge}}</td>
                     </tr>
                     <tr>
-                    <td>Eメール</td>
-                    <td>{{$company->email}}</td>
+                    <td>住所<</td>
+                    <td>{{$company->address}}</td>
                     </tr>
                     <tr>
                     <td>電話</td>
@@ -39,6 +66,10 @@
                     <td>HP</td>
                     <td>{{$company->hp}}</td>
                     </tr>
+                    <tr>
+                    <td colspan="2"><span class="p-5">{{$company->notes}}</span></td>
+                    </tr>
+                   
                 </tbody>
                 </table>
             </div>

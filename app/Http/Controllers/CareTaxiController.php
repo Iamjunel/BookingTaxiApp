@@ -6,6 +6,7 @@ use App\Models\BusinessHours;
 use Illuminate\Http\Request;
 use App\Models\Company;
 use App\Models\CompanyStatus;
+use  App\Models\CompanyImages;
 use stdClass;
 use Illuminate\Support\Facades\Session;
 class CareTaxiController extends Controller
@@ -200,13 +201,18 @@ class CareTaxiController extends Controller
             $bh->sunday_end = "";
         }else{
             $bh = $company->business_hours;
+            
         }
-        return view('care-taxi.company_info',compact('company','bh'));
+        $company_images = CompanyImages::where('company_id',$id)->get();
+        return view('care-taxi.company_info',compact('company','bh','company_images'));
     }
     public function update(Request $request){
         $data = $request->all();
         $company = Company::where('id', $data["id"])->first();
         $company->name = $data["name"];
+        $company->in_charge = $data["in_charge"];
+        $company->address = $data["address"];
+        $company->notes = $data["notes"];
         $company->cid = $data["cid"];
         $company->cpass = $data["cpass"];
         $company->email = $data["email"];
@@ -291,7 +297,9 @@ class CareTaxiController extends Controller
             $company->cid = $data["cid"];
             $company->cpass = $data["password"];
             $company->save();
+
         }
+        
         return redirect()->back()->with('message', 'Company successfully added.');
         
     }

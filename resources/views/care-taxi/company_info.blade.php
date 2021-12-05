@@ -6,7 +6,7 @@
               <a href="/care-taxi" class="text-dark pr-1"><i class="fas fa-3x fa-caret-left text-secondary"></i></a>
               <h3 class="d-inline">{{$company->name}}</h3>
           </div>
-         <form action="/care-taxi/company/update"  method="POST" >
+         <form action="/care-taxi/company/update"  method="POST" enctype="multipart/form-data">
         @csrf
         
         <input type="submit" class="btn btn-primary float-right" value="アップデート" />
@@ -32,6 +32,16 @@
                                         <td><input type="text" name="name" value="{{$company->name}}"/></td>
 
                                 </tr>
+                                <tr>
+                                    <td>CEO名</td>
+                                        <td><input type="text" name="in_charge" value="{{$company->in_charge}}" required/></td>
+
+                                </tr>
+                                <tr>
+                                    <td>住所</td>
+                                        <td><input type="text" name="address" value="{{$company->address}}"/></td>
+
+                                </tr>
                                  <tr>
                                     <td>電話番号</td>
                                         <td><input type="text" name="phone" value="{{$company->phone}}"/></td>
@@ -39,14 +49,19 @@
                                 </tr>
                                 <tr>
                                     <td>HP</td>
-                                        <td><input type="text" name="hp" value="{{$company->hp}}" /></td>
+                                        <td><input type="text" name="hp" value="{{$company->hp}}"/></td>
+
+                                </tr>
+                                <tr>
+                                    <td>紹介メッセージ</td>
+                                        <td><textarea name="notes" rows="4" cols="50" >{{$company->notes}}</textarea></td>
 
                                 </tr>
                                  <tr>
                                     <td>通話時間</td>
                                     <td>
                                         
-                                    <input type="time" name="call_start" value="{{$company->call_start}}" /> ~ <input type="time" name="call_end" value="{{$company->call_end}}"  />
+                                    <input type="time" name="call_start" value="{{$company->call_start}}" required/> ~ <input type="time" name="call_end" value="{{$company->call_end}}"  required/>
                                        
                                     </td>
 
@@ -302,10 +317,45 @@
 
 
                                 </tr>
+                                </form>
+                                <tr>
+                                    <td>画像</td>
+                                    <td>
+
+                                        <form action="{{ route('multiple.image.store') }}" method="POST" enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="hidden" name="id" value="{{$company->id}}" />
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6">
+                                                <input type="file" name="file[]" accept="image/*" multiple="multiple" class="form-control" required>
+                                            </div>
+                                
+                                            <div class="col-md-3 col-sm-6">
+                                                <button type="submit" class="btn btn-success">アップロード</button>
+                                            </div>
+                                        </div>
+                                        
+                                    </form>
+                                    <div class="row mt-3 p-5">
+                                            @if ($company_images)
+                                                @foreach($company_images as $value)
+                                                <div class="col-md-3 col-sm-4 p-1">
+                                                    <form action="/care-taxi/removeImage/{{$value->id}}" method="POST">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                    <img src="{{ asset('images/'.$value->url) }}" width="100">
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt">消去</i></button>
+                                                    </form>
+                                                </div>
+                                                @endforeach
+                                            @endif
+                                        </div>
+                                    </td>
+                                </tr>
                                 
                             </tbody>
         </table>
-    </form>
+    
      </div>
  
  

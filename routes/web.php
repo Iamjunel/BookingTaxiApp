@@ -47,7 +47,7 @@ Route::post('care-taxi/checklogin', 'App\Http\Controllers\CareTaxiController@che
 Route::get('care-taxi/logout', 'App\Http\Controllers\CareTaxiController@logout');
 Route::get('care-taxi/slot/{id}/{date}', 'App\Http\Controllers\CareTaxiController@slotDetailDate');
 Route::get('care-taxi/slot/edit/{id}/{date}', 'App\Http\Controllers\CareTaxiController@editDetailDate');
-
+Route::delete('care-taxi/removeImage/{id}', 'App\Http\Controllers\CompanyImagesController@removeImage');
 Route::get('calendar-event', 'App\Http\Controllers\CalenderController@index');
 Route::post('calendar-crud-ajax','App\Http\Controllers\CalenderController@calendarEvents');
 
@@ -55,10 +55,11 @@ Route::post('calendar-crud-ajax','App\Http\Controllers\CalenderController@calend
 Route::get('user', 'App\Http\Controllers\UserController@index');
 Route::get('user/companylist', 'App\Http\Controllers\UserController@getAllCompany');
 Route::get('user/company/detail/{id}', 'App\Http\Controllers\UserController@getCompanyDetail');
-Route::get('user/slot/detail/{id}', 'App\Http\Controllers\UserController@slotDetailDate');
+Route::get('user/slot/detail/{id}/{date}', 'App\Http\Controllers\UserController@slotDetailDate');
 Route::get('user/slot/{date}', 'App\Http\Controllers\UserController@availableSlotDetailDate');
 Route::get('user/slot', 'App\Http\Controllers\UserController@availableSlot');
-
+Route::get('user/contact/{id}/{date}/{time}/{status}', 'App\Http\Controllers\UserController@contactDetail');
+Route::post('multiple-image/store', 'App\Http\Controllers\CompanyImagesController@multipleImageStore')->name('multiple.image.store');
 
 
 //Route::get('pagenotfound', ['as' => 'notfound', 'uses' => 'UserController@pagenotfound']);

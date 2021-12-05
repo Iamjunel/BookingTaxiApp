@@ -1,24 +1,30 @@
  @extends('layout.user_layout')
  @section('content')
  
-     <div class="col-md-8 col-sm-12 clearfix p-5">
-         <h3 class=""><a href="/user/company/detail/{{$company->id}}" class="text-dark pr-1"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-left-square-fill" viewBox="0 0 16 16">
-  <path d="M16 14a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12zm-4.5-6.5H5.707l2.147-2.146a.5.5 0 1 0-.708-.708l-3 3a.5.5 0 0 0 0 .708l3 3a.5.5 0 0 0 .708-.708L5.707 8.5H11.5a.5.5 0 0 0 0-1z"/>
-</svg></a>{{$date}}</h3>
-    <form action="/care-taxi/company/update/"  method="POST" >
-        @csrf
+     
+    <div class="col-md-8 col-sm-12 clearfix mt-1 mb-5">
+        <a href="/user/companylist" class="pr-1 text-dark float-right">会社リストに戻る</a>
+        <div class ="d-flex justify-content-between mt-5">
+        @if($not_current)    
+        <a href="/user/slot/detail/{{$id}}/{{$previous_date}}" class="text-dark pr-1"><i class="fas fa-3x fa-caret-left text-secondary"></i></a>
+        @else
+        <span class="text-dark pr-1"><i class="fas fa-3x fa-caret-left text-secondary"></i></span>
+        @endif
+        <span style="font-size: 18px">{{$date_jp}}</span>
+        <a href="/user/slot/detail/{{$id}}/{{$next_date}}" class="text-dark pr-1"><i class="fas fa-3x fa-caret-right text-secondary"></i></a>
         
-       {{--  <input type="submit" class="btn btn-primary float-right" value="アップデート" /> --}}
-        <input type="hidden" name="id" value="{{$company->id}}" /></td>
+    </div>
+    <h3>{{$com->name}}</h3>
+    
         <table class="table table-hover table-bordered bg-light">
-            <th>時間</th>
-            <th>月曜日</th>
-            <th>火曜日</th>
-             <th>水曜日</th>
-              <th>木曜日</th>
-              <th>金曜日</th>
-              <th>土曜日</th>
-              <th>日曜日</th>
+            <th>{{date('m月d日',strtotime($date))}}<br>時間</th>
+            <th>{{date('m月d日',strtotime('+1day',strtotime($date)))}}<br>月曜日</th>
+            <th>{{date('m月d日',strtotime('+2days',strtotime($date)))}}<br>火曜日</th>
+             <th>{{date('m月d日',strtotime('+3days',strtotime($date)))}}<br>水曜日</th>
+              <th>{{date('m月d日',strtotime('+4days',strtotime($date)))}}<br>木曜日</th>
+              <th>{{date('m月d日',strtotime('+5days',strtotime($date)))}}<br>金曜日</th>
+              <th>{{date('m月d日',strtotime('+6days',strtotime($date)))}}<br>土曜日</th>
+              <th>{{date('m月d日',strtotime('+7days',strtotime($date)))}}<br>日曜日</th>
         <tbody>
             @foreach ($time as $key => $t)
             <tr>
@@ -63,7 +69,7 @@
            
            </tbody>
         </table>
-    </form>
+    
      </div>
  
  
