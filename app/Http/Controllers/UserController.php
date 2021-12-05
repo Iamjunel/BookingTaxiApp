@@ -108,11 +108,50 @@ class UserController extends Controller
                 $time_end = $bus_hours->sunday_end;
                 $longest_time =  strtotime($date . ' ' . $time_end);
             }
-            
 
+            $curr_time = $date . ' ' . $time_start;
             $company_status = CompanyStatus::Where('company_id', $id)->where('date', $date)->get();
 
-            if (count($company_status) == 0) {
+            array_push($time, [
+                'time' => date('h:ia', strtotime($curr_time))
+            ]);
+            $current = strtotime($curr_time);
+            $start = strtotime($date . ' ' . $time_start);
+            $end = strtotime($date . ' ' . $time_end);
+
+            while ($current >= $start && $current < $end) {
+                $added_time = strtotime("+30 minutes", $current);
+                if ($added_time < $end) {
+
+                    array_push($time, [
+                        'time' => date('h:ia', $added_time),
+                    ]);
+                } else {
+                    array_push($time, [
+                        'time' => date('h:ia', $end),
+                    ]);
+                    break;
+                }
+                $current = $added_time;
+            }
+
+
+            for ($count = 0; $count < count($time); $count++) {
+                for($day = 0; $day < 7;$day++){
+                    if($day > 0){
+                        $curr_date = date('Y-m-d',strtotime('+'.$day.'days',strtotime($date)));
+                    }else{
+                        $curr_date = $date;
+                    }
+                    $company_status = CompanyStatus::Where('company_id', $id)->where('date', $curr_date)->where('time', $time[$count])->first();
+                    if (isset($company_status->status)) {
+                        $time[$count]["status_" . $curr_date] = $company_status->status;
+                    } else {
+                        $time[$count]["status_" . $curr_date] = null;
+                    }
+                }
+            }
+            /* if (count($company_status) == 0) {
                 $status = "times";
                 $comment = "";
                 $curr_time = $date . ' ' . $time_start;
@@ -203,7 +242,7 @@ class UserController extends Controller
                     }
                     $current = $added_time;
                 }
-            }
+            } */
         }
         $com=Company::where('id',$id)->first();
         $not_current = true;
@@ -216,7 +255,6 @@ class UserController extends Controller
         $date_jp = $date_jp. '~' . date('Y年m月d日', strtotime('+7days',strtotime($date)));
        /*  return response()->json(array(
             'success' => true,
-            'data'   => $company,
             'day'    => $time
         ));  */
         return view('user.company_slot_detail', compact('time', 'date','com', 'company', 'id', 'previous_date', 'next_date', 'not_current', 'date_jp'));
