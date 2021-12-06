@@ -36,7 +36,8 @@
                 <div class="p-2">
                 <h3 class="text-center mx-2">{{$company->name}}</h3>
                 <div class="row justify-content-center">
-                   <a href="tel:{{$company->phone}}" class="btn btn-primary my-2">電話をかける</a>
+                  {{--  <a href="tel:{{$company->phone}}" class="btn btn-primary my-2">{{-- 電話をかける --}} {{$company->phone}}</a> --}}
+                   <button class="btn btn-primary my-2" onclick="callANumber('tel:{{$company->phone}}')">電話をかける</button>
                 </div>
                  <p class="text-dark text-center fw-bold">{{$company->phone}}</p>   
                 </div>

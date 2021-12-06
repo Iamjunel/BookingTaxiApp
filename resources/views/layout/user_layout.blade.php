@@ -144,6 +144,9 @@
         function displayMessage(message) {
             toastr.success(message, 'Event');            
         }
+        function callANumber(number){
+            window.location=number;
+        }
 
     </script>
 </body>
