@@ -4,7 +4,7 @@
      <div class="col-md-12 col-sm-12 clearfix">
          <div >    
          <a href="/admin" class="text-dark mr-2"><i class="fas fa-3x fa-caret-left text-secondary"></i></a>
-        <h3 class="d-inline">会社リスト</h3>
+        <h3 class="d-inline">登録会社一覧</h3>
          </div>
         <table class="table table-striped table-hover table-bordered">
         <thead>
@@ -13,7 +13,7 @@
             <th>会社名</th>
             <th>ID</th>
             <th>パスワード</th>
-            <th>行動</th>
+            <th></th>
             </tr>
         </thead>
         <tbody>
@@ -22,7 +22,7 @@
             <td>{{$com->name}}</td>
             <td>{{$com->cid}}</td>
             <td>{{$com->cpass}}</td>
-            <td><button class="btn btn-danger" data-toggle="modal" data-target="#sample-{{$com->id}}">消去</button></td>
+            <td><button class="btn btn-danger" data-toggle="modal" data-target="#sample-{{$com->id}}">削除</button></td>
             <div class="modal fade" id="sample-{{$com->id}}" tabindex="-1" role="dialog" aria- 
             labelledby="demoModalLabel" aria-hidden="true">
 				<div class="modal-dialog modal-sm" role="document">
@@ -41,7 +41,7 @@
 						<div class="modal-footer">
                             @method('DELETE')
                              @csrf
-							<button type="button" class="btn btn-secondary" data-dismiss="modal">番号</button>
+							<button type="button" class="btn btn-secondary" data-dismiss="modal">いいえ</button>
 						    <button type="submit" class="btn btn-primary">はい</button>
         
 						</div>

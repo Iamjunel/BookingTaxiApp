@@ -170,9 +170,11 @@ class CareTaxiController extends Controller
         if ($date == date('Y-m-d')) {
             $not_current = false;
         }
-
+        $dy  = date("w",strtotime($date));
+        $dys = array("日", "月", "火", "水", "木", "金", "土");
+        $dyj = $dys[$dy];
         $date_jp = date('Y年m月d日', strtotime($date));
-       
+        $date_jp = $date_jp.'('.$dyj.')';
         
         /* return response()->json(array(
             'success' => true,
@@ -261,7 +263,7 @@ class CareTaxiController extends Controller
             $bus_hours->company_id =  $data["id"];
             $bus_hours->save();   
         }
-        return redirect()->back()->with('message', 'Company successfully updated.');
+        return redirect()->back()->with('message', '更新完了しました。');
     }
 
     public function checkLogin(Request $request)
@@ -485,8 +487,12 @@ class CareTaxiController extends Controller
         if($date == date('Y-m-d')){
             $not_current=false;
         }
-        
-        $date_jp =date('Y年m月d日', strtotime($date));
+
+        $dy  = date("w", strtotime($date));
+        $dys = array("日", "月", "火", "水", "木", "金", "土");
+        $dyj = $dys[$dy];
+        $date_jp = date('Y年m月d日', strtotime($date));
+        $date_jp = $date_jp . '(' . $dyj . ')';
 
        /*  return response()->json(array(
             'success' => true,

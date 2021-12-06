@@ -2,8 +2,8 @@
  @section('content')
  <div class="container">
      <div class="col-md-12 col-sm-12 clearfix">
-         <a href="/user/slot/detail/{{$company->id}}/{{date('Y-m-d', strtotime('last monday'))}}" class="float-right btn btn-danger">利用可能なスロット</a>
-         <h3 className="float-left"><a href="/user" class="text-dark pr-1"><i class="fas fa-2x fa-caret-left text-secondary"></i></a>会社リスト</h3>
+         <a href="/user/slot/detail/{{$company->id}}/{{date('Y-m-d', strtotime('last monday'))}}" class="float-right btn btn-danger">空き状況を見る</a>
+         <h3 className="float-left"><a href="/user" class="text-dark pr-1"><i class="fas fa-2x fa-caret-left text-secondary"></i></a>{{$company->name}}</h3>
         
         <div class="row ">
             @if(empty($company_images))
@@ -45,13 +45,16 @@
                     <tr>
                         <td colspan="2" class="text-center">{{$company->name}}</td>
                     </tr>   
-
                     <tr>
-                    <td>CEO名</td>
+                    <td>会社名</td>
+                    <td>{{$company->name}}</td>
+                    </tr>
+                    <tr>
+                    <td>代表者</td>
                     <td>{{$company->in_charge}}</td>
                     </tr>
                     <tr>
-                    <td>住所<</td>
+                    <td>住所</td>
                     <td>{{$company->address}}</td>
                     </tr>
                     <tr>

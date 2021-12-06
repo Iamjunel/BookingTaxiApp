@@ -19,12 +19,12 @@
     <form action="/care-taxi/status/update"  method="POST">
         @csrf
         
-        <input type="submit" class="btn btn-warning btn-block mb-1" value="アップデート" />
+        <input type="submit" class="btn btn-warning btn-block mb-1" value="更新" />
         <input type="hidden" name="id" value="{{$id}}" /></td>
          <input type="hidden" name="date" value="{{$date}}" /></td>
         <table class="table table-hover table-bordered bg-light" style="margin-bottom: 0px !important">
             <th>時間</th>
-            <th>状態</th>
+            <th>空き状況</th>
             <th>コメント</th>
         <tbody>
             @foreach ($time as $key => $t)
@@ -84,7 +84,7 @@
            
            </tbody>
         </table>
-        <input type="submit" class="btn btn-warning btn-block mt-1" value="アップデート" />
+        <input type="submit" class="btn btn-warning btn-block mt-1" value="更新" />
     </form>
      </div>
  

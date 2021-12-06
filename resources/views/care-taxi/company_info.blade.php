@@ -21,19 +21,13 @@
                                     <td>パスワード</td>
                                         <td><input type="password" name="cpass" value="{{$company->cpass}}" /></td>
                                 </tr>
-                                <tr>
-                                    <td>電子メールアドレス</td>
-                                        <td><input type="text" name="email" value="{{$company->email}}" /></td>
-
-                                </tr>
-                               
-                                <tr>
-                                    <td>キャブ名</td>
+                                 <tr>
+                                    <td>タクシー会社名</td>
                                         <td><input type="text" name="name" value="{{$company->name}}"/></td>
 
                                 </tr>
                                 <tr>
-                                    <td>CEO名</td>
+                                    <td>代表者</td>
                                         <td><input type="text" name="in_charge" value="{{$company->in_charge}}" required/></td>
 
                                 </tr>
@@ -48,17 +42,17 @@
 
                                 </tr>
                                 <tr>
+                                    <td>E-mail</td>
+                                        <td><input type="text" name="email" value="{{$company->email}}" /></td>
+
+                                </tr>
+                                <tr>
                                     <td>HP</td>
                                         <td><input type="text" name="hp" value="{{$company->hp}}"/></td>
 
                                 </tr>
                                 <tr>
-                                    <td>紹介メッセージ</td>
-                                        <td><textarea name="notes" rows="4" cols="50" >{{$company->notes}}</textarea></td>
-
-                                </tr>
-                                 <tr>
-                                    <td>通話時間</td>
+                                    <td>電話対応時間</td>
                                     <td>
                                         
                                     <input type="time" name="call_start" value="{{$company->call_start}}" required/> ~ <input type="time" name="call_end" value="{{$company->call_end}}"  required/>
@@ -66,6 +60,9 @@
                                     </td>
 
                                 </tr>
+                                
+                                
+                                 
                                 <tr>
                                         <td className="align-middle">営業時間</td>
                                         <td className="p-1 m-0 pb-2" style="width: 400px">
@@ -116,6 +113,11 @@
                                         </td>
                                     
 
+
+                                </tr>
+                                <tr>
+                                    <td>紹介メッセージ</td>
+                                        <td><textarea name="notes" rows="4" cols="50" >{{$company->notes}}</textarea></td>
 
                                 </tr>
                                 <tr>

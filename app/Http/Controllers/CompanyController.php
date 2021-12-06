@@ -39,7 +39,7 @@ class CompanyController extends Controller
     {
         $company = Company::find($id);
         $company->delete();
-        return redirect()->back()->with('message', 'Company successfully removed.');
+        return redirect()->back()->with('message', '会社の削除完了しました。');
         /* return response()->json(array(
             'success' => true,
             'data'   => $company
@@ -71,7 +71,7 @@ class CompanyController extends Controller
                 $user->save();
             } */
         }
-        return redirect()->back()->with('message', 'Company successfully added.');
+        return redirect()->back()->with('message', '会社の登録完了しました。');
         /* return response()->json(array(
             'success' => true,
             'message' => 'Company added successfully.',

@@ -16,7 +16,7 @@
     <a href="/care-taxi/slot/{{$id}}/{{$next_date}}" class="text-dark pr-1"><i class="fas fa-3x fa-caret-right text-secondary"></i></a>
     
     </div>
-    <a href="/care-taxi/slot/edit/{{$id}}/{{$date}}" class="btn btn-primary btn-block clearfix mb-1">ステータスの編集</a>
+    <a href="/care-taxi/slot/edit/{{$id}}/{{$date}}" class="btn btn-primary btn-block clearfix mb-1">編集</a>
     <form action="/care-taxi/company/update/"  method="POST" >
         @csrf
         
@@ -24,7 +24,7 @@
         <input type="hidden" name="id" value="{{$company->id}}" /></td>
         <table class="table table-hover table-bordered bg-light" style="margin-bottom: 0px !important">
             <th>時間</th>
-            <th>状態</th>
+            <th>空き状況</th>
             <th>コメント</th>
         <tbody>
             @foreach ($time as $key => $t)
@@ -69,7 +69,7 @@
            </tbody>
         </table>
     </form>
-     <a href="/care-taxi/slot/edit/{{$id}}/{{$date}}" class="btn btn-primary btn-block clearfix mt-1">ステータスの編集</a>
+     <a href="/care-taxi/slot/edit/{{$id}}/{{$date}}" class="btn btn-primary btn-block clearfix mt-1">編集</a>
      </div>
  
  

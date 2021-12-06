@@ -7,7 +7,7 @@
     <title>{{env('APP_NAME')}}</title>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.6/fullcalendar.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -18,6 +18,7 @@
 }
 
         </style>
+         
 </head>
 <body style="overflow:auto">
     <nav class="container pt-2">
@@ -45,9 +46,9 @@
  <script src="{{ asset('js/app.js') }}"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.6/fullcalendar.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
- <script src="jquery.ui.touch.js"></script>
+
  <script>
      $('div.alert').delay(3000).slideUp(300);
      </script>
@@ -64,18 +65,22 @@
             });
 
             var calendar = $('#full_calendar_events').fullCalendar({
-                editable: false,
-                editable: false,
-                events: SITEURL + "/calendar-event",
-                displayEventTime: true,
-                eventRender: function (event, element, view) {
-                    $(element).addTouch();
-                    if (event.allDay === 'true') {
-                        event.allDay = true;
-                    } else {
-                        event.allDay = false;
-                    }
+                header: {
+                    // title, prev, next, prevYear, nextYear, today
+                    left: 'prev',
+                    center: 'title ',
+                    right: 'next'
                 },
+                monthNames: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                // 月略称
+                monthNamesShort: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'],
+                // 曜日名称
+                dayNames: ['日曜日', '月曜日', '火曜日', '水曜日', '木曜日', '金曜日', '土曜日'],
+                // 曜日略称
+                dayNamesShort: ['日', '月', '火', '水', '木', '金', '土'],
+                editable: false,
+                locale: 'es',
+                editable: false,
                 selectable: true,
                 selectHelper: true,
                 selectAllow: function(info) {
@@ -84,49 +89,20 @@
                         return true;          
                 },
                 select: function (date,event_start, event_end, allDay) {
-                        var this_day = $.fullCalendar.formatDate(date, "Y-MM-DD");
+                       // var this_day = $.fullCalendar.formatDate(date, "Y-MM-DD");
+                       var this_day = moment(date, 'DD.MM.YYYY').format('YYYY-MM-DD')
                  window.location.href = '/user/slot/' + this_day;
-                    /* var event_name = prompt('Event Name:');
-                    if (event_name) {
-                        var event_start = $.fullCalendar.formatDate(event_start, "Y-MM-DD HH:mm:ss");
-                        var event_end = $.fullCalendar.formatDate(event_end, "Y-MM-DD HH:mm:ss");
-                        $.ajax({
-                            url: SITEURL + "/calendar-crud-ajax",
-                            data: {
-                                event_name: event_name,
-                                event_start: event_start,
-                                event_end: event_end,
-                                type: 'create'
-                            },
-                            type: "POST",
-                            success: function (data) {
-                                displayMessage("Event created.");
-
-                                calendar.fullCalendar('renderEvent', {
-                                    id: data.id,
-                                    title: event_name,
-                                    start: event_start,
-                                    end: event_end,
-                                    allDay: allDay
-                                }, true);
-                                calendar.fullCalendar('unselect');
-                            }
-                        });
-                    } */
+                    
                 },
-                /* dayClick: function(date, jsEvent, view) {
+                views: {
+                    month: { // name of view
+                    titleFormat: 'YYYY/MM'
+                    // other view-specific options here
+                    }
+                }
 
-        alert('Clicked on: ' + date.format());
-
-        alert('Coordinates: ' + jsEvent.pageX + ',' + jsEvent.pageY);
-
-        alert('Current view: ' + view.name);
-
-        // change the day's background color just for fun
-        $(this).css('background-color', 'red');
-
-        }, */
-                eventDrop: function (event, delta) {
+        
+                /* eventDrop: function (event, delta) {
                     var event_start = $.fullCalendar.formatDate(event.start, "Y-MM-DD");
                     var event_end = $.fullCalendar.formatDate(event.end, "Y-MM-DD");
 
@@ -144,8 +120,8 @@
                             displayMessage("Event updated");
                         }
                     });
-                },
-                eventClick: function (event) {
+                }, */
+                /* eventClick: function (event) {
                     var eventDelete = confirm("Are you sure?");
                     if (eventDelete) {
                         $.ajax({
@@ -161,10 +137,10 @@
                             }
                         });
                     }
-                }
+                } */
             });
         });
-
+        
         function displayMessage(message) {
             toastr.success(message, 'Event');            
         }

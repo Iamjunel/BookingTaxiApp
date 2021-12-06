@@ -36,7 +36,7 @@
                 <div class="p-2">
                 <h3 class="text-center mx-2">{{$company->name}}</h3>
                 <div class="row justify-content-center">
-                   <a href="tel:{{$company->phone}}" class="btn btn-primary my-2">今すぐお電話ください</a>
+                   <a href="tel:{{$company->phone}}" class="btn btn-primary my-2">電話をかける</a>
                 </div>
                  <p class="text-dark text-center fw-bold">{{$company->phone}}</p>   
                 </div>
@@ -47,7 +47,7 @@
                     <span>時間:{{$time}}
                     </span>
                 <span class="ml-4">
-                    状態 :
+                    空き状況 :
                     @if($status == "circle")
                    
                         <span class="text-info">
@@ -106,11 +106,11 @@
                     </ol>
                 </div>
                 <div class="row justify-content-center">
-                    <a href="/user/slot/{{$date}}" class="btn btn-danger my-2">{{$date_jp}}</a>
+                    <a href="/user/slot/{{$date}}" class="btn btn-danger my-2">{{$date_jp}} スケジュール確認</a>
                 </div>
                 <hr/>
                  <div class="row justify-content-center">
-                   <a href="tel:{{$company->phone}}" class="btn btn-primary my-2">今すぐお電話ください</a>
+                   <a href="tel:{{$company->phone}}" class="btn btn-primary my-2">電話をかける</a>
                 </div>
                 
             </div>

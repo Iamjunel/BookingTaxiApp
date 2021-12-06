@@ -2,18 +2,18 @@
  @section('content')
  <div class="container">
      <div class="col-md-12 col-sm-12 clearfix">    
-         <h3 className="float-left"><a href="/user" class="text-dark pr-1"><i class="fas fa-2x fa-caret-left text-secondary"></i></a>会社リスト</h3>
+         <h3 className="float-left"><a href="/user" class="text-dark pr-1"><i class="fas fa-2x fa-caret-left text-secondary"></i></a>登録会社一覧</h3>
         <table class="table table-striped table-hover table-bordered">
         <thead>
             <tr>
         
             <th>会社名</th>
-            <th>看護</th>
+            <th>酸素</th>
             <th>ヘルパー</th>
             <th>空気</th>
             <th>人工呼吸器</th>
-            <th>タイムスロット</th>
-            <th>行動</th>
+            <th>営業時間</th>
+            <th></th>
             </tr>
         </thead>
         <tbody>
@@ -113,7 +113,7 @@
                 @endif
             </td>
             <td>{{$com->business_hours[$day.'_start']}} ~ {{$com->business_hours[$day.'_end']}}</td>
-              <td><a class="btn btn-danger" href="/user/company/detail/{{$com->id}}">見る</a></td>
+              <td><a class="btn btn-danger" href="/user/company/detail/{{$com->id}}">詳細</a></td>
             </tr>
             @endif
           
