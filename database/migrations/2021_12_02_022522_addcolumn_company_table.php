@@ -15,8 +15,8 @@ class AddcolumnCompanyTable extends Migration
     {
         //
         Schema::table('company', function ($table) {
-            $table->string('call_start')->nullable;
-            $table->string('call_end')->nullable;
+            $table->string('call_start')->nullable();
+            $table->string('call_end')->nullable();
             $table->string('nursing_status')->default('times');
             $table->string('oxygen_status')->default('times');
             $table->string('ventilator_status')->default('times');

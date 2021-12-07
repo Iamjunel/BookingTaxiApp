@@ -218,6 +218,7 @@ class CareTaxiController extends Controller
         $company->cid = $data["cid"];
         $company->cpass = $data["cpass"];
         $company->email = $data["email"];
+        $company->fax = $data["fax"];
         $company->phone = $data["phone"];
         $company->call_start = $data["call_start"];
         $company->call_end = $data["call_end"];
@@ -338,7 +339,7 @@ class CareTaxiController extends Controller
              
             }
         }
-        return redirect()->back()->with('message', 'Company status succefully updated.');
+        return redirect()->back()->with('message', '更新完了しました。');
         
     }
 

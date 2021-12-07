@@ -16,10 +16,10 @@
          <div class="container ">
          <div class="col-md-12 col-sm-12 border mb-1 text-center"> 
              <h4 class="text-center text-danger">利用可能なサービス</h4>   
-         <span class="text-primary mr-5"><i class="fab fa-accessible-icon "></i> -- 看護<span class="text-danger">/介護</span></span>
+         <span class="text-primary mr-5"><i class="fab fa-accessible-icon "></i> -- 看護/介護</span>
          <span class="text-info mr-5"><i class="fas fa-user-nurse"></i> -- ヘルパー</span>
-         <span class="text-success mr-5"><i class="fas fa-lungs"></i> -- <span class="text-danger">空気</span></span>
-         <span class="text-danger mr-5"><i class="fas fa-procedures"></i> -- <span class="text-dark">人工呼吸器</span></span>
+         <span class="text-success mr-5"><i class="fas fa-lungs"></i> -- 空気</span>
+         <span class="text-danger mr-5"><i class="fas fa-procedures"></i> -- 人工呼吸器</span>
          
 
          </div>

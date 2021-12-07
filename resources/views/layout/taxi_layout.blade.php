@@ -20,7 +20,7 @@
         @if(Session::get('cid'))
             <a class=" text-dark float-right" href="{{url('care-taxi/logout')}}">ログアウト</a>
         @endif
-        <a href="/" class="text-dark" style="text-decoration: none">Booking App System</a>
+        <a href="/" class="text-dark" style="text-decoration: none">津ケアタクネット</a>
         
     </nav>
     <hr/>

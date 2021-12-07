@@ -66,6 +66,10 @@
                     <td>{{$company->fax}}</td>
                     </tr>
                     <tr>
+                    <td>E-mail</td>
+                    <td>{{$company->email}}</td>
+                    </tr>
+                    <tr>
                     <td>HP</td>
                     <td>{{$company->hp}}</td>
                     </tr>

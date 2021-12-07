@@ -252,7 +252,7 @@ class UserController extends Controller
         }
 
         $date_jp = date('Y年m月d日', strtotime($date));
-        $date_jp = $date_jp. '~' . date('Y年m月d日', strtotime('+7days',strtotime($date)));
+        $date_jp = $date_jp. '~' . date('Y年m月d日', strtotime('+6days',strtotime($date)));
        /*  return response()->json(array(
             'success' => true,
             'day'    => $time

@@ -42,6 +42,11 @@
 
                                 </tr>
                                 <tr>
+                                    <td>FAX</td>
+                                        <td><input type="text" name="fax" value="{{$company->fax}}"/></td>
+
+                                </tr>
+                                <tr>
                                     <td>E-mail</td>
                                         <td><input type="text" name="email" value="{{$company->email}}" /></td>
 

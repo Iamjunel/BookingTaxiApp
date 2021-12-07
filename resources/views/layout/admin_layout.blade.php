@@ -11,7 +11,7 @@
 </head>
 <body style="background-color:rgb(231 226 190 / 38%);overflow:hidden">
     <nav class="container pt-2">
-        <a href="/" class="text-dark" style="text-decoration: none">Booking App System</a>
+        <a href="/" class="text-dark" style="text-decoration: none">津ケアタクネット</a>
     </nav>
     <hr/>
     <div class="">
