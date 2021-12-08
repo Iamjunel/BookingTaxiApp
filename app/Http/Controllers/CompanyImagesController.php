@@ -112,6 +112,6 @@ class CompanyImagesController extends Controller
     public function removeImage($id){
         $image = CompanyImages::find($id);
         $image->delete();
-        return redirect()->back()->with('message', 'Company Images successfully removed.');
+        return redirect()->back()->with('message', '削除が完了しました。');
     }
 }

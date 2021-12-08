@@ -83,16 +83,17 @@
                 editable: false,
                 selectable: true,
                 selectHelper: true,
-                selectAllow: function(info) {
-                        if (info.start.isBefore(moment().subtract(1, 'days')))
-                            return false; 
-                        return true;          
-                },
                 select: function (date,event_start, event_end, allDay) {
-                       // var this_day = $.fullCalendar.formatDate(date, "Y-MM-DD");
+                    /*    // var this_day = $.fullCalendar.formatDate(date, "Y-MM-DD");
+                       var this_day = moment(date, 'DD.MM.YYYY').format('YYYY-MM-DD')
+                 window.location.href = '/user/slot/' + this_day; */
+                    var check =moment(date, 'DD.MM.YYYY').format('YYYY-MM-DD');
+                    var today = moment(new Date(), 'DD.MM.YYYY').format('YYYY-MM-DD');
+                    if (check >= today) {
+                    //var this_day = $.fullCalendar.formatDate(date, "Y-MM-DD");
                        var this_day = moment(date, 'DD.MM.YYYY').format('YYYY-MM-DD')
                  window.location.href = '/user/slot/' + this_day;
-                    
+                    }
                 },
                 views: {
                     month: { // name of view

@@ -109,7 +109,7 @@ class CareTaxiController extends Controller
                 $current = $added_time;
             }
         }else{
-            $status = "times";
+            $status = "circle";
             $comment = "";
             $curr_time = $date . ' ' . $time_start;
             foreach ($company_status as $company) {
@@ -392,7 +392,7 @@ class CareTaxiController extends Controller
             $company_status = CompanyStatus::Where('company_id', $id)->where('date', $date)->get();
            
             if (count($company_status) == 0) {
-                $status = "times";
+                $status = "circle";
                 $comment = "";
                 $curr_time = $date . ' ' . $time_start;
                 array_push($time, [

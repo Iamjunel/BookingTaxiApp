@@ -57,12 +57,12 @@
                     </a>
                     </td>
                     @else
-                        <td style="background-color: darkgrey"></td>
+                        <td style="background-color: darkgrey;width:100px"></td>
                 
                 @endif
            
                     @else
-                    <td style="background-color: darkgrey"></td>
+                    <td style="background-color: darkgrey;width:100px"></td>
                     @endif
                 @endfor 
                   

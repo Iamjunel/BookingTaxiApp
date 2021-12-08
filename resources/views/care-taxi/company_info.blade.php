@@ -9,7 +9,7 @@
          <form action="/care-taxi/company/update"  method="POST" enctype="multipart/form-data">
         @csrf
         
-        <input type="submit" class="btn btn-primary float-right" value="アップデート" />
+        <input type="submit" class="btn btn-primary float-right" value="更新" />
         <input type="hidden" name="id" value="{{$company->id}}" /></td>
         <table class="table table-striped table-hover table-bordered bg-light">
         <tbody>
