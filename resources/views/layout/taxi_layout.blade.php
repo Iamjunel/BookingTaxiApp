@@ -99,7 +99,7 @@
                     if (check >= today) {
                     //var this_day = $.fullCalendar.formatDate(date, "Y-MM-DD");
                        var this_day = moment(date, 'DD.MM.YYYY').format('YYYY-MM-DD')
-                 window.location.href = '/user/slot/' + this_day;
+                 window.location.href = '/care-taxi/slot/'+ id +'/' + this_day;
                     }
                     /* var event_name = prompt('Event Name:');
                     if (event_name) {
