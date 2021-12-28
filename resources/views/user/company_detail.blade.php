@@ -7,11 +7,11 @@
         
         <div class="row border ">
             @if(empty($company_images))
-            <div class="container col-md-12 col-sm-12 ">
+            <div class="container col-md-12 col-sm-12 px-0 ">
             <img src="https://www.nuvali.ph/wp-content/themes/consultix/images/no-image-found-360x250.png" class="img-fluid" style="height:300px"/>
             </div>
             @else
-            <div class="container col-md-12 col-sm-12">
+            <div class="container col-md-12 col-sm-12 px-0">
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                     @foreach( $company_images as $photo )
