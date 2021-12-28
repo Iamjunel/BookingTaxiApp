@@ -77,7 +77,7 @@
                                     <td>電話対応時間</td>
                                     <td>
                                         
-                                    <input type="time" name="call_start" value="{{$company->call_start}}" disabled/> ~ <input type="time" name="call_end" value="{{$company->call_end}}"  disabled/>
+                                    <input type="time" name="call_start" value="{{$company->call_start}}" disabled/> <span style="font-size:18px;font-weight:600;font-family: emoji">~</span> <input type="time" name="call_end" value="{{$company->call_end}}"  disabled/>
                                        
                                     </td>
 
@@ -183,9 +183,6 @@
                                                     <td style="width: 300px">
                                                         @if($company->helper_status== 'circle')
                                                         <div class="form-check form-check-inline">
-                                                        
-                                                        
-                                                        
                                                         <label class="form-check-label" for="inlineRadio1">
                                                             <span class="text-info">
                                                             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
@@ -226,7 +223,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>酸素/td>
+                                                    <td>酸素</td>
                                                     <td style="width: 300px">
                                                         @if($company->oxygen_status == 'circle')
                                                          <div class="form-check form-check-inline">

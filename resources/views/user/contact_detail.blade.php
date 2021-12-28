@@ -188,7 +188,7 @@
                                     <td>電話対応時間</td>
                                     <td>
                                         
-                                    <input type="time" name="call_start" value="{{$company->call_start}}" disabled/> ~ <input type="time" name="call_end" value="{{$company->call_end}}"  disabled/>
+                                    <input type="time" name="call_start" value="{{$company->call_start}}" disabled/> <span style="font-size:18px;font-weight:600;font-family: emoji">~</span> <input type="time" name="call_end" value="{{$company->call_end}}"  disabled/>
                                        
                                     </td>
 

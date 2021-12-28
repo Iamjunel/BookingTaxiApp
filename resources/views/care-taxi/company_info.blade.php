@@ -28,7 +28,7 @@
                                 </tr>
                                 <tr>
                                     <td>代表者</td>
-                                        <td><input type="text" name="in_charge" value="{{$company->in_charge}}" required/></td>
+                                        <td><input type="text" name="in_charge" value="{{$company->in_charge}}" /></td>
 
                                 </tr>
                                 <tr>
@@ -60,7 +60,7 @@
                                     <td>電話対応時間</td>
                                     <td>
                                         
-                                    <input type="time" name="call_start" value="{{$company->call_start}}" required/> ~ <input type="time" name="call_end" value="{{$company->call_end}}"  required/>
+                                    <input type="time" name="call_start" value="{{$company->call_start}}"/> <span style="font-size:18px;font-weight:600;font-family: emoji">~</span> <input type="time" name="call_end" value="{{$company->call_end}}" />
                                        
                                     </td>
 
@@ -75,43 +75,43 @@
                                                 <tr>
                                                     <td style="width: 100px">月曜日</td>
                                                     <td><input type="time" name="mon_start" value="{{$bh->monday_start}}" /></td> 
-                                                    <td>~</td> 
+                                                    <td><span style="font-size:18px;font-weight:600;font-family: emoji">~</span></td> 
                                                     <td><input type="time" name="mon_end" value="{{$bh->monday_end}}"  /></td>
                                                 </tr>
                                                 <tr>
                                                     <td>火曜日</td>
                                                     <td><input type="time" name="tue_start" value="{{$bh->tuesday_start}}"  /></td> 
-                                                    <td>~</td> 
+                                                    <td><span style="font-size:18px;font-weight:600;font-family: emoji">~</span></td> 
                                                     <td><input type="time"  name="tue_end" value="{{$bh->tuesday_end}}" /></td>
                                                 </tr>
                                                 <tr>
                                                     <td>水曜日</td>
                                                     <td><input type="time" name="wed_start" value="{{$bh->wednesday_start}}"  /></td>
-                                                    <td>~</td> 
+                                                    <td><span style="font-size:18px;font-weight:600;font-family: emoji">~</span></td> 
                                                     <td><input type="time" name="wed_end"  value="{{$bh->wednesday_end}}" /></td>
                                                 </tr>
                                                 <tr>
                                                     <td>木曜日</td>
                                                     <td><input type="time" name="thu_start" value="{{$bh->thursday_start}}"  /></td>
-                                                    <td>~</td> 
+                                                    <td><span style="font-size:18px;font-weight:600;font-family: emoji">~</span></td> 
                                                     <td><input type="time" name="thu_end"  value="{{$bh->thursday_end}}"/></td>
                                                 </tr>
                                                 <tr>
                                                     <td>金曜日</td>
                                                     <td><input type="time" name="fri_start"  value="{{$bh->friday_start}}" /></td>
-                                                    <td>~</td> 
+                                                    <td><span style="font-size:18px;font-weight:600;font-family: emoji">~</span></td> 
                                                     <td><input type="time" name="fri_end" value="{{$bh->friday_end}}" /></td>
                                                 </tr>
                                                 <tr>
                                                     <td>土曜日</td>
                                                     <td><input type="time" name="sat_start" value="{{$bh->saturday_start}}" /></td>
-                                                    <td>~</td> 
+                                                    <td><span style="font-size:18px;font-weight:600;font-family: emoji">~</span></td> 
                                                     <td><input type="time" name="sat_end" value="{{$bh->saturday_end}}"   /></td>
                                                 </tr>
                                                 <tr>
                                                     <td>日曜日</td>
                                                     <td><input type="time" name="sun_start"  value="{{$bh->sunday_start}}" /></td>
-                                                    <td>~</td> 
+                                                    <td><span style="font-size:18px;font-weight:600;font-family: emoji">~</span></td> 
                                                     <td><input type="time" name="sun_end"   value="{{$bh->sunday_end}}" /></td>
                                                 </tr>
                                             </table>
@@ -334,7 +334,7 @@
                                         <input type="hidden" name="id" value="{{$company->id}}" /> --}}
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6">
-                                                <input type="file" name="file[]" accept="image/*" multiple="multiple" class="form-control" required>
+                                                <input type="file" name="file[]" accept="image/*" multiple="multiple" class="form-control" >
                                             </div>
                                 
                                            {{--  <div class="col-md-3 col-sm-6">
