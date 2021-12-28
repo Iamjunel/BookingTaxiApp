@@ -264,7 +264,7 @@ class CareTaxiController extends Controller
             $bus_hours->company_id =  $data["id"];
             $bus_hours->save();   
         }
-
+        if($request->file('file')){
         $fileNames = array();
         foreach ($request->file('file') as $image) {
             $imageName = $image->getClientOriginalName();
@@ -275,6 +275,7 @@ class CareTaxiController extends Controller
                 'company_id' => $request->id
 
             ]);
+        }
         }
 
         //$images = json_encode($fileNames);
