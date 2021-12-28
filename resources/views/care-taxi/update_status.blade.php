@@ -32,7 +32,7 @@
                 <td style="width: 100px">{{$t["time"]}}</td>
                 <td style="width: 200px">
                     <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="status-{{$t["time"]}}" id="inlineRadio1" value="circle"
+                        <input class="form-check-input circle" type="radio" name="status-{{$t["time"]}}" id="inlineRadio1" value="circle"
                          @if($t["status"] == 'circle')
                         {{'checked'}} 
                         @endif
@@ -46,7 +46,7 @@
                         </label>
                         </div>
                         <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="status-{{$t["time"]}}" id="inlineRadio2" value="triangle"
+                        <input class="form-check-input triangle" type="radio" name="status-{{$t["time"]}}" id="triangle" value="triangle"
                         @if($t["status"] == 'triangle')
                         {{'checked'}} 
                         @endif
@@ -60,7 +60,7 @@
                         </label>
                         </div>
                         <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="status-{{$t["time"]}}" id="inlineRadio3" value="times"
+                        <input class="form-check-input times" type="radio" name="status-{{$t["time"]}}" id="inlineRadio3" value="times"
                         @if($t["status"] == 'times')
                         {{'checked'}} 
                         @endif
@@ -76,7 +76,9 @@
                 </td>
                 <td >
                     <div class="">
-                    <input type="text" class="form-control" name="comment-{{$t["time"]}}" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$t["comment"]}}">
+                    <input type="text" class="form-control status-{{$t["time"]}} @if($t["status"] != 'triangle')
+                        {{'hide'}} 
+                        @endif" id="status-{{$t["time"]}}" name="comment-{{$t["time"]}}" id="exampleInputEmail1" aria-describedby="emailHelp" value="{{$t["comment"]}}" >
                 </div>
                 </td>
             </tr>

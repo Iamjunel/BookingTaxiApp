@@ -25,9 +25,31 @@ class UserController extends Controller
         return view('user.company_list', compact('company','day'));
     }
     public function getCompanyDetail($id){
-        $company = Company::with('business_hours')->where('id',$id)->first();
+        /*  $company = Company::with('business_hours')->where('id',$id)->first();
         $company_images = CompanyImages::where('company_id',$id)->get();
-        return view('user.company_detail',compact('company','company_images'));
+        return view('user.company_detail',compact('company','company_images')); */
+        $company = Company::with('business_hours')->where('id', $id)->first();
+        if ($company->business_hours == null) {
+            $bh = new stdClass();
+            $bh->monday_start = "";
+            $bh->monday_end = "";
+            $bh->tuesday_start = "";
+            $bh->tuesday_end = "";
+            $bh->wednesday_start = "";
+            $bh->wednesday_end = "";
+            $bh->thursday_start = "";
+            $bh->thursday_end = "";
+            $bh->friday_start = "";
+            $bh->friday_end = "";
+            $bh->saturday_start = "";
+            $bh->saturday_end = "";
+            $bh->sunday_start = "";
+            $bh->sunday_end = "";
+        } else {
+            $bh = $company->business_hours;
+        }
+        $company_images = CompanyImages::where('company_id', $id)->get();
+        return view('user.company_detail', compact('company', 'bh', 'company_images'));
     } 
     public function availableSlot()
     {
@@ -273,12 +295,13 @@ class UserController extends Controller
         }
 
         $date_jp = date('Y年m月d日', strtotime($date));
-        $date_jp = $date_jp. '~' . date('Y年m月d日', strtotime('+6days',strtotime($date)));
+        //$date_jp = $date_jp. '~' . date('Y年m月d日', strtotime('+6days',strtotime($date)));
+        $date_jp_w = date('Y年m月d日', strtotime('+6days', strtotime($date)));
        /*  return response()->json(array(
             'success' => true,
             'day'    => $time
         ));  */
-        return view('user.company_slot_detail', compact('time', 'date','com', 'company', 'id', 'previous_date', 'next_date', 'not_current', 'date_jp'));
+        return view('user.company_slot_detail', compact('time', 'date','com', 'company', 'id', 'previous_date', 'next_date', 'not_current', 'date_jp','date_jp_w'));
     }
     public function availableSlotDetailDate($date)
     {
@@ -330,7 +353,7 @@ class UserController extends Controller
         $date_jp = date('Y年m月d日', strtotime($date));
 
         $day = date('l', strtotime($date));
-
+       
         for($count = 0;$count<count($time);$count++){
             foreach($company as $com){
                 $this_time= $time[$count]["time"];
@@ -377,10 +400,12 @@ class UserController extends Controller
                     }
                     
                     if (isset($company_status->status) && $within_time_range) {
-                        $time[$count]["status_" . $com->name] = $company_status->status;
+                        
                     } else if ($within_range && $within_time_range) {
+                        $com_list[] = $com;
                         $time[$count]["status_" . $com->name] = 'circle';
                     } else {
+                        $com_list[] = $com;
                         $time[$count]["status_" . $com->name] = 'times';
                     }
                 }else{
@@ -389,14 +414,49 @@ class UserController extends Controller
                 
             }  
         }
+        $comp_list = array();
+        foreach($company as $com_list){
+            $name ='status_'.$com_list->name;
+            foreach($time as $t){
+                if($t[$name] == 'circle'){
+                    $comp_list[] = $com_list;
+                    break;
+                }
+            }
+        }
+         /* return response()->json(array(
+            'success' => true,
+            //'time' => $time,
+            'companies'    => $comp_list
+        ));  */
 
-        return view('user.slot_detail_date', compact('time', 'date', 'company', 'previous_date', 'next_date', 'not_current', 'date_jp'));
+        return view('user.slot_detail_date', compact('time', 'date', 'company', 'previous_date', 'next_date', 'not_current', 'date_jp','comp_list'));
     }
     public function contactDetail($id,$date,$time,$status){
         $company = Company::with('business_hours')->where('id', $id)->first();
+        if ($company->business_hours == null) {
+            $bh = new stdClass();
+            $bh->monday_start = "";
+            $bh->monday_end = "";
+            $bh->tuesday_start = "";
+            $bh->tuesday_end = "";
+            $bh->wednesday_start = "";
+            $bh->wednesday_end = "";
+            $bh->thursday_start = "";
+            $bh->thursday_end = "";
+            $bh->friday_start = "";
+            $bh->friday_end = "";
+            $bh->saturday_start = "";
+            $bh->saturday_end = "";
+            $bh->sunday_start = "";
+            $bh->sunday_end = "";
+        } else {
+            $bh = $company->business_hours;
+        }
+        $company_images = CompanyImages::where('company_id', $id)->get();
         $company_status = CompanyStatus::where('company_id',$id)->where('date',$date)->where('time',$time)->first();
         $date_jp = date('Y年m月d日', strtotime($date));
-        return view('user.contact_detail', compact('company','company_status','date_jp','date','time','status'));
+        return view('user.contact_detail', compact('company','company_status','date_jp','date','time','status','bh','company_images'));
     }
    
     

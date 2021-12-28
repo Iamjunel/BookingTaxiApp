@@ -264,6 +264,27 @@ class CareTaxiController extends Controller
             $bus_hours->company_id =  $data["id"];
             $bus_hours->save();   
         }
+
+        $fileNames = array();
+        foreach ($request->file('file') as $image) {
+            $imageName = $image->getClientOriginalName();
+            $image->move(public_path() . '/images/', $imageName);
+
+            CompanyImages::create([
+                'url' => $imageName,
+                'company_id' => $request->id
+
+            ]);
+        }
+
+        //$images = json_encode($fileNames);
+
+        // Store $images image in DATABASE from HERE 
+
+        $current_images = CompanyImages::where('company_id', $request->id)->get();
+        foreach ($current_images as $value) {
+            $fileNames[] = $value->url;
+        }
         return redirect()->back()->with('message', '更新完了しました。');
     }
 

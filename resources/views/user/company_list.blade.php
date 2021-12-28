@@ -112,7 +112,7 @@
                 <span > </span>
                 @endif
             </td>
-            <td>{{$com->business_hours[$day.'_start']}} ~ {{$com->business_hours[$day.'_end']}}</td>
+            <td>{{$com->business_hours[$day.'_start']}} <span style="font-size:18px;font-weight:600;font-family: emoji">~</span> {{$com->business_hours['sunday_end']}}</td>
               <td><a class="btn btn-danger" href="/user/company/detail/{{$com->id}}">詳細</a></td>
             </tr>
             @endif

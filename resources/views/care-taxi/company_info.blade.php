@@ -91,7 +91,7 @@
                                                     <td><input type="time" name="wed_end"  value="{{$bh->wednesday_end}}" /></td>
                                                 </tr>
                                                 <tr>
-                                                    <td>木曜</td>
+                                                    <td>木曜日</td>
                                                     <td><input type="time" name="thu_start" value="{{$bh->thursday_start}}"  /></td>
                                                     <td>~</td> 
                                                     <td><input type="time" name="thu_end"  value="{{$bh->thursday_end}}"/></td>
@@ -224,7 +224,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>空気</td>
+                                                    <td>酸素/td>
                                                     <td style="width: 300px">
                                                         <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="oxygen_status" id="inlineRadio1" value="circle"
@@ -324,22 +324,22 @@
 
 
                                 </tr>
-                                </form>
+                                {{-- </form> --}}
                                 <tr>
                                     <td>画像</td>
                                     <td>
 
-                                        <form action="{{ route('multiple.image.store') }}" method="POST" enctype="multipart/form-data">
-                                        @csrf
-                                        <input type="hidden" name="id" value="{{$company->id}}" />
+                                        {{-- <form action="{{ route('multiple.image.store') }}" method="POST" enctype="multipart/form-data"> --}}
+                                        {{-- @csrf
+                                        <input type="hidden" name="id" value="{{$company->id}}" /> --}}
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6">
                                                 <input type="file" name="file[]" accept="image/*" multiple="multiple" class="form-control" required>
                                             </div>
                                 
-                                            <div class="col-md-3 col-sm-6">
+                                           {{--  <div class="col-md-3 col-sm-6">
                                                 <button type="submit" class="btn btn-success">アップロード</button>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                         
                                     </form>

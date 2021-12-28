@@ -13,6 +13,9 @@
         .fc-past {
     background-color: rgb(231, 230, 230);
 }
+        .hide{
+            display: none;
+        }
         </style>
 </head>
 <body style="background-color:#1885f5ad;overflow-y:auto;">
@@ -50,13 +53,52 @@
     $('#field-test2').on('click', function(){
         $( "#field-test" ).append(',' + $( "#field-test2" ).val()); 
     });
-});
+    });
+    $(document).ready(function(){
+    $('.triangle').on("click",function() {
+    if($(this).is(':checked')) 
+        { 
+            var name = '#' +$(this).attr('name');
+            var root = $(this).parent().parent().parent();
+            var target = root.find("td input");
+        $(target[3]).removeClass("hide");
+        }else{
+
+        }
+        
+    }); 
+    $('.circle').on("click",function() {
+    if($(this).is(':checked')) 
+        { 
+            var name = '#' +$(this).attr('name');
+            var root = $(this).parent().parent().parent();
+            var target = root.find("td input");
+        $(target[3]).addClass("hide");
+        }else{
+
+        }
+        
+    }); 
+    $('.times').on("click",function() {
+    if($(this).is(':checked')) 
+        { 
+            var name = '#' +$(this).attr('name');
+            var root = $(this).parent().parent().parent();
+            var target = root.find("td input");
+        $(target[3]).addClass("hide");
+        }else{
+
+        }
+        
+    }); 
+    });
     
 </script>
 
    
 
     <script>
+    
         $(document).ready(function () {
 
             var SITEURL = "{{ url('/') }}";

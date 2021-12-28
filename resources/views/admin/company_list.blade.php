@@ -5,6 +5,8 @@
          <div >    
          <a href="/admin" class="text-dark mr-2"><i class="fas fa-3x fa-caret-left text-secondary"></i></a>
         <h3 class="d-inline">登録会社一覧</h3>
+        {{-- new registration --}}
+        <a href="/admin/register" class="btn btn-light text-dark border-dark float-right">新規登録</a>
          </div>
         <table class="table table-striped table-hover table-bordered">
         <thead>

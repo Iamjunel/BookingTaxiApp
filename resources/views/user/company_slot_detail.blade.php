@@ -10,7 +10,7 @@
         @else
         <span class="text-dark pr-1"><i class="fas fa-3x fa-caret-left text-secondary"></i></span>
         @endif
-        <span style="font-size: 18px">{{$date_jp}}</span>
+        <span style="font-size: 18px">{{$date_jp}} <span style="font-size:22px;font-weight:600;font-family: emoji">~</span> {{$date_jp_w}}</span>
         <a href="/user/slot/detail/{{$id}}/{{$next_date}}" class="text-dark pr-1"><i class="fas fa-3x fa-caret-right text-secondary"></i></a>
         
     </div>
@@ -18,9 +18,9 @@
     
         <table class="table table-hover table-bordered bg-light">
             <th><br>時間</th>
-            <th>{{date('m月d日',strtotime($date))}}<br>月曜日</th>
-            <th>{{date('m月d日',strtotime('+1days',strtotime($date)))}}<br>火曜日</th>
-             <th>{{date('m月d日',strtotime('+2days',strtotime($date)))}}<br>水曜日</th>
+            <th>{{date('m/d日',strtotime($date))}}<br>月曜日</th>
+            <th>{{date('m/d日',strtotime('+1days',strtotime($date)))}}<br>火曜日</th>
+             <th>{{date('m/d日',strtotime('+2days',strtotime($date)))}}<br>水曜日</th>
               <th>{{date('m月d日',strtotime('+3days',strtotime($date)))}}<br>木曜日</th>
               <th>{{date('m月d日',strtotime('+4days',strtotime($date)))}}<br>金曜日</th>
               <th>{{date('m月d日',strtotime('+5days',strtotime($date)))}}<br>土曜日</th>
@@ -38,22 +38,22 @@
                     @if($t["status_$curr_date"] != null)
                     @if($t["status_$curr_date"] =="circle")
                     <td style="width: 100px" >
-                    <a href="/user/contact/{{$id}}/{{$date}}/{{$t["time"]}}/{{$t["status_$curr_date"]}}"> 
-                    <span class="text-info">
+                    <a href="/user/contact/{{$id}}/{{$curr_date}}/{{$t["time"]}}/{{$t["status_$curr_date"]}}"> 
+                    <div class="text-info">
                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
                         <circle cx="8" cy="8" r="8"/>
                     </svg>
-                    </span>
+                    </div>
                     </a>
                     </td>
                     @elseif($t["status_$curr_date"] =="triangle")
                     <td style="width: 100px" >
                     <a href="/user/contact/{{$id}}/{{$date}}/{{$t["time"]}}/{{$t["status_$curr_date"]}}"> 
-                    <span class="text-warning">
+                    <div class="text-warning">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
                                 </svg>
-                                </span>
+                            </div>
                     </a>
                     </td>
                     @else

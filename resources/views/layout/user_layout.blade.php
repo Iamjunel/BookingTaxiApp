@@ -20,7 +20,7 @@
         </style>
          
 </head>
-<body style="overflow:auto">
+<body >
     <nav class="container pt-2">
         <a href="/" class="text-dark" style="text-decoration: none">津ケアタクネット</a>
         
