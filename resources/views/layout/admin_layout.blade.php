@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=Shift_JIS">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{env('APP_NAME')}}</title>
     <!-- Styles -->
@@ -11,7 +11,7 @@
 </head>
 <body style="background-color:rgb(231 226 190 / 38%);overflow:hidden">
     <nav class="container pt-2">
-        <a href="/" class="text-dark" style="text-decoration: none">津ケアタクネット</a>
+        <a href="/admin" class="text-dark" style="text-decoration: none">津ケアタクネット</a>
     </nav>
     <hr/>
     <div class="">
