@@ -79,14 +79,14 @@
                 </span>
                 </p>   
                 </div>
-               {{--  @if(isset($company_status->status) && $status == "triangle")
+                @if(isset($company_status->status) && $status == "triangle")
                 <div class="border p-4 my-2 ">
                     <p class="ml-3">コメント</p>
                     <div class="btn ml-5 mr-5 p-5 w-75" style="background-color: #b8b7b7">
                         {{$company_status->comment}}
                     </div>
                 </div>
-                @endif --}}
+                @endif
                 <div class="bg-danger p-3 my-2 text-center text-white">
                     <p>空き状況は随時変わります。
                     必ずお電話にてご確認ください。
@@ -182,7 +182,7 @@
                     </tr>
                     <tr>
                     <td>HP</td>
-                     <td><a href="https://{{$company->hp}}" target="_blank">{{$company->hp}}</a></td>
+                     <td><a href="{{$company->hp}}" target="_blank">{{$company->hp}}</a></td>
                     </tr>
                     <tr>
                                     <td>電話対応時間</td>

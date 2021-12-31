@@ -17,14 +17,14 @@
     <h3>{{$com->name}}</h3>
     
         <table class="table table-hover table-bordered bg-light">
-            <th><br>時間</th>
-            <th>{{date('m/d日',strtotime($date))}}<br>月曜日</th>
-            <th>{{date('m/d日',strtotime('+1days',strtotime($date)))}}<br>火曜日</th>
-             <th>{{date('m/d日',strtotime('+2days',strtotime($date)))}}<br>水曜日</th>
-              <th>{{date('m月d日',strtotime('+3days',strtotime($date)))}}<br>木曜日</th>
-              <th>{{date('m月d日',strtotime('+4days',strtotime($date)))}}<br>金曜日</th>
-              <th>{{date('m月d日',strtotime('+5days',strtotime($date)))}}<br>土曜日</th>
-              <th>{{date('m月d日',strtotime('+6days',strtotime($date)))}}<br>日曜日</th>
+            <th>時間</th>
+            <th>{{date('m/d',strtotime($date))}}月</th>
+            <th>{{date('m/d',strtotime('+1days',strtotime($date)))}}火</th>
+             <th>{{date('m/d',strtotime('+2days',strtotime($date)))}}水</th>
+              <th>{{date('m/d',strtotime('+3days',strtotime($date)))}}木</th>
+              <th>{{date('m/d',strtotime('+4days',strtotime($date)))}}金</th>
+              <th>{{date('m/d',strtotime('+5days',strtotime($date)))}}土</th>
+              <th>{{date('m/d',strtotime('+6days',strtotime($date)))}}日</th>
         <tbody>
             @foreach ($time as $key => $t)
             <tr>

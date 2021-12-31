@@ -315,7 +315,7 @@ class CareTaxiController extends Controller
         $data = $request->all();
         $company = Company::where('cid', $data["cid"])->first();
         if ($company) {
-            return redirect()->back()->with('message', 'Company already exist.');
+            return redirect()->back()->with('message', '既に登録済みです。');
         } else {
             $company = new Company();
             $company->name = $data["name"];
@@ -325,7 +325,7 @@ class CareTaxiController extends Controller
 
         }
         
-        return redirect()->back()->with('message', 'Company successfully added.');
+        return redirect()->back()->with('message', '会社の登録完了しました。');
         
     }
     public function statusUpdate(Request $request)

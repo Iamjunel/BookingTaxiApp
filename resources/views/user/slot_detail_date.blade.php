@@ -38,9 +38,9 @@
         {{-- <input type="hidden" name="id" value="{{$company->id}}" /></td> --}}
         <table class="table table-hover table-bordered bg-light" >
             <thead class="sticky-top bg-light">
-            <th>時間</th>
+            <th style="width: 100px;position:sticky;left:0px" class="bg-light" >時間</th>
             @foreach ($comp_list as $com)
-            <th class="text-center text-break" >{{$com->name}}<br>
+            <th class="text-center text-break" style="min-width:100px" >{{$com->name}}<br>
             @if($com->nursing_status != "times" )
             <span class="text-primary"><i class="fab fa-accessible-icon "></i></span>
             @endif
@@ -60,7 +60,7 @@
         <tbody style="overflow:auto!important">
             @foreach ($time as $key => $t)
             <tr>
-                <td style="width: 100px">{{$t["time"]}}</td>
+                <td style="width: 100px;position:sticky;left:0px" class="bg-light" >{{$t["time"]}}</td>
                  @foreach ($comp_list as $com)
                  @if(isset($t["status_".$com->name]))
                     @if($t["status_".$com->name] == "circle")

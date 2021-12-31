@@ -18,7 +18,8 @@
         }
         </style>
 </head>
-<body style="background-color:#1885f5ad;overflow-y:auto;">
+{{-- <body style="background-color:#1885f5ad;overflow-y:auto;"> --}}
+    <body style="overflow-y:auto;">
     <nav class="container pt-2">
         @if(Session::get('cid'))
             <a class=" text-dark float-right" href="{{url('care-taxi/logout')}}">ログアウト</a>

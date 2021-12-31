@@ -9,7 +9,8 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
-<body style="background-color:rgb(231 226 190 / 38%);overflow:hidden">
+{{-- <body style="background-color:rgb(231 226 190 / 38%);overflow:hidden"> --}}
+    <body style="overflow:hidden">
     <nav class="container pt-2">
         <a href="/admin" class="text-dark" style="text-decoration: none">津ケアタクネット</a>
     </nav>

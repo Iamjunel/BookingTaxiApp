@@ -85,13 +85,13 @@ class CompanyImagesController extends Controller
     }
     public function multipleImageStore(Request $request)
     {
-        $fileNames = array();
+       $fileNames = array();
         foreach ($request->file('file') as $image) {
             $imageName = $image->getClientOriginalName();
             $image->move(public_path() . '/images/', $imageName);
             
             CompanyImages::create([
-                'url' => $imageName,
+                 'url' => $imageName,
                 'company_id' => $request->id
 
             ]);

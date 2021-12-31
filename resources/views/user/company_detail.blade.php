@@ -71,7 +71,7 @@
                     </tr>
                     <tr>
                     <td>HP</td>
-                     <td><a href="https://{{$company->hp}}" target="_blank">{{$company->hp}}</a></td>
+                     <td><a href="{{$company->hp}}" target="_blank">{{$company->hp}}</a></td>
                     </tr>
                     <tr>
                                     <td>電話対応時間</td>

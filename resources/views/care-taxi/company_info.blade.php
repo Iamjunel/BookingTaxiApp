@@ -38,7 +38,7 @@
                                 </tr>
                                  <tr>
                                     <td>電話番号</td>
-                                        <td><input type="text" name="phone" value="{{$company->phone}}"/></td>
+                                        <td><input type="number" name="phone" value="{{$company->phone}}"/></td>
 
                                 </tr>
                                 <tr>
@@ -224,7 +224,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>酸素/td>
+                                                    <td>酸素</td>
                                                     <td style="width: 300px">
                                                         <div class="form-check form-check-inline">
                                                         <input class="form-check-input" type="radio" name="oxygen_status" id="inlineRadio1" value="circle"
