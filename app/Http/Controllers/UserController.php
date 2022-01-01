@@ -418,7 +418,7 @@ class UserController extends Controller
         foreach($company as $com_list){
             $name ='status_'.$com_list->id;
             foreach($time as $t){
-                if($t[$name] == 'circle'){
+                if(isset($t[$name]) && $t[$name] == 'circle'){
                     $comp_list[] = $com_list;
                     break;
                 }
