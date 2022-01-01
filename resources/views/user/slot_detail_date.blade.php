@@ -62,9 +62,9 @@
             <tr>
                 <td style="width: 100px;position:sticky;left:0px" class="bg-light" >{{$t["time"]}}</td>
                  @foreach ($comp_list as $com)
-                 @if(isset($t["status_".$com->name]))
-                    @if($t["status_".$com->name] == "circle")
-                    <td><a href="/user/contact/{{$com->id}}/{{$date}}/{{$t["time"]}}/{{$t["status_".$com->name]}}"> 
+                 @if(isset($t["status_".$com->id]))
+                    @if($t["status_".$com->id] == "circle")
+                    <td><a href="/user/contact/{{$com->id}}/{{$date}}/{{$t["time"]}}/{{$t["status_".$com->id]}}"> 
                         <div class="text-info">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
                             <circle cx="8" cy="8" r="8"/>
@@ -72,8 +72,8 @@
                     </div>
                         </a>
                     </td>
-                    @elseif($t["status_".$com->name] == "triangle")
-                    <td><a href="/user/contact/{{$com->id}}/{{$date}}/{{$t["time"]}}/{{$t["status_".$com->name]}}"> 
+                    @elseif($t["status_".$com->id] == "triangle")
+                    <td><a href="/user/contact/{{$com->id}}/{{$date}}/{{$t["time"]}}/{{$t["status_".$com->id]}}"> 
                         <div class="text-warning">
                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
                         <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
@@ -81,7 +81,7 @@
                     </div>
                         </a>
                     </td>
-                    @elseif($t["status_".$com->name] == "times")
+                    @elseif($t["status_".$com->id] == "times")
                     <td style="background-color: darkgrey"></td>
                     @endif
                     

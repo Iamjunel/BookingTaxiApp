@@ -403,20 +403,20 @@ class UserController extends Controller
                         
                     } else if ($within_range && $within_time_range) {
                         $com_list[] = $com;
-                        $time[$count]["status_" . $com->name] = 'circle';
+                        $time[$count]["status_" . $com->id] = 'circle';
                     } else {
                         $com_list[] = $com;
-                        $time[$count]["status_" . $com->name] = 'times';
+                        $time[$count]["status_" . $com->id] = 'times';
                     }
                 }else{
-                    $time[$count]["status_" . $com->name] = null;
+                    $time[$count]["status_" . $com->id] = null;
                 }
                 
             }  
         }
         $comp_list = array();
         foreach($company as $com_list){
-            $name ='status_'.$com_list->name;
+            $name ='status_'.$com_list->id;
             foreach($time as $t){
                 if($t[$name] == 'circle'){
                     $comp_list[] = $com_list;
