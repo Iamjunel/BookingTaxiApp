@@ -376,13 +376,13 @@ class CareTaxiController extends Controller
         if (!session()->has('cid')) {
             return redirect('care-taxi/login');
         }
+        $time = array();
         $company = Company::with('business_hours')->where('id', $id)->first();
         $previous_date =  date('Y-m-d', strtotime($date . ' -1 day'));
         $next_date = date('Y-m-d', strtotime($date . ' +1 day'));
         if($company->business_hours){
             $bus_hours = $company->business_hours;
             $day = date('l', strtotime($date));
-            $time = array();
             $time_start = null;
             $time_end = null;
             if ($day == "Monday") {
@@ -412,8 +412,9 @@ class CareTaxiController extends Controller
             }
 
             $company_status = CompanyStatus::Where('company_id', $id)->where('date', $date)->get();
-           
+            
             if (count($company_status) == 0) {
+                
                 $status = "circle";
                 $comment = "";
                 $curr_time = $date . ' ' . $time_start;
@@ -446,6 +447,7 @@ class CareTaxiController extends Controller
                     $current = $added_time;
                 }
             } else {
+               
                 $status = "times";
                 $comment = "";
                 $curr_time = $date . ' ' . $time_start;
@@ -517,11 +519,7 @@ class CareTaxiController extends Controller
         $date_jp = date('Y年m月d日', strtotime($date));
         $date_jp = $date_jp . '(' . $dyj . ')';
 
-       /*  return response()->json(array(
-            'success' => true,
-            'data'   => $company,
-            'day'    => $time
-        ));  */
+
         return view('care-taxi.show_status', compact('time', 'date', 'company', 'id','previous_date','next_date','not_current','date_jp'));
     }
     
