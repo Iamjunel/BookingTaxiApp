@@ -38,22 +38,22 @@
                                 </tr>
                                  <tr>
                                     <td>電話番号</td>
-                                        <td><input type="number" name="phone" value="{{$company->phone}}"/></td>
+                                        <td><input type="text" inputmode="numeric" name="phone" value="{{$company->phone}}" onChange="halfWidth(this)"/></td>
 
                                 </tr>
                                 <tr>
                                     <td>FAX</td>
-                                        <td><input type="text" name="fax" value="{{$company->fax}}"/></td>
+                                        <td><input type="text" name="fax" value="{{$company->fax}}" onChange="halfWidth(this)"/></td>
 
                                 </tr>
                                 <tr>
                                     <td>E-mail</td>
-                                        <td><input type="text" name="email" value="{{$company->email}}" /></td>
+                                        <td><input type="email" name="email" value="{{$company->email}}" onChange="halfWidth(this)" /></td>
 
                                 </tr>
                                 <tr>
                                     <td>HP</td>
-                                        <td><input type="text" name="hp" value="{{$company->hp}}"/></td>
+                                        <td><input type="url" name="hp" value="{{$company->hp}}" onChange="halfWidth(this)"/></td>
 
                                 </tr>
                                 <tr>
