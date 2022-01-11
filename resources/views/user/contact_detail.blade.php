@@ -79,7 +79,7 @@
                 </span>
                 </p>   
                 </div>
-                @if($status == "triangle")
+                @if(isset($company_status) && $status == "triangle")
                 <div class="border p-4 my-2 ">
                     <p class="ml-3">コメント</p>
                     <div class="btn ml-5 mr-5 p-5 w-75" style="background-color: #b8b7b7">
