@@ -458,7 +458,8 @@ class UserController extends Controller
             $bh = $company->business_hours;
         }
         $company_images = CompanyImages::where('company_id', $id)->get();
-        $company_status = CompanyStatus::where('company_id',$id)->where('date',$date)->where('time',$time)->first();
+        $company_status = CompanyStatus::where('company_id',$id)->where('date',$date)->where('time',$time)->orderBy('id','desc')->first();
+        //var_dump($company_status);die;
         $date_jp = date('Y年m月d日', strtotime($date));
         return view('user.contact_detail', compact('company','company_status','date_jp','date','time','status','bh','company_images'));
     }
