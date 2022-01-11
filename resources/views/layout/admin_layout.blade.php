@@ -7,10 +7,17 @@
     <title>{{env('APP_NAME')}}</title>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <style>
+        input[name="cid"] {
+        text-transform: lowercase;
+        }
+        input[name="password"] {
+        text-transform: lowercase;
+        }
+        </style>
 </head>
 {{-- <body style="background-color:rgb(231 226 190 / 38%);overflow:hidden"> --}}
-    <body style="overflow:hidden">
+    <body style="overflow-x:hidden">
     <nav class="container pt-2">
         <a href="/admin" class="text-dark" style="text-decoration: none">津ケアタクネット</a>
     </nav>
@@ -57,7 +64,7 @@
         {
           result += String.fromCharCode (str.charCodeAt (i));
         } 
-    obj.value = result; 
+    obj.value = result.toLowerCase(); 
     }
    }
    

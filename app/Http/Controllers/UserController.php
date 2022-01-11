@@ -313,7 +313,7 @@ class UserController extends Controller
 
         $company = Company::orderBy('id')->get();
        
-        $time_start = "01:00";
+        $time_start = "00:00";
         $time_end = "23:59";
         $curr_time = $date . ' ' . $time_start;
         array_push($time, [
@@ -399,12 +399,16 @@ class UserController extends Controller
                         }
                     }
                     
-                    if (isset($company_status->status) && $within_time_range) {
-                        
-                    } else if ($within_range && $within_time_range) {
+                    /* if (isset($company_status->status) && $within_time_range) {
+                        $com_list[] = $com;
+                        $time[$count]["status_" . $com->id] = $company_status->status;
+                    } else */ if (isset($company_status->status)) {
+                        $com_list[] = $com;
+                        $time[$count]["status_" . $com->id] = $company_status->status;
+                    }else if ($within_range && $within_time_range) {
                         $com_list[] = $com;
                         $time[$count]["status_" . $com->id] = 'circle';
-                    } else {
+                    } else{
                         $com_list[] = $com;
                         $time[$count]["status_" . $com->id] = 'times';
                     }
@@ -426,7 +430,7 @@ class UserController extends Controller
         }
          /* return response()->json(array(
             'success' => true,
-            //'time' => $time,
+            'time' => $time,
             'companies'    => $comp_list
         ));  */
 

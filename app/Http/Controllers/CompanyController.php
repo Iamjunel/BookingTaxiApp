@@ -54,8 +54,8 @@ class CompanyController extends Controller
         } else {
             $company = new Company();
             $company->name = $data["name"];
-            $company->cid = $data["cid"];
-            $company->cpass = $data["password"];
+            $company->cid = strtolower($data["cid"]);
+            $company->cpass = strtolower($data["password"]);
             $company->save();
 
             /* if ($request->loginId) {

@@ -337,7 +337,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>酸素/td>
+                                                    <td>酸素</td>
                                                     <td style="width: 300px">
                                                         @if($company->oxygen_status == 'circle')
                                                          <div class="form-check form-check-inline">
