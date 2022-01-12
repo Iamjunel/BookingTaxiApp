@@ -19,6 +19,9 @@
 {{-- <body style="background-color:rgb(231 226 190 / 38%);overflow:hidden"> --}}
     <body style="overflow-x:hidden">
     <nav class="container pt-2">
+        @if(Session::get('cid'))
+            <a class=" text-dark float-right" href="{{url('admin/logout')}}">ログアウト</a>
+        @endif
         <a href="/admin" class="text-dark" style="text-decoration: none">津ケアタクネット</a>
     </nav>
     <hr/>

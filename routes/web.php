@@ -28,7 +28,8 @@ Route::get('admin', 'App\Http\Controllers\CompanyController@index');
 Route::get('admin/company', 'App\Http\Controllers\CompanyController@getAllCompany');
 Route::get('admin/register', 'App\Http\Controllers\CompanyController@companyRegister');
 Route::post('admin', 'App\Http\Controllers\CompanyController@store');
-
+Route::post('admin/checkLogin', 'App\Http\Controllers\CompanyController@checkLogin');
+Route::get('admin/logout', 'App\Http\Controllers\CompanyController@logout');
 
 //hidden routes
 Route::delete('admin/company/{id}', 'App\Http\Controllers\CompanyController@deleteCompanyById');
