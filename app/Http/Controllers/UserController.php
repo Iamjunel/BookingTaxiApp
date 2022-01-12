@@ -314,7 +314,7 @@ class UserController extends Controller
         $company = Company::orderBy('id')->get();
        
         $time_start = "00:00";
-        $time_end = "23:59";
+        $time_end = "23:30";
         $curr_time = $date . ' ' . $time_start;
         array_push($time, [
             'time' => date('h:ia', strtotime($curr_time))
@@ -459,7 +459,6 @@ class UserController extends Controller
         }
         $company_images = CompanyImages::where('company_id', $id)->get();
         $company_status = CompanyStatus::where('company_id',$id)->where('date',$date)->where('time',$time)->orderBy('id','desc')->first();
-        //var_dump($company_status);die;
         $date_jp = date('Y年m月d日', strtotime($date));
         return view('user.contact_detail', compact('company','company_status','date_jp','date','time','status','bh','company_images'));
     }
