@@ -228,6 +228,22 @@ class CareTaxiController extends Controller
         $company->oxygen_status = $data["oxygen_status"];
         $company->ventilator_status = $data["ventilator_status"];
         $company->hp = $data["hp"];
+
+        $company->wheelchair_status = $data["wheelchair_status"];
+        $company->re_wheelchair_status = $data["re_wheelchair_status"];
+        $company->stretcher_status = $data["stretcher_status"];
+        $company->oximeter_status = $data["oximeter_status"];
+        $company->sputum_status = $data["sputum_status"];
+        $company->slope_status = $data["slope_status"];
+        $company->basic_care_status = $data["basic_care_status"];
+        $company->attendant_status = $data["attendant_status"];
+
+        $company->dob = $data["dob"];
+        $company->qualification = $data["qualification"];
+        $company->profile = $data["profile"];
+        $company->phone2 = $data["phone2"];
+        $company->accreditation = $data["accreditation"];
+        
         $company->update();
         $bus_hours = BusinessHours::where('company_id', $data["id"])->first();
         if(!empty($bus_hours)){
