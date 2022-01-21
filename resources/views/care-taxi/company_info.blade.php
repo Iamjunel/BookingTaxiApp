@@ -33,7 +33,7 @@
                                 </tr>
                                 <tr>
                                     <td>生年月</td>
-                                        <td><input type="date" name="dob" value="{{$company->dob}}" /></td>
+                                        <td><input type="month" name="dob" value="{{$company->dob}}" /></td>
 
                                 </tr>
                                 <tr>
