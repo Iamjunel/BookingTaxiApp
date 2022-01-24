@@ -23,7 +23,7 @@
         <p class="lead my-3">この「津ケアタクネット」では、<br>三重県津市内の介護タクシー空き状況がリアルタイムにチェックできます。</p>
         <h3 class="my-5"><span class="marker_hoso">空き状況をチェックする</span> → <span class="marker_hoso">ドライバーに電話</span> → <span class="marker_hoso">スグに予約完了！</span></h3>
         <div class="mb-5">
-      <a class="btn btn-secondary btn-lg" href="user" role="button">空き状況をチェックする</a>
+      <a class="btn btn-secondary btn-lg" href="user/login" role="button">空き状況をチェックする</a>
     </div>
 
     </div>

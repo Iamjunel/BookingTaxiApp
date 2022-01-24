@@ -62,5 +62,7 @@ Route::get('user/slot', 'App\Http\Controllers\UserController@availableSlot');
 Route::get('user/contact/{id}/{date}/{time}/{status}', 'App\Http\Controllers\UserController@contactDetail');
 Route::post('multiple-image/store', 'App\Http\Controllers\CompanyImagesController@multipleImageStore')->name('multiple.image.store');
 
-
+Route::post('user/checklogin', 'App\Http\Controllers\UserController@checkLogin');
+Route::get('user/logout', 'App\Http\Controllers\UserController@logout');
+Route::get('user/login', 'App\Http\Controllers\UserController@login');
 //Route::get('pagenotfound', ['as' => 'notfound', 'uses' => 'UserController@pagenotfound']);

@@ -58,8 +58,10 @@
 </head>
 <body >
     <nav class="container pt-2">
+        @if(Session::get('cid'))
+            <a class=" text-dark float-right" href="{{url('user/logout')}}">ログアウト</a>
+        @endif
         <a href="/" class="text-dark" style="text-decoration: none">津ケアタクネット</a>
-        
     </nav>
     <hr/>
     <div class="">

@@ -13,13 +13,22 @@ use Illuminate\Support\Facades\Session;
 class UserController extends Controller
 {
     //
+   
+       
+    
 
     public function index()
     {
+        if (!session()->has('cid')) {
+            return redirect('user/login');
+        }
         return view('user.index');
     }
     public function getAllCompany()
     {
+        if (!session()->has('cid')) {
+            return redirect('user/login');
+        }
         $day = strtolower(date('l'));
         $company = Company::with('business_hours')->orderBy('id')->get();
         return view('user.company_list', compact('company','day'));
@@ -53,6 +62,9 @@ class UserController extends Controller
     } 
     public function availableSlot()
     {
+        if (!session()->has('cid')) {
+            return redirect('user/login');
+        }
         return view('user.available_slot');
     }
 
@@ -471,5 +483,33 @@ class UserController extends Controller
     public function pagenotfound()
     {
         return view('notfound');
+    }
+
+    public function checkLogin(Request $request)
+    {
+
+        $request->validate([
+            'cid' => ['required'],
+            'cpass' => ['required']
+        ]);
+
+        if ($request->cid == "caretaku" && $request->cpass == "caretaku113355") {
+            $request->session()->put('cid', $request->cid);
+            $request->session()->put('name', $request->cid);
+            $request->session()->put('id', $request->cid);
+            $request->session()->save();
+            return redirect('/user');
+        } else {
+            return redirect('user/login')->with('message', 'Incorrect login credentials');
+        }
+    }
+    public function login()
+    {
+        return view('user.login');
+    }
+    public function logout()
+    {
+        Session::flush();
+        return redirect('user/login');
     }
 }

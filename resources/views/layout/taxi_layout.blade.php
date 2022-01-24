@@ -7,6 +7,7 @@
     <title>{{env('APP_NAME')}}</title>
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/bootstrap-datepicker.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.6/fullcalendar.min.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" />
     <style>
@@ -17,6 +18,8 @@
             display: none;
         }
         </style>
+
+    <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
 </head>
 {{-- <body style="background-color:#1885f5ad;overflow-y:auto;"> --}}
     <body style="overflow-y:auto;">
@@ -48,7 +51,20 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.6/fullcalendar.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+ <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
  <script>
+    $(document).ready(function() {
+			$("#bao").datepicker({
+				format: "yyyy年mm月",
+                viewMode: "months", 
+                minViewMode: "months",
+				autoclose:true
+				
+			});
+		})
+
+    var date = $('#datepicker').datepicker({ dateFormat: 'dd-mm-yy' }).val();
+
      $('div.alert').delay(3000).slideUp(300);
     $(document).ready(function(){
     $('#field-test2').on('click', function(){
@@ -222,6 +238,11 @@
                 } */
             });
         });
+       $("#datepicker").datepicker( {
+    format: "mm-yyyy",
+    startView: "months", 
+    minViewMode: "months"
+});
 
         function displayMessage(message) {
             toastr.success(message, 'Event');            
@@ -259,6 +280,46 @@
 
    
   }
+  function checkDate(obj) {
+   var str = obj.value; 
+   var result =""; 
+   //str = str.replace(/[\u3040-\u309F]+/g, "");
+   /* if(str.length == 0){
+     obj.value = "";
+   }
+   else
+   {
+       for (var i = 0; i <str.length; i ++){
+     
+        if (str.charCodeAt (i) == 12288){
+        result += String.fromCharCode(str.charCodeAt (i) -12256); 
+        continue;
+        } 
+        
+        if (str.charCodeAt (i)> 65280 && str.charCodeAt (i) <65375){ 
+        result += String.fromCharCode (str.charCodeAt (i) -65248);
+        }
+        else 
+        {
+          result += String.fromCharCode (str.charCodeAt (i));
+        } 
+    obj.value = result; 
+    }
+   } */
+   var year =str.split("-");
+   obj.value = year[0]; 
+   console.log(year[0]);
+
+   
+  }
+
+  $('.input-group.date').datepicker({
+       todayBtn: "linked",
+       language: "it",
+       autoclose: true,
+       todayHighlight: true,
+       dateFormat: 'dd/mm/yyyy' 
+   });
 
     </script>
 
