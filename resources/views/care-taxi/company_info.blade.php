@@ -34,7 +34,7 @@
                                 <tr>
                                     <td>生年月</td>
                                         <td>
-                                           <input id="bao" type="text" />
+                                           <input id="bao" type="text" name="dob" value="{{$company->dob}}" />
                                         </td>
 
                                 </tr>
