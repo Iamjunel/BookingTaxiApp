@@ -20,6 +20,7 @@
         </style>
 
     <script src="{{ asset('js/bootstrap-datepicker.js') }}"></script>
+     
 </head>
 {{-- <body style="background-color:#1885f5ad;overflow-y:auto;"> --}}
     <body style="overflow-y:auto;">
@@ -52,18 +53,31 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.2.6/fullcalendar.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.2.0/js/bootstrap-datepicker.min.js"></script>
+ 
  <script>
     $(document).ready(function() {
+        $.fn.datepicker.dates['ja'] = {
+        days: [ "日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日" ],
+        daysShort: [ "日", "月", "火", "水", "木", "金", "土" ],
+        daysMin: [ "日", "月", "火", "水", "木", "金", "土" ],
+        months: [ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ],
+        monthsShort: [ "1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月" ],
+        today: "Today",
+        clear: "Clear",
+        format: "yy/mm/dd",
+        titleFormat: "yyyy年 ", /* Leverages same syntax as 'format' */
+        yearSuffix: "年",
+    };
 			$("#bao").datepicker({
 				format: "yyyy年mm月",
                 viewMode: "months", 
                 minViewMode: "months",
-				autoclose:true
+				autoclose:true,
+                language: "ja"
 				
 			});
 		})
 
-    var date = $('#datepicker').datepicker({ dateFormat: 'dd-mm-yy' }).val();
 
      $('div.alert').delay(3000).slideUp(300);
     $(document).ready(function(){
@@ -109,6 +123,8 @@
         
     }); 
     });
+
+    
     
 </script>
 
