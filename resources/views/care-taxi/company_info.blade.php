@@ -40,7 +40,7 @@
                                 </tr>
                                 <tr>
                                     <td>資格</td>
-                                        <td><input type="text" name="qualification" value="{{$company->qualification}}" /></td>
+                                        <td><textarea name="qualification" rows="4" cols="50" >{{$company->qualification}}</textarea></td>
 
                                 </tr>
                                 <tr>

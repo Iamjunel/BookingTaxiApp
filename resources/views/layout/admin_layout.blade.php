@@ -22,7 +22,8 @@
         @if(Session::get('cid'))
             <a class=" text-dark float-right" href="{{url('admin/logout')}}">ログアウト</a>
         @endif
-        <a href="/admin" class="text-dark" style="text-decoration: none">津ケアタクネット</a>
+        {{-- <a href="/admin" class="text-dark" style="text-decoration: none">津ケアタクネット</a> --}}
+        <a href="/admin" class="text-dark" style="text-decoration: none">津ケアタクネット（管理者）</a>
     </nav>
     <hr/>
     <div class="">

@@ -1,14 +1,14 @@
  @extends('layout.admin_layout')
  @section('content')
- <div class="container">
+ <div class="container" >
      <div class="col-md-12 col-sm-12 clearfix">
-         <div >    
-         <a href="/admin" class="text-dark mr-2"><i class="fas fa-3x fa-caret-left text-secondary"></i></a>
-        <h3 class="d-inline">登録会社一覧</h3>
+         <div class="d-flex justify-content-between pb-1">    
+         <a href="/admin" class=" text-dark mr-2"><i class="fas fa-3x fa-caret-left text-secondary"></i></a>
+        <h3 class="text-center ">登録会社一覧</h3>
         {{-- new registration --}}
-        <a href="/admin/register" class="btn btn-light text-dark border-dark float-right">新規登録</a>
+        <a href="/admin/register" class="btn btn-light text-dark border-dark pb-0 " style="line-height: 2.1;">新規登録</a>
          </div>
-        <table class="table table-striped table-hover table-bordered">
+        <table class="table table-striped table-hover table-bordered" >
         <thead>
             <tr>
         

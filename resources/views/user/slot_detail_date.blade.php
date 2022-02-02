@@ -40,7 +40,7 @@
             <thead class="sticky-top bg-light">
             <th style="width: 100px;position:sticky;left:0px" class="bg-light" >時間</th>
             @foreach ($comp_list as $com)
-            <th class="text-center text-break" style="min-width:100px" >{{$com->name}}<br>
+            <th class="text-center text-break" style="min-width:100px" ><a class="text-dark" href="/user/company/detail/{{$com->id}}">{{$com->name}}</a><br>
             @if($com->nursing_status != "times" )
             <span class="text-primary"><i class="fab fa-accessible-icon "></i></span>
             @endif

@@ -19,8 +19,19 @@ class UserController extends Controller
 
     public function index()
     {
+
+        /* if (!session()->has('cid')) {
+            return redirect('user/login');
+        } */
         if (!session()->has('cid')) {
             return redirect('user/login');
+        } else {
+            $cid = session()->get('cid');
+            
+            if ($cid != "caretaku") {
+                Session::flush();
+                return redirect('user/login');
+            }
         }
         return view('user.index');
     }
@@ -28,6 +39,13 @@ class UserController extends Controller
     {
         if (!session()->has('cid')) {
             return redirect('user/login');
+        } else {
+            $cid = session()->get('cid');
+
+            if ($cid != "caretaku") {
+                Session::flush();
+                return redirect('user/login');
+            }
         }
         $day = strtolower(date('l'));
         $company = Company::with('business_hours')->orderBy('id')->get();
@@ -64,12 +82,20 @@ class UserController extends Controller
     {
         if (!session()->has('cid')) {
             return redirect('user/login');
+        } else {
+            $cid = session()->get('cid');
+
+            if ($cid != "caretaku") {
+                Session::flush();
+                return redirect('user/login');
+            }
         }
         return view('user.available_slot');
     }
 
     public function slotDetailDate($id,$date = null)
     {   
+        
         if($date == null){
             $date = date('Y-m-d');
         }
@@ -365,7 +391,6 @@ class UserController extends Controller
         $date_jp = date('Y年m月d日', strtotime($date));
 
         $day = date('l', strtotime($date));
-       
         for($count = 0;$count<count($time);$count++){
             foreach($company as $com){
                 $this_time= $time[$count]["time"];
@@ -395,21 +420,26 @@ class UserController extends Controller
                         $curr_start_time = $bus_hours->sunday_start;
                         $curr_end_time = $bus_hours->sunday_end;
                     }
-                    $on_time = date('h:i a');
-                    $start = strtotime(date('Y-m-d h:i a',strtotime($date . ' ' . $curr_start_time)));
-                    $end =  strtotime(date('Y-m-d h:i a',strtotime($date . ' ' . $curr_end_time)));
-                    $current_time =  strtotime(date('Y-m-d h:i a', strtotime($date . ' '. $this_time)));
-                    $current_time_range =  strtotime(date('Y-m-d h:i a'));
-                    /* var_dump(date('Y-m-d h:i a', strtotime($date . ' ' . $this_time)));
-                    var_dump(date('Y-m-d h:i a', strtotime($date . ' ' . $on_time)));die; */
                     $within_range = false;
-                    $within_time_range =false;
-                     if ($current_time >= $start && $current_time <= $end) {
-                        $within_range = true;
-                        if ($current_time >= $current_time_range) {
-                            $within_time_range = true;
+                    $within_time_range = false;
+                    if($curr_start_time != null && $curr_end_time !=null){
+                        $on_time = date('h:i a');
+                        $start = strtotime(date('Y-m-d h:i a', strtotime($date . ' ' . $curr_start_time)));
+                        $end =  strtotime(date('Y-m-d h:i a', strtotime($date . ' ' . $curr_end_time)));
+                        $current_time =  strtotime(date('Y-m-d h:i a', strtotime($date . ' ' . $this_time)));
+                        $current_time_range =  strtotime(date('Y-m-d h:i a'));
+                        /* var_dump(date('Y-m-d h:i a', strtotime($date . ' ' . $this_time)));
+                    var_dump(date('Y-m-d h:i a', strtotime($date . ' ' . $on_time)));die; */
+                        
+
+                        if ($current_time >= $start && $current_time <= $end) {
+                            $within_range = true;
+                            if ($current_time >= $current_time_range) {
+                                $within_time_range = true;
+                            }
                         }
                     }
+                    
                     
                     /* if (isset($company_status->status) && $within_time_range) {
                         $com_list[] = $com;
@@ -419,7 +449,8 @@ class UserController extends Controller
                         $time[$count]["status_" . $com->id] = $company_status->status;
                     }else if ($within_range && $within_time_range) {
                         $com_list[] = $com;
-                        $time[$count]["status_" . $com->id] = 'circle';
+                       $time[$count]["status_" . $com->id] = 'circle';
+                       // $time[$count]["status_" . $com->id] = 'times';
                     } else{
                         $com_list[] = $com;
                         $time[$count]["status_" . $com->id] = 'times';
@@ -430,6 +461,7 @@ class UserController extends Controller
                 
             }  
         }
+       
         $comp_list = array();
         foreach($company as $com_list){
             $name ='status_'.$com_list->id;
@@ -440,7 +472,7 @@ class UserController extends Controller
                 }
             }
         }
-         /* return response()->json(array(
+        /*  return response()->json(array(
             'success' => true,
             'time' => $time,
             'companies'    => $comp_list

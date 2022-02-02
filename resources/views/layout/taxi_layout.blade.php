@@ -28,7 +28,8 @@
         @if(Session::get('cid'))
             <a class=" text-dark float-right" href="{{url('care-taxi/logout')}}">ログアウト</a>
         @endif
-        <a href="/care-taxi" class="text-dark" style="text-decoration: none">津ケアタクネット</a>
+        {{-- <a href="/care-taxi" class="text-dark" style="text-decoration: none">津ケアタクネット</a> --}}
+        <a href="/care-taxi" class="text-dark" style="text-decoration: none">津ケアタクネット（タクシー会社）</a>
         
     </nav>
     <hr/>
