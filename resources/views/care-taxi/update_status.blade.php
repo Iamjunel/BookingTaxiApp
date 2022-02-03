@@ -29,7 +29,7 @@
         <tbody>
             @foreach ($time as $key => $t)
             <tr>
-                <td style="width: 100px">{{$t["time"]}}</td>
+                <td style="width: 100px">{{ date('H:i', strtotime($t["time"]))}}</td>
                 <td style="width: 200px">
                     <div class="form-check form-check-inline">
                         <input class="form-check-input circle" type="radio" name="status-{{$t["time"]}}" id="inlineRadio1" value="circle"

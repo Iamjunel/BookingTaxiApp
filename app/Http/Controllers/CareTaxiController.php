@@ -68,7 +68,7 @@ class CareTaxiController extends Controller
         $bus_hours = $company->business_hours;
         $day = date('l', strtotime($date));
         $time = array();
-        /* $time_start = null;
+        $time_start = null;
         $time_end = null;
         if ($day == "Monday"
         ) {
@@ -95,17 +95,18 @@ class CareTaxiController extends Controller
         } else {
             $time_start = "00:00";
             $time_end = "00:00";
-        } */
-        $time_start = "00:00";
-        $time_end = "23:30";
+        }
+        //$time_start = "00:00";
+        //$time_end = "23:30";
         
         $company_status = CompanyStatus::Where('company_id',$id)->where('date',$date)->get();
+        
         if(empty($company_status)){
-            $status = "times";
+            $status = "circle";
             $comment = "";
             $curr_time = $date . ' ' . $time_start;
             array_push($time, [
-                'time' => date('H:i', strtotime($curr_time)),
+                'time' => date('h:ia', strtotime($curr_time)),
                 'status' => $status,
                 'comment' => $comment,
             ]);
@@ -118,13 +119,13 @@ class CareTaxiController extends Controller
                 $added_time = strtotime("+30 minutes", $current);
                 if ($added_time < $end) {
                     array_push($time, [
-                        'time' => date('H:i', $added_time),
+                        'time' => date('h:ia', $added_time),
                         'status' => $status,
                         'comment' => $comment,            
                     ]);
                 } else {
                     array_push($time, [
-                        'time' => date('H:i', $end),
+                        'time' => date('h:ia', $end),
                         'status' => $status,
                         'comment' => $comment,
                         ]);
@@ -133,19 +134,21 @@ class CareTaxiController extends Controller
                 $current = $added_time;
             }
         }else{
+           
+           
             $status = "circle";
             $comment = "";
             $curr_time = $date . ' ' . $time_start;
             foreach ($company_status as $company) {
-
-                if ($company->time == date('H:i', strtotime($curr_time))) {
+                
+                if ($company->time == date('h:ia', strtotime($curr_time))) {                   
                     $status = $company->status;
                     $comment = $company->comment;
                     break;
                 }
             }
             array_push($time, [
-                'time' => date('H:i', strtotime($curr_time)),
+                'time' => date('h:ia', strtotime($curr_time)),
                 'status' => $status,
                 'comment' => $comment,
             ]);
@@ -159,7 +162,8 @@ class CareTaxiController extends Controller
                     
                     foreach($company_status as $company){
                         
-                        if($company->time == date('H:i', $added_time)){
+                        if($company->time == date('h:ia', $added_time)){
+                           // var_dump($company->status);
                             $status = $company->status;
                             $comment = $company->comment;
                             break;
@@ -167,21 +171,21 @@ class CareTaxiController extends Controller
                     }
                     array_push(
                         $time, [
-                            'time' => date('H:i', $added_time),
+                            'time' => date('h:ia', $added_time),
                             'status' => $status,
                             'comment' => $comment,
                         
                 ]);
                 } else {
                     foreach ($company_status as $company) {
-                        if ($company->time == date('H:i', $added_time)) {
+                        if ($company->time == date('h:ia', $added_time)) {
                             $status = $company->status;
                             $comment = $company->comment;
                             break;
                         }
                     }
                     array_push($time, [
-                        'time' => date('H:i', $end),
+                        'time' => date('h:ia', $end),
                         'status' => $status,
                         'comment' => $comment,
                         ]);
@@ -190,6 +194,7 @@ class CareTaxiController extends Controller
                 $current = $added_time;
             }
         }
+        //die;
         $not_current = true;
         if ($date == date('Y-m-d')) {
             $not_current = false;
@@ -441,9 +446,11 @@ class CareTaxiController extends Controller
         if($company->business_hours){
             $bus_hours = $company->business_hours;
             $day = date('l', strtotime($date));
-            $time_start = "00:00";
-            $time_end = "23:30";
-            /* if ($day == "Monday") {
+           /*  $time_start = "00:00";
+            $time_end = "23:30"; */
+            $time_start = null;
+            $time_end = null;
+            if ($day == "Monday") {
                 $time_start = $bus_hours->monday_start;
                 $time_end = $bus_hours->monday_end;
             } else if ($day == "Tuesday") {
@@ -467,17 +474,17 @@ class CareTaxiController extends Controller
             } else {
                 $time_start = "00:00";
                 $time_end = "00:00";
-            } */
+            }
 
             $company_status = CompanyStatus::Where('company_id', $id)->where('date', $date)->get();
             
             if (count($company_status) == 0) {
                 
-                $status = "circle";
+                $status = "times";
                 $comment = "";
                 $curr_time = $date . ' ' . $time_start;
                 array_push($time, [
-                    'time' => date('H:i', strtotime($curr_time)),
+                    'time' => date('h:ia', strtotime($curr_time)),
                     'status' => $status,
                     'comment' => $comment,
                 ]);
@@ -490,13 +497,13 @@ class CareTaxiController extends Controller
                     if ($added_time < $end) {
                        
                         array_push($time, [
-                            'time' => date('H:i', $added_time),
+                            'time' => date('h:ia', $added_time),
                             'status' => $status,
                             'comment' => $comment,
                         ]);
                     } else {
                         array_push($time, [
-                            'time' => date('H:i', $end),
+                            'time' => date('h:ia', $end),
                             'status' => $status,
                             'comment' => $comment,
                         ]);
@@ -511,14 +518,14 @@ class CareTaxiController extends Controller
                 $curr_time = $date . ' ' . $time_start;
                 foreach ($company_status as $company) {
 
-                    if ($company->time == date('H:i', strtotime($curr_time))) {
+                    if ($company->time == date('h:ia', strtotime($curr_time))) {
                         $status = $company->status;
                         $comment = $company->comment;
                         break;
                     }
                 }
                 array_push($time, [
-                    'time' => date('H:i', strtotime($curr_time)),
+                    'time' => date('h:ia', strtotime($curr_time)),
                     'status' => $status,
                     'comment' => $comment,
                 ]);
@@ -532,7 +539,7 @@ class CareTaxiController extends Controller
 
                         foreach ($company_status as $company) {
 
-                            if ($company->time == date('H:i', $added_time)) {
+                            if ($company->time == date('h:ia', $added_time)) {
                                 $status = $company->status;
                                 $comment = $company->comment;
                                 break;
@@ -541,7 +548,7 @@ class CareTaxiController extends Controller
                         array_push(
                             $time,
                             [
-                                'time' => date('H:i', $added_time),
+                                'time' => date('h:ia', $added_time),
                                 'status' => $status,
                                 'comment' => $comment,
 
@@ -549,14 +556,14 @@ class CareTaxiController extends Controller
                         );
                     } else {
                         foreach ($company_status as $company) {
-                            if ($company->time == date('H:i', $added_time)) {
+                            if ($company->time == date('h:ia', $added_time)) {
                                 $status = $company->status;
                                 $comment = $company->comment;
                                 break;
                             }
                         }
                         array_push($time, [
-                            'time' => date('H:i', $end),
+                            'time' => date('h:ia', $end),
                             'status' => $status,
                             'comment' => $comment,
                         ]);

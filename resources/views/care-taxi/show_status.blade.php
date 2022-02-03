@@ -29,7 +29,7 @@
         <tbody>
             @foreach ($time as $key => $t)
             <tr>
-                <td  style="width: 100px">{{$t["time"]}}</td>
+                <td  style="width: 100px">{{ date('H:i', strtotime($t["time"]))}}</td>
                 @if($t["status"] =="circle")
                 <td class="text-center" style="width: 100px" >
                 <span class="text-info">

@@ -4,7 +4,7 @@
      <div class="col-md-8 col-sm-12 clearfix p-5">
           <div class="float-left">
               <a href="/care-taxi" class="text-dark pr-1"><i class="fas fa-3x fa-caret-left text-secondary"></i></a>
-              <h3 class="d-inline">{{$company->name}}</h3>
+              <h3 class="float-right" style="line-height: 1.8">{{$company->name}}</h3>
           </div>
          <form action="/care-taxi/company/update"  method="POST" enctype="multipart/form-data">
         @csrf
@@ -78,7 +78,7 @@
                                 </tr>
                                 <tr>
                                     <td>HP</td>
-                                        <td><input type="url" name="hp" class="col-8" value="{{$company->hp}}" onChange="halfWidth(this)"/></td>
+                                        <td><input type="url" name="hp" class="col-8 pl-0" value="{{$company->hp}}" onChange="halfWidth(this)"/></td>
 
                                 </tr>
                                 <tr>
@@ -766,12 +766,12 @@
                                     <div class="row mt-3 p-5">
                                             @if ($company_images)
                                                 @foreach($company_images as $value)
-                                                <div class="col-md-3 col-sm-4 p-1">
+                                                <div class="col-md-3 col-sm-4 p-1 m-2">
                                                     <form action="/care-taxi/removeImage/{{$value->id}}" method="POST">
                                                         @csrf
                                                         @method('DELETE')
-                                                    <img src="{{ asset('images/'.$value->url) }}" width="100">
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt">消去</i></button>
+                                                    <img src="{{ asset('images/'.$value->url) }}" width="100" height="100">
+                                                    <button type="submit" class="btn btn-danger btn-sm mt-1"><i class="fas fa-trash-alt">消去</i></button>
                                                     </form>
                                                 </div>
                                                 @endforeach

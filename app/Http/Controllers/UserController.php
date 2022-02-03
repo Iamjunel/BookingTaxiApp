@@ -110,6 +110,8 @@ class UserController extends Controller
             $time = array();
             $time_start = null;
             $time_end = null;
+           /*  $time_start = "";
+            $time_end = "23:30"; */
             //get the earliest time
             $time_start = $bus_hours->monday_start;
             $earliest_time =  strtotime($date . ' ' . $time_start);
@@ -170,15 +172,16 @@ class UserController extends Controller
             }
 
             $curr_time = $date . ' ' . $time_start;
-            $company_status = CompanyStatus::Where('company_id', $id)->where('date', $date)->get();
+            //$company_status = CompanyStatus::Where('company_id', $id)->where('date', $date)->get();
 
             array_push($time, [
                 'time' => date('h:ia', strtotime($curr_time))
             ]);
             $current = strtotime($curr_time);
+            
             $start = strtotime($date . ' ' . $time_start);
             $end = strtotime($date . ' ' . $time_end);
-
+            //var_dump($start);
             while ($current >= $start && $current < $end) {
                 $added_time = strtotime("+30 minutes", $current);
                 if ($added_time < $end) {
@@ -195,7 +198,7 @@ class UserController extends Controller
                 $current = $added_time;
             }
 
-
+            //die;
             for ($count = 0; $count < count($time); $count++) {
                 for($day = 0; $day < 7;$day++){
                     if($day > 0){
@@ -203,26 +206,70 @@ class UserController extends Controller
                     }else{
                         $curr_date = $date;
                     }
-                    $company_status = CompanyStatus::Where('company_id', $id)->where('date', $curr_date)->where('time', $time[$count])->first();
-                   
+                  // var_dump($curr_date);
+                   // var_dump($time[$count]["time"]);
+                    $company_status = CompanyStatus::Where('company_id', $id)->where('date', $curr_date)->where('time', $time[$count]["time"])->first();
                     $current_time =  strtotime(date('Y-m-d h:i a', strtotime($curr_date . ' ' . $time[$count]["time"])));
                     $current_time_range =  strtotime(date('Y-m-d h:i a'));
                     /* var_dump(date('Y-m-d h:i a', strtotime($date . ' ' . $this_time)));
                     var_dump(date('Y-m-d h:i a', strtotime($date . ' ' . $on_time)));die; */
-                   // $within_range = false;
-                    $within_time_range = false;
-                    /* if ($current_time >= $start && $current_time <= $end) {
-                        $within_range = true;
+
+                    $bus_hours = BusinessHours::where('company_id', $id)->first();
+                    if ($bus_hours) {
+
+                        if ($day == 0) {
+                            $curr_start_time = $bus_hours->monday_start;
+                            $curr_end_time = $bus_hours->monday_end;
+                        } else if ($day == 1) {
+                            $curr_start_time = $bus_hours->tuesday_start;
+                            $curr_end_time = $bus_hours->tuesday_end;
+                        } else if ($day == 2) {
+                            $curr_start_time = $bus_hours->wednesday_start;
+                            $curr_end_time = $bus_hours->wednesday_end;
+                        } else if ($day == 3) {
+                            $curr_start_time = $bus_hours->thursday_start;
+                            $curr_end_time = $bus_hours->thursday_end;
+                        } else if ($day == 4) {
+                            $curr_start_time = $bus_hours->friday_start;
+                            $curr_end_time = $bus_hours->friday_end;
+                        } else if ($day == 5) {
+                            $curr_start_time = $bus_hours->saturday_start;
+                            $curr_end_time = $bus_hours->saturday_end;
+                        } else if ($day == 6) {
+                            $curr_start_time = $bus_hours->sunday_start;
+                            $curr_end_time = $bus_hours->sunday_end;
+                        }
+        
+                    }else{
+                        $curr_start_time = null;
+                        $curr_end_time = null;
+                    }
+                    $within_range = false;
+                    $within_time_range = true;
+                    
+                    if($curr_start_time !=null && $curr_end_time != null){
+                        $curr_start_time = date('h:i a', strtotime($curr_start_time));
                        
-                    } */
+                        $curr_start_time = strtotime(date('Y-m-d h:i a', strtotime($curr_date . ' ' . $curr_start_time)));
+
+                        //$curr_end_time = $curr_end_time;
+                        $curr_end_time = date('h:i a', strtotime($curr_end_time));
+                        $curr_end_time = strtotime(date('Y-m-d h:i a', strtotime($curr_date . ' ' . $curr_end_time)));
+                       if ($current_time >= $curr_start_time && $current_time <= $curr_end_time ) {
+                            $within_range = true;
+                        }
+                    }
+                    
                     if ($current_time >= $current_time_range) {
                         $within_time_range = true;
                     }
                     /* var_dump(date('Y-m-d h:i a', strtotime($date . ' ' . $time[$count]["time"])));
                     var_dump(date('Y-m-d h:i a'));die; */
                    // var_dump($current_time > $current_time_range);
-                    if($curr_date  >= date('Y-m-d') && $within_time_range) {
+                    if($curr_date  >= date('Y-m-d')&& $within_range) {
+                      
                         if (isset($company_status->status)) {
+                           
                             $time[$count]["status_" . $curr_date] = $company_status->status;
                         } else {
                             $time[$count]["status_" . $curr_date] = 'circle';
@@ -231,7 +278,8 @@ class UserController extends Controller
                         $time[$count]["status_" . $curr_date] = 'times';
                     }
                 }
-            }
+            };
+            //die;
             /* if (count($company_status) == 0) {
                 $status = "times";
                 $comment = "";
