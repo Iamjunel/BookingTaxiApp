@@ -2,9 +2,12 @@
  @section('content')
  <div class="container">
      <div class="col-md-12 col-sm-12 clearfix">
-         <a href="/user/slot/detail/{{$company->id}}/{{date('Y-m-d', strtotime('last monday'))}}" class="float-right btn btn-danger">空き状況を見る</a>
-         <h3 className="float-left"><a href="/user" class="text-dark pr-1"><i class="fas fa-2x fa-caret-left text-secondary"></i></a>{{$company->name}}</h3>
-        
+         <div class="px-0">
+         <div class="d-flex justify-content-between">
+        <a href="/user" class="text-dark pr-1 "><i class="fas fa-2x fa-caret-left text-secondary"></i> <span class="h3">{{$company->name}}</span></a>
+         <a href="/user/slot/detail/{{$company->id}}/{{date('Y-m-d', strtotime('last monday'))}}" class="btn btn-danger pb-1 mx-0 ">空き状況を見る</a>
+         </div>
+         </div>
         <div class="row border ">
             @if(empty($company_images))
             <div class="container col-md-12 col-sm-12 px-0 ">

@@ -549,9 +549,14 @@ class UserController extends Controller
         } else {
             $bh = $company->business_hours;
         }
+        $dy = date("w", strtotime($date));
+      
+        $dys = array("日", "月", "火", "水", "木", "金", "土");
+        $dyj = $dys[$dy]; 
         $company_images = CompanyImages::where('company_id', $id)->get();
         $company_status = CompanyStatus::where('company_id',$id)->where('date',$date)->where('time',$time)->orderBy('id','desc')->first();
         $date_jp = date('Y年m月d日', strtotime($date));
+        $date_jp = $date_jp.'('.$dyj.')';
         return view('user.contact_detail', compact('company','company_status','date_jp','date','time','status','bh','company_images'));
     }
    
