@@ -436,7 +436,7 @@
 
                                 </tr>
                                 <tr>
-                    <td colspan="2"><pre><span class="pt-5 pb-5">{{$company->notes}}</span></pre></td>
+                    <td colspan="2"><pre style="white-space: pre-wrap"><span class="pt-5 pb-5">{{$company->notes}}</span></pre></td>
                     </tr>
                 </tbody>
                 </table>
