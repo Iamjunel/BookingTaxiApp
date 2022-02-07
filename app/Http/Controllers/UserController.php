@@ -436,7 +436,13 @@ class UserController extends Controller
             $not_current = false;
         }
 
+        $dy = date("w", strtotime($date));
+
+        $dys = array("日", "月", "火", "水", "木", "金", "土");
+        $dyj = $dys[$dy];
+
         $date_jp = date('Y年m月d日', strtotime($date));
+        $date_jp = $date_jp . '(' . $dyj . ')';
 
         $day = date('l', strtotime($date));
         for($count = 0;$count<count($time);$count++){

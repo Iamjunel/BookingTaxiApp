@@ -1,9 +1,12 @@
  @extends('layout.user_layout')
  @section('content')
  <div class="container">
-     <div class="col-md-12 col-sm-12 clearfix">    
-         <h3 className="float-left"><a href="/user" class="text-dark pr-1"><i class="fas fa-2x fa-caret-left text-secondary"></i></a>登録会社一覧</h3>
-        <table class="table table-striped table-hover table-bordered">
+     <div class="col-md-12 col-sm-12 clearfix">  
+         <div class="d-flex"> 
+         <a href="/user" class="h3 text-dark pr-1"><i class="fas fa-2x fa-caret-left text-secondary"></i></a> 
+         <h3 className="float-left"><span style="line-height: 2.0">登録会社一覧</span></h3>
+         </div>
+         <table class="table table-striped table-hover table-bordered">
         <thead>
             <tr>
         

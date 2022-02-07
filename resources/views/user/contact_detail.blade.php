@@ -43,7 +43,7 @@
                 <hr/>
                 <div class="p-2" style="text-align:center">
                 <h3 class="text-center mx-2">{{$date_jp}}</h3>
-                <p class="text-dark text-center h3 mt-0 ">
+                <p class="text-dark text-center h2 mt-0 ">
                     <span class="">{{$time}}
                     </span>
                 <span class="ml-1">
@@ -122,7 +122,7 @@
             <img src="https://www.nuvali.ph/wp-content/themes/consultix/images/no-image-found-360x250.png" class="img-fluid" style="height:300px"/>
             </div>
             @else
-            <div class="container col-md-12 col-sm-12 border px-0">
+            <div class="container col-md-12 col-sm-12 border px-0 ">
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                     @foreach( $company_images as $photo )
@@ -132,7 +132,7 @@
                     <div class="carousel-inner" role="listbox">
                         @foreach( $company_images as $photo )
                         <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                            <img class="d-block img-fluid" src="{{ asset('images/'.$photo->url) }}" alt="{{ $photo->url }}">
+                            <img class="d-block img-fluid" src="{{ asset('images/'.$photo->url) }}" alt="{{ $photo->url }}"  style="min-width:50%;margin: auto">
                                 
                         </div>
                         @endforeach
