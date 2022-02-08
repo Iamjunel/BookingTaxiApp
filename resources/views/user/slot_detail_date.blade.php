@@ -13,7 +13,7 @@
         @else
         <span class="text-dark pr-1"><i class="fas fa-3x fa-caret-left text-secondary"></i></span>
         @endif
-        <span style="font-size: 18px">{{$date_jp}}</span>   
+        <span style="font-size: 18px;line-height:2.3">{{$date_jp}}</span>   
         <a href="/user/slot/{{$next_date}}" class="text-dark pr-1"><i class="fas fa-3x fa-caret-right text-secondary"></i></a>
              
     </div>

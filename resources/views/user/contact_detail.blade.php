@@ -44,7 +44,7 @@
                 <div class="p-2" style="text-align:center">
                 <h3 class="text-center mx-2">{{$date_jp}}</h3>
                 <p class="text-dark text-center h2 mt-0 ">
-                    <span class="">{{$time}}
+                    <span class="">{{ date('H:i', strtotime($time))}}
                     </span>
                 <span class="ml-1">
                     空き状況 :
@@ -132,7 +132,7 @@
                     <div class="carousel-inner" role="listbox">
                         @foreach( $company_images as $photo )
                         <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                            <img class="d-block img-fluid" src="{{ asset('images/'.$photo->url) }}" alt="{{ $photo->url }}"  style="min-width:50%;margin: auto">
+                            <img class="d-block img-fluid" src="{{ asset('images/'.$photo->url) }}" alt="{{ $photo->url }}"  style="width:100%;height:500px;margin: auto">
                                 
                         </div>
                         @endforeach

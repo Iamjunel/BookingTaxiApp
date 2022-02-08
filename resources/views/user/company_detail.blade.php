@@ -3,9 +3,10 @@
  <div class="container">
      <div class="col-md-12 col-sm-12 clearfix">
          <div class="px-0">
-         <div class="d-flex justify-content-between">
-        <a href="/user" class=" text-dark pr-1 "><i class="fas fa-2x fa-caret-left text-secondary"></i> <span class="h3">{{$company->name}}</span></a>
-         <a href="/user/slot/detail/{{$company->id}}/{{date('Y-m-d', strtotime('last monday'))}}" class="btn btn-danger pb-1 mx-0 mb-2 ">空き状況を見る</a>
+         <div class="d-flex justify-content-between h3">
+        <a href="/user" class=" text-dark pr-1 "><i class="fas fa-2x fa-caret-left text-secondary"></i> </a>
+        <div class="" style="line-height: 1.9">{{$company->name}}</div>
+         <a href="/user/slot/detail/{{$company->id}}/{{date('Y-m-d', strtotime('last monday'))}}" class="btn btn-danger p-3 mx-0 mb-2 ">空き状況を見る</a>
          </div>
          </div>
         <div class="row border ">
@@ -24,7 +25,7 @@
                     <div class="carousel-inner" role="listbox">
                         @foreach( $company_images as $photo )
                         <div class="carousel-item {{ $loop->first ? 'active' : '' }}">
-                            <img class="d-block img-fluid" src="{{ asset('images/'.$photo->url) }}" alt="{{ $photo->url }}" style="min-width:50%;margin: auto">
+                            <img class="d-block img-fluid" src="{{ asset('images/'.$photo->url) }}" alt="{{ $photo->url }}" style="width:100%;height:500px;margin: auto">
                                 
                         </div>
                         @endforeach

@@ -10,11 +10,11 @@
         @else
         <span class="text-dark pr-1"><i class="fas fa-3x fa-caret-left text-secondary"></i></span>
         @endif
-        <span style="font-size: 18px">{{$date_jp}} <span style="font-size:22px;font-weight:600;font-family: emoji">~</span> {{$date_jp_w}}</span>
+        <span style="font-size: 20px;line-height:1.9">{{$date_jp}} <span style="font-size:22px;font-weight:600;font-family: emoji">~</span> {{$date_jp_w}}</span>
         <a href="/user/slot/detail/{{$id}}/{{$next_date}}" class="text-dark pr-1"><i class="fas fa-3x fa-caret-right text-secondary"></i></a>
         
     </div>
-    <h3>{{$com->name}}</h3>
+    <h3 class="text-center">{{$com->name}}</h3>
     
         <table class="table table-hover table-bordered bg-light">
             <th>時間</th>
@@ -28,7 +28,7 @@
         <tbody>
             @foreach ($time as $key => $t)
             <tr>
-                <td style="width: 100px">{{$t["time"]}}</td>
+                <td style="width: 100px">{{ date('H:i', strtotime($t["time"]))}}</td>
                 @for($day = 0; $day < 7;$day++)
                     @if($day > 0)
                         @php $curr_date = date('Y-m-d',strtotime('+'.$day.'days',strtotime($date))); @endphp

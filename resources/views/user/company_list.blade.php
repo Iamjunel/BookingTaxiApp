@@ -2,11 +2,11 @@
  @section('content')
  <div class="container">
      <div class="col-md-12 col-sm-12 clearfix">  
-         <div class="d-flex"> 
-         <a href="/user" class="h3 text-dark pr-1"><i class="fas fa-2x fa-caret-left text-secondary"></i></a> 
-         <h3 className="float-left"><span style="line-height: 2.0">登録会社一覧</span></h3>
+         <div class=""> 
+         <a href="/user" class=" text-dark pr-1 " style="font-size: 21px;vertical-align: sub;"><i class="fas fa-2x fa-caret-left text-secondary"></i></a> 
+         <span class="h3 text-center" style="margin-left:36%;vertical-align: text-bottom;">登録会社一覧</span>
          </div>
-         <table class="table table-striped table-hover table-bordered">
+         <table class="table table-striped table-hover table-bordered ">
         <thead>
             <tr>
         

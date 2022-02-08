@@ -10,7 +10,7 @@
     @else
      <span class="text-dark pr-1"><i class="fas fa-3x fa-caret-left text-secondary"></i></span>
     @endif
-    <span style="font-size: 18px">{{$date_jp}}</span>
+    <span style="font-size: 20px;line-height:2.1">{{$date_jp}}</span>
     <a href="/care-taxi/slot/edit/{{$id}}/{{$next_date}}" class="text-dark pr-1"><i class="fas fa-3x fa-caret-right text-secondary"></i></a>
     
     </div>

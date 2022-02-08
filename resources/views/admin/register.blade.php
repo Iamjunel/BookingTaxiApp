@@ -1,9 +1,9 @@
 @extends('layout.admin_layout')
  @section('content')
      <div className="col-md-12 col-sm-12 clearfix">
-                    <div >    
+                    <div class="d-flex">    
                     <a href="/admin" class="text-center text-dark mr-2"><i class="fas fa-3x fa-caret-left text-secondary"></i></a>
-                    <h3 class="d-inline text-center"  style="vertical-align:super">会社を登録する</h3>
+                    <h3 class=" text-center"  style="line-height:1.8">会社を登録する</h3>
                     </div>
                         <form accept-charset="U+FF66-U+FF9F" action="/admin" method="POST" >
                             @csrf
