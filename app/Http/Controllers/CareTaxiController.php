@@ -241,6 +241,7 @@ class CareTaxiController extends Controller
         $data = $request->all();
         $company = Company::where('id', $data["id"])->first();
         $company->name = $data["name"];
+        $company->alias = $data["alias"];
         $company->in_charge = $data["in_charge"];
         $company->address = $data["address"];
         $company->notes = $data["notes"];
@@ -350,7 +351,7 @@ class CareTaxiController extends Controller
                 $request->session()->save();
                 return redirect('/care-taxi');
         } else {
-               return redirect('care-taxi/login')->with('message', 'Incorrect login credentials');
+               return redirect('care-taxi/login')->with('message', 'ID又はパスワードの入力に誤りがあります。');
         }
         
     }

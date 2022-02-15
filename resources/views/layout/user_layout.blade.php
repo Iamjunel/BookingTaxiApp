@@ -15,7 +15,8 @@
     <style>
         .fc-past {
     background-color: rgb(231, 230, 230);
-}
+    }
+    
 .bd-placeholder-img {
       font-size: 1.125rem;
       text-anchor: middle;
@@ -51,6 +52,13 @@
 
 .marker_hoso {
   background: linear-gradient(transparent 60%, #ffc107 60%);
+}
+
+.hide-slot{
+        display: none;
+    }
+#remove{
+    display:none;
 }
 
         </style>
@@ -89,6 +97,18 @@
 
  <script>
      $('div.alert').delay(3000).slideUp(300);
+     $(document).ready(function () {
+            $('#show').click(function(){
+                    $('.hide-slot').slideDown().delay(300).show('slow');
+                    $('#show').hide();
+                    $('#remove').show();
+                });
+            $('#remove').click(function(){
+                $('.hide-slot').slideUp().delay(300).hide('slow');
+                 $('#remove').hide();
+                 $('#show').show();
+            });
+        });
      </script>
 
       <script>

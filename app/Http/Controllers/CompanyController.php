@@ -104,19 +104,19 @@ class CompanyController extends Controller
         ]);
 
         //$user = Company::where('cid', $request->cid)->where('cpass', $request->cpass)->first();
-        //if (!empty($user)) {
+        if ($request->cid == "taxi111" && $request->cpass == "taxi111") {
             /* $request->session()->put('cid', $user->cid);
             $request->session()->put('name', $user->name);
             $request->session()->put('id', $user->id); */
 
-            $request->session()->put('cid', 'admin');
-            $request->session()->put('name', 'admin');
+            $request->session()->put('cid', 'taxi111');
+            $request->session()->put('name', 'taxi111');
             $request->session()->put('id', 1);
             $request->session()->save();
             return redirect('/admin');
-        //} else {
-            //return redirect('admin/login')->with('message', 'Incorrect login credentials');
-        //}
+        } else {
+            return redirect('admin/login')->with('message', 'ID又はパスワードの入力に誤りがあります。');
+        }
     }
     public function logout()
     {

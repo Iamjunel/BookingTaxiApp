@@ -8,7 +8,7 @@
                         <form accept-charset="U+FF66-U+FF9F" action="/admin" method="POST" >
                             @csrf
                             <div class="mb-2">
-                                <label class="form-label">会社名:</label>
+                                <label class="form-label">会社名(名称略)※全角5文字以内:</label>
                                 <input type="tel" name="name" class="form-control .input"   id="exampleInputEmail1" value="" required/>
                             </div>
                             <div class="mb-2">

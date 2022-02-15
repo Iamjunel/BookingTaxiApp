@@ -3,7 +3,7 @@
  
      <div class="col-md-8 col-sm-12 clearfix p-5">
           <div class="float-left">
-              <a href="/care-taxi" class="text-dark pr-1"><i class="fas fa-3x fa-caret-left text-secondary"></i></a>
+              <a class="text-dark pr-1"><i class="fas fa-3x fa-caret-left text-secondary"></i></a>
               <h3 class="float-right" style="line-height: 1.8">{{$company->name}}</h3>
           </div>
          <form action="/care-taxi/company/update"  method="POST" enctype="multipart/form-data">
@@ -24,6 +24,11 @@
                                  <tr>
                                     <td>タクシー会社名</td>
                                         <td><input type="text" name="name" value="{{$company->name}}"/></td>
+
+                                </tr>
+                                <tr>
+                                    <td>名称略</td>
+                                        <td><input type="text" name="alias" value="{{$company->alias}}" maxlength="5"/></td>
 
                                 </tr>
                                 <tr>

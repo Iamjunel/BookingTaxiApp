@@ -18,17 +18,53 @@
              
     </div>
         
-     <div class="row " >
+     <div class="row">
          <div class="container col-md-12 col-sm-12 ">
-         <div class="col-md-12 col-sm-12 border mb-1 text-center"> 
-             <h4 class="text-center text-danger">利用可能なサービス</h4>   
-         <span class="text-primary mr-5"><i class="fab fa-accessible-icon "></i> -- 看護/介護</span>
-         <span class="text-info mr-5"><i class="fas fa-user-nurse"></i> -- ヘルパー</span>
-         <span class="text-success mr-5"><i class="fas fa-lungs"></i> -- 酸素</span>
-         <span class="text-danger mr-5"><i class="fas fa-procedures"></i> -- 人工呼吸器</span>
-         
+            <div class="col-md-12 col-sm-12 border mb-1 text-center"> 
+                <h4 class="text-center text-danger">保有機材 <br/> 車椅子　リクライニング車椅子　ストレッチャー</h4>   
+            <div class="row"> 
+                <div class="container col-md-12">   
+                    
+                    <table class="mx-5">
+                        <tr>
+                            <td><span class="text-primary mr-5"><i class="fas fa-medkit "></i> -- 看護/介護</span></td>
+                            <td><span class="text-info mr-5"><i class="fas fa-user-nurse"></i> -- ヘルパー</span></td>
+                            <td><span class="text-success mr-5"><i class="fas fa-lungs"></i> -- 酸素</span></td>
+                            <td><span class="text-danger mr-5"><i class="fas fa-procedures"></i> -- 人工呼吸器</span></td>
+                            <td>{{-- wheelchair_status --}}
+                                <span class="text-secondary mr-5"><i class="fas fa-wheelchair "></i> -- 車いす</span></td>
+                            <td>{{-- rewheelchair_status --}}
+                                <span class="text-dark mr-5"><i class="fab fa-accessible-icon"></i> -- リクライニング車いす</span></td>
+                        </tr>
+                        <tr>
+                            <td>{{-- stretcher_status --}}
+                                <span class="text-success mr-5"><i class="fas fa-walking"></i> -- ストレッチャー</span></td>
+                            <td>
+                                {{-- oximeter_status --}}
+                                <span class="text-danger mr-5"><i class="fas fa-heartbeat"></i> -- オキシメーター</span>
+                            </td>
+                            <td>
+                                {{-- sputum_status --}}
+                                <span class="text-primary mr-5"><i class="fas fa-lungs-virus"></i> -- 吸痰器</span>
+                            </td>
+                            <td>
+                                {{-- slope_status --}}
+                                <span class="text-info mr-5"><i class="fas fa-clinic-medical"></i> -- スロープ</span>
+                            </td>
+                            <td>
+                                {{-- basic_care_status --}}
+                                <span class="text-success mr-5"><i class="fab fa-medrt"></i> -- 基本介助</span>
+                            </td>
+                            <td>
+                                {{-- attendant_status --}}
+                                <span class="text-danger mr-5"><i class="fas fa-user-plus"></i> -- 付添介助</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>       
+            </div>
 
-         </div>
+            </div>
          </div>
      </div>
     <form action="/care-taxi/company/update/"  method="POST" >
@@ -38,9 +74,9 @@
         {{-- <input type="hidden" name="id" value="{{$company->id}}" /></td> --}}
         <table class="table table-hover table-bordered bg-light" >
             <thead class="sticky-top bg-light">
-            <th style="width: 100px;position:sticky;left:0px" class="bg-light" >時間</th>
+            <th style="width: 100px;position:sticky;left:0px" class="bg-light" >時間 <span class="text-primary"> <i class="fas fa-caret-right" id="show"></i> <i class="fas fa-caret-down" id="remove"></i> </span></th>
             @foreach ($comp_list as $com)
-            <th class="text-center text-break" style="min-width:100px" ><a class="text-dark" href="/user/company/detail/{{$com->id}}">{{$com->name}}</a><br>
+            <th class="text-center text-break" style="min-width:100px" ><a class="text-dark" href="/user/company/detail/{{$com->id}}">{{$com->alias}}</a><br>
             @if($com->nursing_status != "times" )
             <span class="text-primary"><i class="fab fa-accessible-icon "></i></span>
             @endif
@@ -53,13 +89,36 @@
             @if($com->ventilator_status != "times" )
              <span class="text-danger "><i class="fas fa-procedures"></i> </span>
             @endif
-            </th>
-       
+            @if($com->wheelchair_status != "times" )
+             <span class="text-secondary"><i class="fas fa-wheelchair "></i> </span>
+            @endif
+             @if($com->re_wheelchair_status != "times" )
+              <span class="text-dark"><i class="fab fa-accessible-icon"></i> </span>
+            @endif
+             @if($com->stretcher_status != "times" )
+              <span class="text-success"><i class="fas fa-walking"></i> </span>
+            @endif
+             @if($com->oximeter_status != "times" )
+              <span class="text-danger"><i class="fas fa-heartbeat"></i> </span>
+            @endif
+            @if($com->sputum_status != "times" )
+              <span class="text-primary"><i class="fas fa-lungs-virus"></i> </span>
+            @endif
+            @if($com->slope_status != "times" )
+              <span class="text-info"><i class="fas fa-clinic-medical"></i> </span>
+            @endif
+            @if($com->basic_care_status != "times" )
+              <span class="text-success"><i class="fab fa-medrt"></i> </span>
+            @endif
+            @if($com->attendant_status != "times" )
+              <span class="text-danger"><i class="fas fa-user-plus"></i> </span>
+            @endif
+            </th>      
            @endforeach
             </thead>
         <tbody style="overflow:auto!important">
             @foreach ($time as $key => $t)
-            <tr>
+            <tr class="{{(idate('H', strtotime($t["time"])) < 8)? 'hide-slot' : ''}}">
                 <td style="" class="">{{ date('H:i', strtotime($t["time"]))}}</td>
                  @foreach ($comp_list as $com)
                  @if(isset($t["status_".$com->id]))

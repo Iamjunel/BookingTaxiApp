@@ -591,7 +591,7 @@ class UserController extends Controller
             $request->session()->save();
             return redirect('/user');
         } else {
-            return redirect('user/login')->with('message', 'Incorrect login credentials');
+            return redirect('user/login')->with('message', 'ID又はパスワードの入力に誤りがあります。');
         }
     }
     public function login()
