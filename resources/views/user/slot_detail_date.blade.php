@@ -23,7 +23,7 @@
             <div class="col-md-12 col-sm-12 border mb-1 text-center"> 
                 <h4 class="text-center text-danger">保有機材 <br/> 車椅子　リクライニング車椅子　ストレッチャー</h4>   
             <div class="row"> 
-                <div class="container col-md-12">   
+                <div class="container col-md-12  d-flex justify-content-center">   
                     
                     <table class="mx-5">
                         <tr>
