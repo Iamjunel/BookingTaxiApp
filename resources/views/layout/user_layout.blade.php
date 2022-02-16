@@ -64,7 +64,7 @@
         </style>
          
 </head>
-<body >
+<body style="background-color: #f8fafc !important">
     <nav class="container pt-2">
         @if(Session::get('cid'))
             <a class=" text-dark float-right" href="{{url('user/logout')}}">ログアウト</a>
