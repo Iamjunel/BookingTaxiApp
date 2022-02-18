@@ -12,7 +12,7 @@
         <thead>
             <tr>
         
-            <th>会社名</th>
+            <th>名称略</th>
             <th>ID</th>
             <th>パスワード</th>
             <th></th>
@@ -21,7 +21,7 @@
         <tbody>
             @foreach ($company as $com)
             <tr>
-            <td>{{$com->name}}</td>
+            <td>{{$com->alias}}</td>
             <td>{{$com->cid}}</td>
             <td>{{$com->cpass}}</td>
             <td><button class="btn btn-danger" data-toggle="modal" data-target="#sample-{{$com->id}}">削除</button></td>

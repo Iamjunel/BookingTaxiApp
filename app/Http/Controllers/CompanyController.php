@@ -66,7 +66,8 @@ class CompanyController extends Controller
             return redirect()->back()->with('message', '既に登録済みです。');
         } else {
             $company = new Company();
-            $company->name = $data["name"];
+            $company->alias = $data["name"];
+            $company->name = "";
             $company->cid = strtolower($data["cid"]);
             $company->cpass = strtolower($data["password"]);
             $company->save();

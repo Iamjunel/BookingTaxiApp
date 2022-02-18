@@ -15,10 +15,10 @@
             <th>ヘルパー</th>
             <th>酸素</th>
             <th>人工呼吸器</th> --}}
-            <th colspan="12" class="text-center">保有機材<br>
-車椅子　リクライニング車椅子　ストレッチャー
-</th>
+             <th>車いす</th>
+            <th class="text-center">保有機材<br>リクライニング車いす</th>
             {{-- <th>営業時間</th> --}}
+            <th>ストレッチャー</th>
             <th></th>
             </tr>
         </thead>
@@ -26,8 +26,8 @@
             @foreach ($company as $com)
             @if($com->business_hours)
             <tr>
-            <td>{{$com->alias}}</td>
-            <td>
+            <td>{{$com->name}}</td>
+            {{-- <td>
                 @if($com->nursing_status == "circle")
                 <span class="text-info">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
@@ -117,7 +117,7 @@
                 @else 
                 <span > </span>
                 @endif
-            </td>
+            </td> --}}
             <td>
                 @if($com->wheelchair_status == "circle")
                 <span class="text-info">
@@ -187,7 +187,7 @@
                 <span > </span>
                 @endif
             </td>
-            <td>
+            {{-- <td>
                 @if($com->oximeter_status == "circle")
                 <span class="text-info">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
@@ -301,7 +301,7 @@
                 @else 
                 <span > </span>
                 @endif
-            </td>
+            </td> --}}
             {{-- <td>{{$com->business_hours[$day.'_start']}} <span style="font-size:18px;font-weight:600;font-family: emoji">~</span> {{$com->business_hours['sunday_end']}}</td> --}}
               <td><a class="btn btn-danger" href="/user/company/detail/{{$com->id}}">詳細</a></td>
             </tr>

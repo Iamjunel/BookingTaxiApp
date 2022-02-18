@@ -21,11 +21,16 @@
      <div class="row">
          <div class="container col-md-12 col-sm-12 ">
             <div class="col-md-12 col-sm-12 border mb-1 text-center"> 
-                <h4 class="text-center text-danger">保有機材 <br/> 車椅子　リクライニング車椅子　ストレッチャー</h4>   
+                <h4 class="text-center text-danger">保有機材 {{-- <br/> 車椅子　リクライニング車椅子　ストレッチャー --}}</h4>   
             <div class="row"> 
-                <div class="container col-md-12  d-flex justify-content-center">   
-                    
-                    <table class="mx-5">
+                <div class="container col-md-12  d-flex justify-content-center mb-2">  
+                    {{-- wheelchair_status --}} 
+                     <span class="text-secondary mr-5"><i class="fas fa-wheelchair "></i> -- 車いす</span>
+                     {{-- rewheelchair_status --}}
+                      <span class="text-dark mr-5"><i class="fab fa-accessible-icon"></i> -- リクライニング車いす</span>
+                     {{-- stretcher_status --}}
+                     {{-- <span class="text-success mr-5"><i class="fas fa-walking"></i> --}}  <span class="text-success mr-5"><i class="fas fa-procedures"></i> -- ストレッチャー</span>
+                    <table class="mx-5" style="display: none">
                         <tr>
                             <td><span class="text-primary mr-5"><i class="fas fa-medkit "></i> -- 看護/介護</span></td>
                             <td><span class="text-info mr-5"><i class="fas fa-user-nurse"></i> -- ヘルパー</span></td>
@@ -77,7 +82,7 @@
             <th style="width: 100px;position:sticky;left:0px" class="bg-light" >時間 <span class="text-primary"> <i class="fas fa-caret-right" id="show"></i> <i class="fas fa-caret-down" id="remove"></i> </span></th>
             @foreach ($comp_list as $com)
             <th class="text-center text-break" style="min-width:100px" ><a class="text-dark" href="/user/company/detail/{{$com->id}}">{{$com->alias}}</a><br>
-            @if($com->nursing_status != "times" )
+            {{-- @if($com->nursing_status != "times" )
             <span class="text-primary"><i class="fab fa-accessible-icon "></i></span>
             @endif
             @if($com->helper_status != "times" )
@@ -88,17 +93,19 @@
             @endif
             @if($com->ventilator_status != "times" )
              <span class="text-danger "><i class="fas fa-procedures"></i> </span>
-            @endif
+            @endif --}}
             @if($com->wheelchair_status != "times" )
              <span class="text-secondary"><i class="fas fa-wheelchair "></i> </span>
+             
             @endif
              @if($com->re_wheelchair_status != "times" )
               <span class="text-dark"><i class="fab fa-accessible-icon"></i> </span>
             @endif
              @if($com->stretcher_status != "times" )
-              <span class="text-success"><i class="fas fa-walking"></i> </span>
+              {{-- <span class="text-success"><i class="fas fa-walking"></i> </span> --}}
+               <span class="text-success "><i class="fas fa-procedures"></i> </span>
             @endif
-             @if($com->oximeter_status != "times" )
+            {{--  @if($com->oximeter_status != "times" )
               <span class="text-danger"><i class="fas fa-heartbeat"></i> </span>
             @endif
             @if($com->sputum_status != "times" )
@@ -112,7 +119,7 @@
             @endif
             @if($com->attendant_status != "times" )
               <span class="text-danger"><i class="fas fa-user-plus"></i> </span>
-            @endif
+            @endif --}}
             </th>      
            @endforeach
             </thead>
