@@ -16,7 +16,7 @@
             <th>酸素</th>
             <th>人工呼吸器</th> --}}
              <th>車いす</th>
-            <th class="text-center">保有機材<br>リクライニング車いす</th>
+            <th class="text-center">{{-- 保有機材<br> --}}リクライニング車いす</th>
             {{-- <th>営業時間</th> --}}
             <th>ストレッチャー</th>
             <th></th>
