@@ -24,10 +24,13 @@
                 <h4 class="text-center text-danger">保有機材 {{-- <br/> 車椅子　リクライニング車椅子　ストレッチャー --}}</h4>   
             <div class="row"> 
                 <div class="container col-md-12  d-flex justify-content-center mb-2">  
+                    {{-- swap wheelchair and re-wheelchair --}}
                     {{-- wheelchair_status --}} 
-                     <span class="text-secondary mr-5"><i class="fas fa-wheelchair "></i> -- 車いす</span>
+                     {{-- <span class="text-secondary mr-5"><i class="fas fa-wheelchair "></i> -- 車いす</span> --}}
+                           <span class="text-secondary mr-5"><i class="fab fa-accessible-icon"></i> -- 車いす</span>
                      {{-- rewheelchair_status --}}
-                      <span class="text-dark mr-5"><i class="fab fa-accessible-icon"></i> -- リクライニング車いす</span>
+                     {{--  <span class="text-dark mr-5"><i class="fab fa-accessible-icon"></i> -- リクライニング車いす</span> --}}
+                           <span class="text-dark mr-5"><i class="fas fa-wheelchair "></i> -- リクライニング車いす</span>
                      {{-- stretcher_status --}}
                      {{-- <span class="text-success mr-5"><i class="fas fa-walking"></i> --}}  <span class="text-success mr-5"><i class="fas fa-procedures"></i> -- ストレッチャー</span>
                     <table class="mx-5" style="display: none">
@@ -95,11 +98,13 @@
              <span class="text-danger "><i class="fas fa-procedures"></i> </span>
             @endif --}}
             @if($com->wheelchair_status != "times" )
-             <span class="text-secondary"><i class="fas fa-wheelchair "></i> </span>
+             {{-- <span class="text-secondary"><i class="fas fa-wheelchair "></i> </span> --}}
+             <span class="text-secondary"><i class="fab fa-accessible-icon"></i> </span>
              
             @endif
              @if($com->re_wheelchair_status != "times" )
-              <span class="text-dark"><i class="fab fa-accessible-icon"></i> </span>
+             {{--  <span class="text-dark"><i class="fab fa-accessible-icon"></i> </span> --}}
+               <span class="text-dark"><i class="fas fa-wheelchair"></i> </span>
             @endif
              @if($com->stretcher_status != "times" )
               {{-- <span class="text-success"><i class="fas fa-walking"></i> </span> --}}
