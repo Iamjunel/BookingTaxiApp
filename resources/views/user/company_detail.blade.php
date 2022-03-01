@@ -11,11 +11,11 @@
          </div>
         <div class="row border ">
             @if(empty($company_images))
-            <div class="container col-md-12 col-sm-12 px-0 ">
+            <div class="container col-md-12 col-sm-12 p-5 ">
             <img src="https://www.nuvali.ph/wp-content/themes/consultix/images/no-image-found-360x250.png" class="img-fluid" style="height:300px"/>
             </div>
             @else
-            <div class="container col-md-12 col-sm-12 px-0">
+            <div class="container col-md-12 col-sm-12 p-5">
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                     @foreach( $company_images as $photo )
@@ -48,15 +48,42 @@
                 <tbody>
                     <tr>
                         <td colspan="2" class="text-center">{{$company->name}}</td>
+                    </tr>
+                    <tr>
+                    <td>ID</td>
+                    <td>{{$company->cid}}</td>
                     </tr>   
                     <tr>
                     <td>会社名</td>
                     <td>{{$company->name}}</td>
                     </tr>
+
+                    <tr>
+                    <td>名称略</td>
+                    <td>{{$company->alias}}</td>
+                    </tr>
+
                     <tr>
                     <td>代表者</td>
                     <td>{{$company->in_charge}}</td>
                     </tr>
+
+                    <tr>
+                    <td>生年月</td>
+                    <td>{{$company->dob}}</td>
+                    </tr>
+
+                    <tr>
+                    <td>資格</td>
+                    <td>{{$company->qualification}}</td>
+                    </tr>
+
+                    <tr>
+                    <td>プロフィール</td>
+                    <td>{{$company->profile}}</td>
+                    </tr>
+                    
+
                     <tr>
                     <td>住所</td>
                     <td>{{$company->address}}</td>
@@ -65,6 +92,12 @@
                     <td>電話</td>
                     <td>{{$company->phone}}</td>
                     </tr>
+
+                    <tr>
+                    <td>電話番号 2</td>
+                    <td>{{$company->phone2}}</td>
+                    </tr>
+
                     <tr>
                     <td>FAX</td>
                     <td>{{$company->fax}}</td>
@@ -77,6 +110,12 @@
                     <td>HP</td>
                      <td><a href="{{$company->hp}}" target="_blank">{{$company->hp}}</a></td>
                     </tr>
+
+                    <tr>
+                    <td>認定・許可・所属団体</td>
+                    <td>{{$company->accreditation}}</td>
+                    </tr>
+
                     <tr>
                                     <td>電話対応時間</td>
                                     <td>
@@ -143,11 +182,11 @@
                                         <td className="p-1 m-0 pb-2" style="width: 400px">
                                             <table>
                                                 <tr>
-                                                    <td style="width: 100px">看護</td>
+                                                    <td style="width: 100px">車いす</td>
                                                     <td style="width: 300px">
                                                         
                                                         
-                                                        @if($company->nursing_status == 'circle')
+                                                        @if($company->wheelchair_status == 'circle')
                                                         <div class="form-check form-check-inline">
                                                         <label class="form-check-label" for="inlineRadio1">
                                                             <span class="text-info">
@@ -159,7 +198,7 @@
                                                          @endif
                                                         </div>
                                                         
-                                                        @if($company->nursing_status == 'triangle')
+                                                        @if($company->wheelchair_status == 'triangle')
                                                         <div class="form-check form-check-inline">
                                                         <label class="form-check-label" for="inlineRadio2">
                                                             <span class="text-warning">
@@ -169,7 +208,7 @@
                                                             </span>
                                                         </label>
                                                         @endif
-                                                        @if($company->nursing_status == 'times')
+                                                        @if($company->wheelchair_status == 'times')
                                                         <div class="form-check form-check-inline">
                                                         <label class="form-check-label" for="inlineRadio3">
                                                             <span class="text-danger">
@@ -183,9 +222,9 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>ヘルパー</td>
+                                                    <td>リクライニング車いす</td>
                                                     <td style="width: 300px">
-                                                        @if($company->helper_status== 'circle')
+                                                        @if($company->re_wheelchair_status== 'circle')
                                                         <div class="form-check form-check-inline">
                                                         <label class="form-check-label" for="inlineRadio1">
                                                             <span class="text-info">
@@ -196,7 +235,7 @@
                                                         </label>
                                                         </div>
                                                         @endif
-                                                        @if($company->helper_status == 'triangle')
+                                                        @if($company->re_wheelchair_status == 'triangle')
                                                         <div class="form-check form-check-inline">
                                                         
                                                         
@@ -210,7 +249,7 @@
                                                         </label>
                                                         </div>
                                                         @endif
-                                                         @if($company->helper_status == 'times')
+                                                         @if($company->re_wheelchair_status == 'times')
                                                         <div class="form-check form-check-inline">
                                                        
                                                        
@@ -227,9 +266,9 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>酸素</td>
+                                                    <td>ストレッチャー</td>
                                                     <td style="width: 300px">
-                                                        @if($company->oxygen_status == 'circle')
+                                                        @if($company->stretcher_status == 'circle')
                                                          <div class="form-check form-check-inline">
                                                         <label class="form-check-label" for="inlineRadio1">
                                                             <span class="text-info">
@@ -241,7 +280,7 @@
                                                          </div>
                                                           @endif
                                                         
-                                                        @if($company->oxygen_status == 'triangle')
+                                                        @if($company->stretcher_status == 'triangle')
                                                         <div class="form-check form-check-inline">
                                                         
                                                         
@@ -255,7 +294,7 @@
                                                         </label>
                                                         </div>
                                                         @endif
-                                                         @if($company->oxygen_status == 'times')
+                                                         @if($company->stretcher_status == 'times')
                                                         <div class="form-check form-check-inline">
                                                         
                                                        
@@ -271,7 +310,7 @@
                                                          @endif
                                                     </td>
                                                 </tr>
-                                                <tr>
+                                                {{-- <tr>
                                                     <td>人工呼吸器</td>
                                                     <td style="width: 300px">
                                                         @if($company->ventilator_status == 'circle')
@@ -317,7 +356,7 @@
                                                         </div>
                                                         @endif
                                                     </td>
-                                                </tr>
+                                                </tr> --}}
                                                 
                                             </table>
                                         </td>

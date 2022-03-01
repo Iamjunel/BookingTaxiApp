@@ -81,8 +81,8 @@
        {{--  <input type="submit" class="btn btn-primary float-right" value="アップデート" /> --}}
         {{-- <input type="hidden" name="id" value="{{$company->id}}" /></td> --}}
         <table class="table table-hover table-bordered bg-light" >
-            <thead class="sticky-top bg-light">
-            <th style="width: 100px;position:sticky;left:0px" class="bg-light" >時間 <span class="text-primary"> <i class="fas fa-caret-right" id="show"></i> <i class="fas fa-caret-down" id="remove"></i> </span></th>
+            <thead class="bg-light">
+            <th style="width: 150px;position:sticky" class="bg-light" >{{-- 時間 --}} ↑全ての時間を表示 <span class="text-primary"> <i class="fas fa-caret-right" id="show"></i> <i class="fas fa-caret-down" id="remove"></i> </span></th>
             @foreach ($comp_list as $com)
             <th class="text-center text-break" style="min-width:100px" ><a class="text-dark" href="/user/company/detail/{{$com->id}}">{{$com->alias}}</a><br>
             {{-- @if($com->nursing_status != "times" )
@@ -109,6 +109,10 @@
              @if($com->stretcher_status != "times" )
               {{-- <span class="text-success"><i class="fas fa-walking"></i> </span> --}}
                <span class="text-success "><i class="fas fa-procedures"></i> </span>
+            @endif
+            @if($com->stretcher_status == "times" && $com->re_wheelchair_status == "times" && $com->wheelchair_status == "times"  )
+              {{-- <span class="text-success"><i class="fas fa-walking"></i> </span> --}}
+               <span class="text-success " style="visibility: hidden"><i class="fas fa-procedures"></i> </span>
             @endif
             {{--  @if($com->oximeter_status != "times" )
               <span class="text-danger"><i class="fas fa-heartbeat"></i> </span>

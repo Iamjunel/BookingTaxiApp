@@ -102,7 +102,8 @@ class CareTaxiController extends Controller
         $company_status = CompanyStatus::Where('company_id',$id)->where('date',$date)->get();
         
         if(empty($company_status)){
-            $status = "circle";
+            //default status
+            $status = "times";
             $comment = "";
             $curr_time = $date . ' ' . $time_start;
             array_push($time, [
@@ -135,8 +136,8 @@ class CareTaxiController extends Controller
             }
         }else{
            
-           
-            $status = "circle";
+           //default status
+            $status = "times";
             $comment = "";
             $curr_time = $date . ' ' . $time_start;
             foreach ($company_status as $company) {

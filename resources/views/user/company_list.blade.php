@@ -6,23 +6,23 @@
          <a href="/user" class=" text-dark pr-1 " style="font-size: 21px;vertical-align: sub;"><i class="fas fa-2x fa-caret-left text-secondary"></i></a> 
          <span class="h3 text-center" style="margin-left:36%;vertical-align: text-bottom;">登録会社一覧</span>
          </div>
-         <table class="table table-striped table-hover table-bordered ">
+         <table class="table table-striped table-hover table-bordered text-center ">
         <thead>
             <tr>
         
-            <th>会社名</th>
+            <th class="text-center">会社名</th>
             {{-- <th>看護/介護</th>
             <th>ヘルパー</th>
             <th>酸素</th>
             <th>人工呼吸器</th> --}}
-             <th>車いす</th>
+             <th class="text-center">車いす</th>
             <th class="text-center">{{-- 保有機材<br> --}}リクライニング車いす</th>
             {{-- <th>営業時間</th> --}}
             <th>ストレッチャー</th>
             <th></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody >
             @foreach ($company as $com)
             @if($com->business_hours)
             <tr>
