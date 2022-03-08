@@ -166,196 +166,7 @@
                                         <td className="p-1 m-0 pb-2" style="width: 400px">
                                             <table>
                                                 <tr>
-                                                    <td style="width: 100px">看護</td>
-                                                    <td style="width: 300px">
-                                                        <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="nursing_status" id="inlineRadio1" value="circle"
-                                                        @if($company->nursing_status == 'circle')
-                                                        {{'checked'}} 
-                                                        @endif
-                                                        >
-                                                        <label class="form-check-label" for="inlineRadio1">
-                                                            <span class="text-info">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
-                                                            <circle cx="8" cy="8" r="8"/>
-                                                            </svg>
-                                                            </span>
-                                                        </label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="nursing_status" id="inlineRadio2" value="triangle"
-                                                        @if($company->nursing_status == 'triangle')
-                                                        {{'checked'}} 
-                                                        @endif
-                                                        >
-                                                        <label class="form-check-label" for="inlineRadio2">
-                                                            <span class="text-warning">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
-                                                            </svg>
-                                                            </span>
-                                                        </label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="nursing_status" id="inlineRadio3" value="times"
-                                                        @if($company->nursing_status == 'times')
-                                                        {{'checked'}} 
-                                                        @endif
-                                                        >
-                                                        <label class="form-check-label" for="inlineRadio3">
-                                                            <span class="text-danger">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                                                            </svg>
-                                                            </span>
-                                                        </label>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>介助補助員</td>
-                                                    <td style="width: 300px">
-                                                        <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="helper_status" id="inlineRadio1" value="circle"
-                                                        @if($company->helper_status== 'circle')
-                                                        {{'checked'}} 
-                                                        @endif
-                                                        >
-                                                        <label class="form-check-label" for="inlineRadio1">
-                                                            <span class="text-info">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
-                                                            <circle cx="8" cy="8" r="8"/>
-                                                            </svg>
-                                                            </span>
-                                                        </label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="helper_status" id="inlineRadio2" value="triangle"
-                                                        @if($company->helper_status == 'triangle')
-                                                        {{'checked'}} 
-                                                        @endif
-                                                        >
-                                                        <label class="form-check-label" for="inlineRadio2">
-                                                            <span class="text-warning">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
-                                                            </svg>
-                                                            </span>
-                                                        </label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="helper_status" id="inlineRadio3" value="times"
-                                                        @if($company->helper_status == 'times')
-                                                        {{'checked'}} 
-                                                        @endif
-                                                        >
-                                                        <label class="form-check-label" for="inlineRadio3">
-                                                            <span class="text-danger">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                                                            </svg>
-                                                            </span>
-                                                        </label>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>酸素</td>
-                                                    <td style="width: 300px">
-                                                        <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="oxygen_status" id="inlineRadio1" value="circle"
-                                                        @if($company->oxygen_status == 'circle')
-                                                        {{'checked'}} 
-                                                        @endif
-                                                        >
-                                                        <label class="form-check-label" for="inlineRadio1">
-                                                            <span class="text-info">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
-                                                            <circle cx="8" cy="8" r="8"/>
-                                                            </svg>
-                                                            </span>
-                                                        </label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="oxygen_status" id="inlineRadio2" value="triangle"
-                                                        @if($company->oxygen_status == 'triangle')
-                                                        {{'checked'}} 
-                                                        @endif
-                                                        >
-                                                        <label class="form-check-label" for="inlineRadio2">
-                                                            <span class="text-warning">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
-                                                            </svg>
-                                                            </span>
-                                                        </label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="oxygen_status" id="inlineRadio3" value="times"
-                                                        @if($company->oxygen_status == 'times')
-                                                        {{'checked'}} 
-                                                        @endif
-                                                        >
-                                                        <label class="form-check-label" for="inlineRadio3">
-                                                            <span class="text-danger">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                                                            </svg>
-                                                            </span>
-                                                        </label>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>人工呼吸器</td>
-                                                    <td style="width: 300px">
-                                                        <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="ventilator_status" id="inlineRadio1" value="circle"
-                                                        @if($company->ventilator_status == 'circle')
-                                                        {{'checked'}} 
-                                                        @endif
-                                                        >
-                                                        <label class="form-check-label" for="inlineRadio1">
-                                                            <span class="text-info">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
-                                                            <circle cx="8" cy="8" r="8"/>
-                                                            </svg>
-                                                            </span>
-                                                        </label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="ventilator_status" id="inlineRadio2" value="triangle"
-                                                        @if($company->ventilator_status == 'triangle')
-                                                        {{'checked'}} 
-                                                        @endif
-                                                        >
-                                                        <label class="form-check-label" for="inlineRadio2">
-                                                            <span class="text-warning">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
-                                                            <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
-                                                            </svg>
-                                                            </span>
-                                                        </label>
-                                                        </div>
-                                                        <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="ventilator_status" id="inlineRadio3" value="times"
-                                                        @if($company->ventilator_status == 'times')
-                                                        {{'checked'}} 
-                                                        @endif
-                                                        >
-                                                        <label class="form-check-label" for="inlineRadio3">
-                                                            <span class="text-danger">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
-                                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
-                                                            </svg>
-                                                            </span>
-                                                        </label>
-                                                        </div>
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                    {{-- wheelchair --}}
+                                                    {{-- wheelchair 1 --}}
                                                     <td>車いす</td>
                                                     <td style="width: 300px">
                                                         <div class="form-check form-check-inline">
@@ -403,7 +214,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    {{-- re_wheelchair --}}
+                                                    {{-- re_wheelchair  2 --}}
                                                     <td>リクライニング車いす</td>
                                                     <td style="width: 300px">
                                                         <div class="form-check form-check-inline">
@@ -451,7 +262,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    {{-- stretcher --}}
+                                                    {{-- stretcher  3 --}}
                                                     <td>ストレッチャー</td>
                                                     <td style="width: 300px">
                                                         <div class="form-check form-check-inline">
@@ -499,7 +310,55 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    {{-- oximeter --}}
+                                                    {{-- slope 4 --}}
+                                                    <td>スロープ</td>
+                                                    <td style="width: 300px">
+                                                        <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="slope_status" id="inlineRadio1" value="circle"
+                                                        @if($company->slope_status == 'circle')
+                                                        {{'checked'}} 
+                                                        @endif
+                                                        >
+                                                        <label class="form-check-label" for="inlineRadio1">
+                                                            <span class="text-info">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                                                            <circle cx="8" cy="8" r="8"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="slope_status" id="inlineRadio2" value="triangle"
+                                                        @if($company->slope_status == 'triangle')
+                                                        {{'checked'}} 
+                                                        @endif
+                                                        >
+                                                        <label class="form-check-label" for="inlineRadio2">
+                                                            <span class="text-warning">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="slope_status" id="inlineRadio3" value="times"
+                                                        @if($company->slope_status == 'times')
+                                                        {{'checked'}} 
+                                                        @endif
+                                                        >
+                                                        <label class="form-check-label" for="inlineRadio3">
+                                                            <span class="text-danger">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    {{-- oximeter 5 --}}
                                                     <td>オキシメーター</td>
                                                     <td style="width: 300px">
                                                         <div class="form-check form-check-inline">
@@ -547,7 +406,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    {{-- sputum  --}}
+                                                    {{-- sputum 6 --}}
                                                     <td>吸痰器</td>
                                                     <td style="width: 300px">
                                                         <div class="form-check form-check-inline">
@@ -595,12 +454,12 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    {{-- slope --}}
-                                                    <td>スロープ</td>
+                                                    {{-- 7  --}}
+                                                    <td>酸素</td>
                                                     <td style="width: 300px">
                                                         <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="slope_status" id="inlineRadio1" value="circle"
-                                                        @if($company->slope_status == 'circle')
+                                                        <input class="form-check-input" type="radio" name="oxygen_status" id="inlineRadio1" value="circle"
+                                                        @if($company->oxygen_status == 'circle')
                                                         {{'checked'}} 
                                                         @endif
                                                         >
@@ -613,8 +472,8 @@
                                                         </label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="slope_status" id="inlineRadio2" value="triangle"
-                                                        @if($company->slope_status == 'triangle')
+                                                        <input class="form-check-input" type="radio" name="oxygen_status" id="inlineRadio2" value="triangle"
+                                                        @if($company->oxygen_status == 'triangle')
                                                         {{'checked'}} 
                                                         @endif
                                                         >
@@ -627,8 +486,57 @@
                                                         </label>
                                                         </div>
                                                         <div class="form-check form-check-inline">
-                                                        <input class="form-check-input" type="radio" name="slope_status" id="inlineRadio3" value="times"
-                                                        @if($company->slope_status == 'times')
+                                                        <input class="form-check-input" type="radio" name="oxygen_status" id="inlineRadio3" value="times"
+                                                        @if($company->oxygen_status == 'times')
+                                                        {{'checked'}} 
+                                                        @endif
+                                                        >
+                                                        <label class="form-check-label" for="inlineRadio3">
+                                                            <span class="text-danger">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                                 <tr>
+                                                    {{-- 8 --}}
+                                                    <td>人工呼吸器</td>
+                                                    <td style="width: 300px">
+                                                        <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="ventilator_status" id="inlineRadio1" value="circle"
+                                                        @if($company->ventilator_status == 'circle')
+                                                        {{'checked'}} 
+                                                        @endif
+                                                        >
+                                                        <label class="form-check-label" for="inlineRadio1">
+                                                            <span class="text-info">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                                                            <circle cx="8" cy="8" r="8"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="ventilator_status" id="inlineRadio2" value="triangle"
+                                                        @if($company->ventilator_status == 'triangle')
+                                                        {{'checked'}} 
+                                                        @endif
+                                                        >
+                                                        <label class="form-check-label" for="inlineRadio2">
+                                                            <span class="text-warning">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="ventilator_status" id="inlineRadio3" value="times"
+                                                        @if($company->ventilator_status == 'times')
                                                         {{'checked'}} 
                                                         @endif
                                                         >
@@ -643,7 +551,7 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    {{-- basic_care --}}
+                                                    {{-- basic_care 9 --}}
                                                     <td>基本介助</td>
                                                     <td style="width: 300px">
                                                         <div class="form-check form-check-inline">
@@ -690,8 +598,9 @@
                                                         </div>
                                                     </td>
                                                 </tr>
+
                                                 <tr>
-                                                    {{-- attendant --}}
+                                                    {{-- attendant  10--}}
                                                     <td>付添介助</td>
                                                     <td style="width: 300px">
                                                         <div class="form-check form-check-inline">
@@ -739,10 +648,103 @@
                                                     </td>
                                                 </tr>
 
-                                                    
+                                                <tr>
+                                                    {{-- 11 --}}
+                                                    <td>介助補助員</td>
+                                                    <td style="width: 300px">
+                                                        <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="helper_status" id="inlineRadio1" value="circle"
+                                                        @if($company->helper_status== 'circle')
+                                                        {{'checked'}} 
+                                                        @endif
+                                                        >
+                                                        <label class="form-check-label" for="inlineRadio1">
+                                                            <span class="text-info">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                                                            <circle cx="8" cy="8" r="8"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="helper_status" id="inlineRadio2" value="triangle"
+                                                        @if($company->helper_status == 'triangle')
+                                                        {{'checked'}} 
+                                                        @endif
+                                                        >
+                                                        <label class="form-check-label" for="inlineRadio2">
+                                                            <span class="text-warning">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="helper_status" id="inlineRadio3" value="times"
+                                                        @if($company->helper_status == 'times')
+                                                        {{'checked'}} 
+                                                        @endif
+                                                        >
+                                                        <label class="form-check-label" for="inlineRadio3">
+                                                            <span class="text-danger">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
 
-                                               
-                                                
+                                                <tr> 
+                                                    {{-- 12  --}}
+                                                    <td style="width: 100px">看護</td>
+                                                    <td style="width: 300px">
+                                                        <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="nursing_status" id="inlineRadio1" value="circle"
+                                                        @if($company->nursing_status == 'circle')
+                                                        {{'checked'}} 
+                                                        @endif
+                                                        >
+                                                        <label class="form-check-label" for="inlineRadio1">
+                                                            <span class="text-info">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                                                            <circle cx="8" cy="8" r="8"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="nursing_status" id="inlineRadio2" value="triangle"
+                                                        @if($company->nursing_status == 'triangle')
+                                                        {{'checked'}} 
+                                                        @endif
+                                                        >
+                                                        <label class="form-check-label" for="inlineRadio2">
+                                                            <span class="text-warning">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                        <div class="form-check form-check-inline">
+                                                        <input class="form-check-input" type="radio" name="nursing_status" id="inlineRadio3" value="times"
+                                                        @if($company->nursing_status == 'times')
+                                                        {{'checked'}} 
+                                                        @endif
+                                                        >
+                                                        <label class="form-check-label" for="inlineRadio3">
+                                                            <span class="text-danger">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
                                             </table>
                                         </td>
                                     

@@ -103,7 +103,7 @@ class CareTaxiController extends Controller
         
         if(empty($company_status)){
             //default status
-            $status = "times";
+            $status = "circle";
             $comment = "";
             $curr_time = $date . ' ' . $time_start;
             array_push($time, [
@@ -137,7 +137,7 @@ class CareTaxiController extends Controller
         }else{
            
            //default status
-            $status = "times";
+            $status = "circle";
             $comment = "";
             $curr_time = $date . ' ' . $time_start;
             foreach ($company_status as $company) {
@@ -482,7 +482,7 @@ class CareTaxiController extends Controller
             
             if (count($company_status) == 0) {
                 
-                $status = "times";
+                $status = "circle";
                 $comment = "";
                 $curr_time = $date . ' ' . $time_start;
                 array_push($time, [
@@ -515,7 +515,7 @@ class CareTaxiController extends Controller
                 }
             } else {
                
-                $status = "times";
+                $status = "circle";
                 $comment = "";
                 $curr_time = $date . ' ' . $time_start;
                 foreach ($company_status as $company) {
