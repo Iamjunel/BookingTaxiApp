@@ -28,6 +28,9 @@
             <th>コメント</th>
         <tbody>
             @foreach ($time as $key => $t)
+            @if($this_time_str > strtotime($t["time"]))
+            <?php $t["status"] ="times"; ?>
+            @endif
             <tr>
                 <td style="width: 100px">{{ date('H:i', strtotime($t["time"]))}}</td>
                 <td style="width: 200px">
@@ -35,6 +38,9 @@
                         <input class="form-check-input circle" type="radio" name="status-{{$t["time"]}}" id="inlineRadio1" value="circle"
                          @if($t["status"] == 'circle')
                         {{'checked'}} 
+                        @endif
+                        @if($this_time_str > strtotime($t["time"]))
+                        {{'disabled'}}
                         @endif
                         >
                         <label class="form-check-label" for="inlineRadio1">
@@ -49,6 +55,9 @@
                         <input class="form-check-input triangle" type="radio" name="status-{{$t["time"]}}" id="triangle" value="triangle"
                         @if($t["status"] == 'triangle')
                         {{'checked'}} 
+                        @endif
+                        @if($this_time_str > strtotime($t["time"]))
+                        {{'disabled'}}
                         @endif
                         >
                         <label class="form-check-label" for="inlineRadio2">

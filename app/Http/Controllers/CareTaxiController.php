@@ -205,13 +205,13 @@ class CareTaxiController extends Controller
         $dyj = $dys[$dy];
         $date_jp = date('Y年m月d日', strtotime($date));
         $date_jp = $date_jp.'('.$dyj.')';
-        
+        $this_time_str = strtotime(date("H:i"));
         /* return response()->json(array(
             'success' => true,
             'data'   => $company_status,
             'day'    => $time,
         ));  */
-        return view('care-taxi.update_status', compact('time', 'date', 'company','id','not_current','previous_date','next_date','date_jp'));
+        return view('care-taxi.update_status', compact('this_time_str','time', 'date', 'company','id','not_current','previous_date','next_date','date_jp'));
     }
     public function edit($id){
         $company = Company::with('business_hours')->where('id',$id)->first();
@@ -585,9 +585,9 @@ class CareTaxiController extends Controller
         $dyj = $dys[$dy];
         $date_jp = date('Y年m月d日', strtotime($date));
         $date_jp = $date_jp . '(' . $dyj . ')';
+        $this_time_str = strtotime(date("H:i"));
 
-
-        return view('care-taxi.show_status', compact('time', 'date', 'company', 'id','previous_date','next_date','not_current','date_jp'));
+        return view('care-taxi.show_status', compact('this_time_str','time', 'date', 'company', 'id','previous_date','next_date','not_current','date_jp'));
     }
     
 }

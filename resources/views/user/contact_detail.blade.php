@@ -196,7 +196,7 @@
                     <td>{{$company->address}}</td>
                     </tr>
                     <tr>
-                    <td>電話</td>
+                    <td>電話番号 1</td>
                     <td>{{$company->phone}}</td>
                     </tr>
 
@@ -472,7 +472,10 @@
 
                                 </tr>
                                 <tr>
-                    <td colspan="2"><span class="pt-5 pb-5"><pre style="white-space: pre-wrap">{{$company->notes}}</pre></span></td>
+                                     <td>紹介メッセージ</td>
+                    
+                    
+                    <td ><pre style="white-space: pre-wrap"><span class="pt-5 pb-5">{{$company->notes}}</span></pre></td>
                     </tr>
                 </tbody>
                 </table>

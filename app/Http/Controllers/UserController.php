@@ -435,7 +435,8 @@ class UserController extends Controller
         ) {
             $not_current = false;
         }
-
+        $this_date = date("H:i");
+        $this_date_str = strtotime(date("H:i"));
         $dy = date("w", strtotime($date));
 
         $dys = array("日", "月", "火", "水", "木", "金", "土");
@@ -498,12 +499,21 @@ class UserController extends Controller
                     /* if (isset($company_status->status) && $within_time_range) {
                         $com_list[] = $com;
                         $time[$count]["status_" . $com->id] = $company_status->status;
-                    } else */ if (isset($company_status->status)) {
+                    } else */ if (isset($company_status->status) &&  $this_date_str < strtotime($this_time)) {
                         $com_list[] = $com;
                         $time[$count]["status_" . $com->id] = $company_status->status;
-                    }else if ($within_range && $within_time_range) {
+                    } else if ($this_date_str > strtotime($this_time)) {
                         $com_list[] = $com;
-                       $time[$count]["status_" . $com->id] = 'circle';
+                        //default status if within range
+                        /*  $time[$count]["status_" . $com->id] = 'circle'; */
+                        $time[$count]["status_" . $com->id] = 'times';
+                        // $time[$count]["status_" . $com->id] = 'times';
+                    }
+                    else if ($within_range && $within_time_range) {
+                        $com_list[] = $com;
+                        //default status if within range
+                      /*  $time[$count]["status_" . $com->id] = 'circle'; */
+                        $time[$count]["status_" . $com->id] = 'circle';
                        // $time[$count]["status_" . $com->id] = 'times';
                     } else{
                         $com_list[] = $com;
@@ -532,7 +542,7 @@ class UserController extends Controller
             'companies'    => $comp_list
         ));  */
 
-        return view('user.slot_detail_date', compact('time', 'date', 'company', 'previous_date', 'next_date', 'not_current', 'date_jp','comp_list'));
+        return view('user.slot_detail_date', compact('time', 'date', 'company', 'previous_date', 'next_date', 'not_current', 'date_jp','comp_list','this_date'));
     }
     public function contactDetail($id,$date,$time,$status){
         $company = Company::with('business_hours')->where('id', $id)->first();

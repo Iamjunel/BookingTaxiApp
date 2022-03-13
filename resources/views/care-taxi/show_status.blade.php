@@ -28,6 +28,9 @@
             <th>コメント</th>
         <tbody>
             @foreach ($time as $key => $t)
+            @if($this_time_str > strtotime($t["time"]))
+            <?php $t["status"] ="times"; ?>
+            @endif
             <tr>
                 <td  style="width: 100px">{{ date('H:i', strtotime($t["time"]))}}</td>
                 @if($t["status"] =="circle")
