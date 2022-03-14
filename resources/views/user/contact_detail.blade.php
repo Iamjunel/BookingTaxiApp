@@ -154,14 +154,14 @@
                 <table class="table table-striped table-hover table-bordered">
                 <tbody>
                     <tr>
-                        <td colspan="2" class="text-center">{{$company->name}}</td>
+                        <td colspan="2"  class="text-center">{{$company->name}}</td>
                     </tr>
                     <tr>
-                    <td>ID</td>
+                    <td style="width: 170px">ID</td>
                     <td>{{$company->cid}}</td>
                     </tr>   
                     <tr>
-                    <td>会社名</td>
+                    <td>タクシー会社名</td>
                     <td>{{$company->name}}</td>
                     </tr>
 
@@ -284,6 +284,12 @@
 
 
                                 </tr>
+                                <tr>
+                                     <td>紹介メッセージ</td>
+                    
+                    
+                    <td ><pre style="white-space: pre-wrap"><span class="pt-5 pb-5">{{$company->notes}}</span></pre></td>
+                    </tr>
                                 <tr>
                                         <td className="align-middle">サービス</td>
                                         <td className="p-1 m-0 pb-2" style="width: 400px">
@@ -471,12 +477,7 @@
 
 
                                 </tr>
-                                <tr>
-                                     <td>紹介メッセージ</td>
-                    
-                    
-                    <td ><pre style="white-space: pre-wrap"><span class="pt-5 pb-5">{{$company->notes}}</span></pre></td>
-                    </tr>
+                                
                 </tbody>
                 </table>
             </div>

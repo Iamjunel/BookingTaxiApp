@@ -7,18 +7,18 @@
          <span class="h3 text-center" style="margin-left:36%;vertical-align: text-bottom;">登録会社一覧</span>
          </div>
          <table class="table table-striped table-hover table-bordered text-center ">
-        <thead>
-            <tr>
+        <thead >
+            <tr >
         
-            <th class="text-center">会社名</th>
+            <th class="text-center" style="vertical-align:middle">会社名</th>
             {{-- <th>看護/介護</th>
             <th>ヘルパー</th>
             <th>酸素</th>
             <th>人工呼吸器</th> --}}
-             <th class="text-center">車いす</th>
-            <th class="text-center">{{-- 保有機材<br> --}}リクライニング車いす</th>
+             <th class="text-center" style="vertical-align:middle">車いす</th>
+            <th class="text-center" style="vertical-align:middle">{{-- 保有機材<br> --}}リクライニング車いす</th>
             {{-- <th>営業時間</th> --}}
-            <th>ストレッチャー</th>
+            <th class="text-center" style="vertical-align:middle">ストレッチャー</th>
             <th></th>
             </tr>
         </thead>
@@ -26,7 +26,7 @@
             @foreach ($company as $com)
             @if($com->business_hours)
             <tr>
-            <td>{{$com->name}}</td>
+            <td style="vertical-align:middle">{{$com->name}}</td>
             {{-- <td>
                 @if($com->nursing_status == "circle")
                 <span class="text-info">
@@ -118,7 +118,7 @@
                 <span > </span>
                 @endif
             </td> --}}
-            <td>
+            <td style="vertical-align:middle">
                 @if($com->wheelchair_status == "circle")
                 <span class="text-info">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
@@ -141,7 +141,7 @@
                 <span > </span>
                 @endif
             </td>
-            <td>
+            <td style="vertical-align:middle">
                 @if($com->re_wheelchair_status == "circle")
                 <span class="text-info">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
@@ -164,7 +164,7 @@
                 <span > </span>
                 @endif
             </td>
-            <td>
+            <td style="vertical-align:middle">
                 @if($com->stretcher_status == "circle")
                 <span class="text-info">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
@@ -303,7 +303,7 @@
                 @endif
             </td> --}}
             {{-- <td>{{$com->business_hours[$day.'_start']}} <span style="font-size:18px;font-weight:600;font-family: emoji">~</span> {{$com->business_hours['sunday_end']}}</td> --}}
-              <td><a class="btn btn-danger" href="/user/company/detail/{{$com->id}}">詳細</a></td>
+              <td style="vertical-align:middle"><a class="btn btn-danger" href="/user/company/detail/{{$com->id}}">詳細</a></td>
             </tr>
             @endif
           
