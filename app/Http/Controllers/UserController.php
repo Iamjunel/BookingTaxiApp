@@ -485,8 +485,8 @@ class UserController extends Controller
                         $current_time_range =  strtotime(date('Y-m-d h:i a'));
                         /* var_dump(date('Y-m-d h:i a', strtotime($date . ' ' . $this_time)));
                     var_dump(date('Y-m-d h:i a', strtotime($date . ' ' . $on_time)));die; */
-                        
-
+                       // $within_range = true;
+                       // $within_time_range = true;
                         if ($current_time >= $start && $current_time <= $end) {
                             $within_range = true;
                             if ($current_time >= $current_time_range) {
@@ -502,20 +502,20 @@ class UserController extends Controller
                     } else */ if (isset($company_status->status) &&  $this_date_str < strtotime($this_time)) {
                         $com_list[] = $com;
                         $time[$count]["status_" . $com->id] = $company_status->status;
-                    } else if ($this_date_str > strtotime($this_time)) {
+                    } else if ($this_date_str > strtotime($this_time) && $date == date('Y-m-d')) {
                         $com_list[] = $com;
                         //default status if within range
                         /*  $time[$count]["status_" . $com->id] = 'circle'; */
                         $time[$count]["status_" . $com->id] = 'times';
                         // $time[$count]["status_" . $com->id] = 'times';
-                    }
-                    else if ($within_range && $within_time_range) {
+                    
+                    } else if ($within_range && $within_time_range) {
                         $com_list[] = $com;
                         //default status if within range
                       /*  $time[$count]["status_" . $com->id] = 'circle'; */
                         $time[$count]["status_" . $com->id] = 'circle';
                        // $time[$count]["status_" . $com->id] = 'times';
-                    } else{
+                    } else {
                         $com_list[] = $com;
                         $time[$count]["status_" . $com->id] = 'times';
                     }
@@ -530,7 +530,7 @@ class UserController extends Controller
         foreach($company as $com_list){
             $name ='status_'.$com_list->id;
             foreach($time as $t){
-                if(isset($t[$name]) && $t[$name] == 'circle'){
+                if(isset($t[$name])){
                     $comp_list[] = $com_list;
                     break;
                 }

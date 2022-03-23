@@ -28,7 +28,7 @@
             <th>コメント</th>
         <tbody>
             @foreach ($time as $key => $t)
-            @if($this_time_str > strtotime($t["time"]))
+            @if($this_time_str > strtotime($t["time"]) && $date == date('Y-m-d'))
             <?php $t["status"] ="times"; ?>
             @endif
             <tr>
@@ -39,7 +39,7 @@
                          @if($t["status"] == 'circle')
                         {{'checked'}} 
                         @endif
-                        @if($this_time_str > strtotime($t["time"]))
+                        @if($this_time_str > strtotime($t["time"]) && $date == date('Y-m-d'))
                         {{'disabled'}}
                         @endif
                         >
@@ -56,7 +56,7 @@
                         @if($t["status"] == 'triangle')
                         {{'checked'}} 
                         @endif
-                        @if($this_time_str > strtotime($t["time"]))
+                        @if($this_time_str > strtotime($t["time"]) && $date == date('Y-m-d'))
                         {{'disabled'}}
                         @endif
                         >
