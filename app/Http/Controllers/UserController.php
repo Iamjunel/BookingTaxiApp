@@ -513,7 +513,12 @@ class UserController extends Controller
                         $com_list[] = $com;
                         //default status if within range
                       /*  $time[$count]["status_" . $com->id] = 'circle'; */
-                        $time[$count]["status_" . $com->id] = 'circle';
+                        if(isset($company_status->status)){
+                            $time[$count]["status_" . $com->id] = $company_status->status;
+                        }else{
+                            $time[$count]["status_" . $com->id] = 'circle';
+                        }
+                        
                        // $time[$count]["status_" . $com->id] = 'times';
                     } else {
                         $com_list[] = $com;

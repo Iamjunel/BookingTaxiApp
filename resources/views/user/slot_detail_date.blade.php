@@ -82,7 +82,8 @@
         {{-- <input type="hidden" name="id" value="{{$company->id}}" /></td> --}}
         <table class="table table-hover table-bordered bg-light" >
             <thead class="bg-light">
-            <th style="width: 150px;position:sticky" class="bg-light" >{{-- 時間 --}} ↑全ての時間を表示 <span class="text-primary"> <i class="fas fa-caret-right" id="show"></i> <i class="fas fa-caret-down" id="remove"></i> </span></th>
+            <th style="width: 150px;position:sticky" class="bg-light" id="show" >{{-- 時間 --}} ↑全ての時間を表示 <span class="text-primary"> <i class="fas fa-caret-right" ></i></span></th>
+            <th style="width: 150px;position:sticky" class="bg-light" id="remove">{{-- 時間 --}} ↑全ての時間を表示 <span class="text-primary"></i> <i class="fas fa-caret-down" ></i> </span></th>
             @foreach ($comp_list as $com)
             <th class="text-center text-break" style="min-width:100px;vertical-align:baseline" ><a class="text-dark" href="/user/company/detail/{{$com->id}}">{{$com->alias}}</a><br>
             {{-- @if($com->nursing_status != "times" )

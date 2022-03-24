@@ -58,7 +58,11 @@
         display: none;
     }
 #remove{
+    cursor: pointer;
     display:none;
+}
+#show{
+    cursor: pointer;
 }
 
         </style>

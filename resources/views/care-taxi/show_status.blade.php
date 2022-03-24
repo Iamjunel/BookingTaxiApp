@@ -16,6 +16,7 @@
     <a href="/care-taxi/slot/{{$id}}/{{$next_date}}" class="text-dark pr-1"><i class="fas fa-3x fa-caret-right text-secondary"></i></a>
     
     </div>
+    @if(count($time)>1)
     <a href="/care-taxi/slot/edit/{{$id}}/{{$date}}" class="btn btn-primary btn-block clearfix mb-1">編集</a>
     <form action="/care-taxi/company/update/"  method="POST" >
         @csrf
@@ -66,7 +67,7 @@
                 @else
                 <td style="
     background-color: darkgrey;
-"></td>
+    "></td>
                 @endif
             </tr>
             @endforeach
@@ -75,7 +76,20 @@
         </table>
     </form>
      <a href="/care-taxi/slot/edit/{{$id}}/{{$date}}" class="btn btn-primary btn-block clearfix mt-1">編集</a>
+     @else 
+     <a href="/care-taxi/slot/edit/{{$id}}/{{$date}}" class="btn btn-secondary btn-block clearfix mb-1 disabled">編集</a>
+     <table class="table table-hover table-bordered bg-light" style="margin-bottom: 0px !important">
+            <th>時間</th>
+            <th>空き状況</th>
+            <th>コメント</th>
+        <tbody>           
+           </tbody>
+        </table>
+         <a href="/care-taxi/slot/edit/{{$id}}/{{$date}}" class="btn btn-secondary btn-block clearfix mb-1 disabled">編集</a>
+     @endif
+     
      </div>
+
  
  
  @endsection

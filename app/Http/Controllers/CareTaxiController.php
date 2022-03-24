@@ -70,6 +70,7 @@ class CareTaxiController extends Controller
         $time = array();
         $time_start = null;
         $time_end = null;
+        $has_no_schedule = false;
         if ($day == "Monday"
         ) {
             $time_start = $bus_hours->monday_start;
@@ -95,6 +96,7 @@ class CareTaxiController extends Controller
         } else {
             $time_start = "00:00";
             $time_end = "00:00";
+            $has_no_schedule =true;
         }
         //$time_start = "00:00";
         //$time_end = "23:30";
@@ -211,7 +213,7 @@ class CareTaxiController extends Controller
             'data'   => $company_status,
             'day'    => $time,
         ));  */
-        return view('care-taxi.update_status', compact('this_time_str','time', 'date', 'company','id','not_current','previous_date','next_date','date_jp'));
+        return view('care-taxi.update_status', compact('this_time_str','time', 'date', 'company','id','not_current','previous_date','next_date','date_jp', 'has_no_schedule'));
     }
     public function edit($id){
         $company = Company::with('business_hours')->where('id',$id)->first();
@@ -445,6 +447,7 @@ class CareTaxiController extends Controller
         $company = Company::with('business_hours')->where('id', $id)->first();
         $previous_date =  date('Y-m-d', strtotime($date . ' -1 day'));
         $next_date = date('Y-m-d', strtotime($date . ' +1 day'));
+       
         if($company->business_hours){
             $bus_hours = $company->business_hours;
             $day = date('l', strtotime($date));
@@ -452,6 +455,7 @@ class CareTaxiController extends Controller
             $time_end = "23:30"; */
             $time_start = null;
             $time_end = null;
+            $has_no_schedule = 0;
             if ($day == "Monday") {
                 $time_start = $bus_hours->monday_start;
                 $time_end = $bus_hours->monday_end;
@@ -474,6 +478,7 @@ class CareTaxiController extends Controller
                 $time_start = $bus_hours->sunday_start;
                 $time_end   = $bus_hours->sunday_end;
             } else {
+                $has_no_schedule= 1;
                 $time_start = "00:00";
                 $time_end = "00:00";
             }
@@ -587,7 +592,7 @@ class CareTaxiController extends Controller
         $date_jp = $date_jp . '(' . $dyj . ')';
         $this_time_str = strtotime(date("H:i"));
 
-        return view('care-taxi.show_status', compact('this_time_str','time', 'date', 'company', 'id','previous_date','next_date','not_current','date_jp'));
+        return view('care-taxi.show_status', compact('this_time_str','time', 'date', 'company', 'id','previous_date','next_date','not_current','date_jp','has_no_schedule'));
     }
     
 }
