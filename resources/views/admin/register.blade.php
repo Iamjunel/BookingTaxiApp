@@ -9,15 +9,26 @@
                             @csrf
                             <div class="mb-2">
                                 <label class="form-label">会社名(名称略)※全角5文字以内:</label>
-                                <input type="tel" name="name" class="form-control .input"   id="exampleInputEmail1" value="" required/>
+                                {{-- <input type="tel" name="name" class="form-control .input"   id="exampleInputEmail1" value="" maxlength="5" required/> --}}
+                                <input type="text" name="name" class="form-control .input"   id="exampleInputEmail1" value="" maxlength="5"
+                                oninvalid="this.setCustomValidity('必須事項が入力されていません。')"
+                                oninput="this.setCustomValidity('')"
+                                required/>
                             </div>
                             <div class="mb-2">
                                 <label class="form-label">ID:</label>
-                                <input type="type" name="cid" class="form-control" id="exampleInputEmail2"  onChange="halfWidth(this)" value="" required/>
+                               {{--  <input type="type" name="cid" class="form-control" id="exampleInputEmail2"  onChange="halfWidth(this)" value=""  required/> --}}
+                               <input type="text" name="name" class="form-control .input"   id="exampleInputEmail1" value="" maxlength="5"
+                               oninvalid="this.setCustomValidity('必須事項が入力されていません。')"
+                                oninput="this.setCustomValidity('')"
+                               required/>
                             </div>
                             <div className="mb-2">
                                 <label class="form-label">パスワード:</label>
-                                <input type="password" name="password" class="form-control" id="exampleInputPassword1" onChange="halfWidth(this)" value="" required/>
+                                <input type="password" name="password" class="form-control" id="exampleInputPassword1" onChange="halfWidth(this)" value="" 
+                                oninvalid="this.setCustomValidity('必須事項が入力されていません。')"
+                                oninput="this.setCustomValidity('')"
+                                required/>
                             </div>
                             <div class="mb-2 mt-2">
                                 <input type="submit" class="btn btn-block btn-secondary text-center" value="登録" />

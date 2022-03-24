@@ -313,6 +313,412 @@
                                                          @endif
                                                     </td>
                                                 </tr>
+                                                <tr>
+                                                    <td>スロープ</td>
+                                                    <td style="width: 300px">
+                                                        @if($company->slope_status == 'circle')
+                                                         <div class="form-check form-check-inline">
+                                                        <label class="form-check-label" for="inlineRadio1">
+                                                            <span class="text-info">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                                                            <circle cx="8" cy="8" r="8"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                         </div>
+                                                          @endif
+                                                        
+                                                        @if($company->slope_status == 'triangle')
+                                                        <div class="form-check form-check-inline">
+                                                        
+                                                        
+                                                        
+                                                        <label class="form-check-label" for="inlineRadio2">
+                                                            <span class="text-warning">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                        @endif
+                                                         @if($company->slope_status == 'times')
+                                                        <div class="form-check form-check-inline">
+                                                        
+                                                       
+                                                        
+                                                        <label class="form-check-label" for="inlineRadio3">
+                                                            <span class="text-danger">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                         @endif
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td>オキシメーター</td>
+                                                    <td style="width: 300px">
+                                                        @if($company->oximeter_status == 'circle')
+                                                         <div class="form-check form-check-inline">
+                                                        <label class="form-check-label" for="inlineRadio1">
+                                                            <span class="text-info">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                                                            <circle cx="8" cy="8" r="8"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                         </div>
+                                                          @endif
+                                                        
+                                                        @if($company->oximeter_status == 'triangle')
+                                                        <div class="form-check form-check-inline">
+                                                        
+                                                        
+                                                        
+                                                        <label class="form-check-label" for="inlineRadio2">
+                                                            <span class="text-warning">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                        @endif
+                                                         @if($company->oximeter_status == 'times')
+                                                        <div class="form-check form-check-inline">
+                                                        
+                                                       
+                                                        
+                                                        <label class="form-check-label" for="inlineRadio3">
+                                                            <span class="text-danger">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                         @endif
+                                                    </td>
+                                                </tr>
+                                                 <tr>
+                                                    <td>吸痰器</td>
+                                                    <td style="width: 300px">
+                                                        @if($company->sputum_status  == 'circle')
+                                                         <div class="form-check form-check-inline">
+                                                        <label class="form-check-label" for="inlineRadio1">
+                                                            <span class="text-info">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                                                            <circle cx="8" cy="8" r="8"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                         </div>
+                                                          @endif
+                                                        
+                                                        @if($company->sputum_status  == 'triangle')
+                                                        <div class="form-check form-check-inline">
+                                                        
+                                                        
+                                                        
+                                                        <label class="form-check-label" for="inlineRadio2">
+                                                            <span class="text-warning">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                        @endif
+                                                         @if($company->sputum_status  == 'times')
+                                                        <div class="form-check form-check-inline">
+                                                        
+                                                       
+                                                        
+                                                        <label class="form-check-label" for="inlineRadio3">
+                                                            <span class="text-danger">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                         @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>酸素</td>
+                                                    <td style="width: 300px">
+                                                        @if($company->oxygen_status  == 'circle')
+                                                         <div class="form-check form-check-inline">
+                                                        <label class="form-check-label" for="inlineRadio1">
+                                                            <span class="text-info">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                                                            <circle cx="8" cy="8" r="8"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                         </div>
+                                                          @endif
+                                                        
+                                                        @if($company->oxygen_status  == 'triangle')
+                                                        <div class="form-check form-check-inline">
+                                                        
+                                                        
+                                                        
+                                                        <label class="form-check-label" for="inlineRadio2">
+                                                            <span class="text-warning">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                        @endif
+                                                         @if($company->oxygen_status  == 'times')
+                                                        <div class="form-check form-check-inline">
+                                                        
+                                                       
+                                                        
+                                                        <label class="form-check-label" for="inlineRadio3">
+                                                            <span class="text-danger">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                         @endif
+                                                    </td>
+                                                </tr>
+
+                                                <tr>
+                                                    <td>人工呼吸器</td>
+                                                    <td style="width: 300px">
+                                                        @if($company->ventilator_status  == 'circle')
+                                                         <div class="form-check form-check-inline">
+                                                        <label class="form-check-label" for="inlineRadio1">
+                                                            <span class="text-info">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                                                            <circle cx="8" cy="8" r="8"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                         </div>
+                                                          @endif
+                                                        
+                                                        @if($company->ventilator_status  == 'triangle')
+                                                        <div class="form-check form-check-inline">
+                                                        
+                                                        
+                                                        
+                                                        <label class="form-check-label" for="inlineRadio2">
+                                                            <span class="text-warning">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                        @endif
+                                                         @if($company->ventilator_status  == 'times')
+                                                        <div class="form-check form-check-inline">
+                                                        
+                                                       
+                                                        
+                                                        <label class="form-check-label" for="inlineRadio3">
+                                                            <span class="text-danger">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                         @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>基本介助</td>
+                                                    <td style="width: 300px">
+                                                        @if($company->basic_care_status  == 'circle')
+                                                         <div class="form-check form-check-inline">
+                                                        <label class="form-check-label" for="inlineRadio1">
+                                                            <span class="text-info">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                                                            <circle cx="8" cy="8" r="8"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                         </div>
+                                                          @endif
+                                                        
+                                                        @if($company->basic_care_status  == 'triangle')
+                                                        <div class="form-check form-check-inline">
+                                                        
+                                                        
+                                                        
+                                                        <label class="form-check-label" for="inlineRadio2">
+                                                            <span class="text-warning">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                        @endif
+                                                         @if($company->basic_care_status  == 'times')
+                                                        <div class="form-check form-check-inline">
+                                                        
+                                                       
+                                                        
+                                                        <label class="form-check-label" for="inlineRadio3">
+                                                            <span class="text-danger">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                         @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>付添介助</td>
+                                                    <td style="width: 300px">
+                                                        @if($company->attendant_status  == 'circle')
+                                                         <div class="form-check form-check-inline">
+                                                        <label class="form-check-label" for="inlineRadio1">
+                                                            <span class="text-info">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                                                            <circle cx="8" cy="8" r="8"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                         </div>
+                                                          @endif
+                                                        
+                                                        @if($company->attendant_status  == 'triangle')
+                                                        <div class="form-check form-check-inline">
+                                                        
+                                                        
+                                                        
+                                                        <label class="form-check-label" for="inlineRadio2">
+                                                            <span class="text-warning">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                        @endif
+                                                         @if($company->basic_care_status  == 'times')
+                                                        <div class="form-check form-check-inline">
+                                                        
+                                                       
+                                                        
+                                                        <label class="form-check-label" for="inlineRadio3">
+                                                            <span class="text-danger">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                         @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>介助補助員</td>
+                                                    <td style="width: 300px">
+                                                        @if($company->helper_status  == 'circle')
+                                                         <div class="form-check form-check-inline">
+                                                        <label class="form-check-label" for="inlineRadio1">
+                                                            <span class="text-info">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                                                            <circle cx="8" cy="8" r="8"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                         </div>
+                                                          @endif
+                                                        
+                                                        @if($company->helper_status  == 'triangle')
+                                                        <div class="form-check form-check-inline">
+                                                        
+                                                        
+                                                        
+                                                        <label class="form-check-label" for="inlineRadio2">
+                                                            <span class="text-warning">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                        @endif
+                                                         @if($company->helper_status  == 'times')
+                                                        <div class="form-check form-check-inline">
+                                                        
+                                                       
+                                                        
+                                                        <label class="form-check-label" for="inlineRadio3">
+                                                            <span class="text-danger">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                         @endif
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>看護</td>
+                                                    <td style="width: 300px">
+                                                        @if($company->nursing_status  == 'circle')
+                                                         <div class="form-check form-check-inline">
+                                                        <label class="form-check-label" for="inlineRadio1">
+                                                            <span class="text-info">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle-fill" viewBox="0 0 16 16">
+                                                            <circle cx="8" cy="8" r="8"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                         </div>
+                                                          @endif
+                                                        
+                                                        @if($company->nursing_status  == 'triangle')
+                                                        <div class="form-check form-check-inline">
+                                                        
+                                                        
+                                                        
+                                                        <label class="form-check-label" for="inlineRadio2">
+                                                            <span class="text-warning">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-triangle-fill" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd" d="M7.022 1.566a1.13 1.13 0 0 1 1.96 0l6.857 11.667c.457.778-.092 1.767-.98 1.767H1.144c-.889 0-1.437-.99-.98-1.767L7.022 1.566z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                        @endif
+                                                         @if($company->nursing_status  == 'times')
+                                                        <div class="form-check form-check-inline">
+                                                        
+                                                       
+                                                        
+                                                        <label class="form-check-label" for="inlineRadio3">
+                                                            <span class="text-danger">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x" viewBox="0 0 16 16">
+                                                            <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>
+                                                            </svg>
+                                                            </span>
+                                                        </label>
+                                                        </div>
+                                                         @endif
+                                                    </td>
+                                                </tr>
                                                 {{-- <tr>
                                                     <td>人工呼吸器</td>
                                                     <td style="width: 300px">
