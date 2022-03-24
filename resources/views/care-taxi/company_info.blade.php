@@ -16,7 +16,7 @@
             <tr>
                                     <td style="width: 100px">ID</td>
                                     <td><input type="text" name="cid" value="{{$company->cid}}"  
-                                         oninvalid="this.setCustomValidity('必須事項が入力されていません。')"
+                                         oninvalid="this.setCustomValidity('必須項目が入力されていません。')"
                                 oninput="this.setCustomValidity('')"
                                 required
                                         /></td>
@@ -24,14 +24,14 @@
                                 <tr>
                                     <td>パスワード</td>
                                         <td><input type="password" name="cpass" value="{{$company->cpass}}"
-                                             oninvalid="this.setCustomValidity('必須事項が入力されていません。')"
+                                             oninvalid="this.setCustomValidity('必須項目が入力されていません。')"
                                 oninput="this.setCustomValidity('')"
                                 required
                                             /></td>
                                 </tr>
                                  <tr>
                                     <td>タクシー会社名</td>
-                                        <td><input type="text" name="name" value="{{$company->name}}"  oninvalid="this.setCustomValidity('必須事項が入力されていません。')"
+                                        <td><input type="text" name="name" value="{{$company->name}}"  oninvalid="this.setCustomValidity('必須項目が入力されていません。')"
                                 oninput="this.setCustomValidity('')"
                                 required />
                                             {{-- <input type="hidden" name="name" value="{{$company->name}}"/> --}}
@@ -41,7 +41,7 @@
                                 <tr>
                                     <td>名称略</td>
                                         <td><input type="text" name="alias" value="{{$company->alias}}" maxlength="5" 
-                                             oninvalid="this.setCustomValidity('必須事項が入力されていません。')"
+                                             oninvalid="this.setCustomValidity('必須項目が入力されていません。')"
                                 oninput="this.setCustomValidity('')"
                                 required/></td>
 
@@ -49,7 +49,7 @@
                                 <tr>
                                     <td>代表者</td>
                                         <td><input type="text" name="in_charge" value="{{$company->in_charge}}" 
-                                             oninvalid="this.setCustomValidity('必須事項が入力されていません。')"
+                                             oninvalid="this.setCustomValidity('必須項目が入力されていません。')"
                                 oninput="this.setCustomValidity('')"
                                 required
                                             /></td>
@@ -59,7 +59,7 @@
                                     <td>生年月</td>
                                         <td>
                                            <input id="bao" type="text" name="dob" value="{{$company->dob}}"
-                                            oninvalid="this.setCustomValidity('必須事項が入力されていません。')"
+                                            oninvalid="this.setCustomValidity('必須項目が入力されていません。。')"
                                 oninput="this.setCustomValidity('')"
                                 required
                                            />
