@@ -156,10 +156,10 @@
                     <tr>
                         <td colspan="2"  class="text-center">{{$company->name}}</td>
                     </tr>
-                    <tr>
+                   {{--  <tr>
                     <td style="width: 170px">ID</td>
                     <td>{{$company->cid}}</td>
-                    </tr>   
+                    </tr>    --}}
                     <tr>
                     <td>タクシー会社名</td>
                     <td>{{$company->name}}</td>
@@ -182,12 +182,13 @@
 
                     <tr>
                     <td>資格</td>
-                    <td>{{$company->qualification}}</td>
+                    <td>{{-- {{$company->qualification}}  --}}<pre style="white-space: pre-wrap"><span class="pt-5 pb-5">{{$company->qualification}}</span></pre></td>
+                    
                     </tr>
 
                     <tr>
                     <td>プロフィール</td>
-                    <td>{{$company->profile}}</td>
+                    <td>{{-- {{$company->profile}} --}} <pre style="white-space: pre-wrap"><span class="pt-5 pb-5">{{$company->profile}}</span></pre></td></td>
                     </tr>
                     
 
@@ -220,7 +221,7 @@
 
                     <tr>
                     <td>認定・許可・所属団体</td>
-                    <td>{{$company->accreditation}}</td>
+                    <td>{{-- {{$company->accreditation}} --}} <pre style="white-space: pre-wrap"><span class="pt-5 pb-5">{{$company->accreditation}}</span></pre></td></td>
                     </tr>
 
                     <tr>

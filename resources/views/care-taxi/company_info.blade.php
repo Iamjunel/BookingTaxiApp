@@ -23,7 +23,9 @@
                                 </tr>
                                  <tr>
                                     <td>タクシー会社名</td>
-                                        <td><input type="text" name="name" value="{{$company->name}}"/></td>
+                                        <td><input type="text" name="name" value="{{$company->name}}" disabled />
+                                            <input type="hidden" name="name" value="{{$company->name}}"/>
+                                        </td>
 
                                 </tr>
                                 <tr>
@@ -759,9 +761,14 @@
                                         {{-- <form action="{{ route('multiple.image.store') }}" method="POST" enctype="multipart/form-data"> --}}
                                         {{-- @csrf
                                         <input type="hidden" name="id" value="{{$company->id}}" /> --}}
+
+                                        
                                         <div class="row">
                                             <div class="col-md-6 col-sm-6">
                                                 <input type="file" name="file[]" accept="image/*" multiple="multiple" class="form-control" >
+                                               {{--  <label for="files" class="btn bnt-default border border-dark">Select Image</label>
+                                                <input id="files" type="file" name="file[]" accept="image/*" multiple="multiple"/> --}}
+                                               
                                             </div>
                                 
                                            {{--  <div class="col-md-3 col-sm-6">
