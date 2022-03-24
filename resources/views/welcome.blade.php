@@ -30,8 +30,8 @@
       <div class="mt-auto">
         <div>
           <nav class="nav nav-masthead justify-content-center float-right">
-            <a class="nav-link" href="#">TAXY</a>
-            <a class="nav-link" href="#">kanri</a>
+            <a class="nav-link" href="care-taxi/login">TAXY</a>
+            <a class="nav-link" href="admin/login">kanri</a>
           </nav>
         </div>
     </div>
