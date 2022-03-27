@@ -11,11 +11,11 @@
          </div>
         <div class="row border ">
             @if(empty($company_images))
-            <div class="container col-md-12 col-sm-12">
+            <div class="container col-md-12 col-sm-12" style="height:500px;overflow:hidden">
             <img src="https://www.nuvali.ph/wp-content/themes/consultix/images/no-image-found-360x250.png" class="img-fluid" style="width:initial;margin: auto"/>
             </div>
             @else
-            <div class="container col-md-12 col-sm-12 p-0">
+            <div class="container col-md-12 col-sm-12 p-0" style="height:500px;overflow:hidden">
                     <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                     <ol class="carousel-indicators">
                     @foreach( $company_images as $photo )
