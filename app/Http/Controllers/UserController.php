@@ -12,11 +12,6 @@ use Illuminate\Support\Facades\Session;
 
 class UserController extends Controller
 {
-    //
-   
-       
-    
-
     public function index()
     {
 
@@ -52,6 +47,9 @@ class UserController extends Controller
         return view('user.company_list', compact('company','day'));
     }
     public function getCompanyDetail($id){
+        if (!session()->has('cid')) {
+            return redirect('user/login');
+        }
         /*  $company = Company::with('business_hours')->where('id',$id)->first();
         $company_images = CompanyImages::where('company_id',$id)->get();
         return view('user.company_detail',compact('company','company_images')); */
@@ -92,9 +90,11 @@ class UserController extends Controller
         }
         return view('user.available_slot');
     }
-
     public function slotDetailDate($id,$date = null)
-    {   
+    {
+        if (!session()->has('cid')) {
+            return redirect('user/login');
+        }
         
         if($date == null){
             $date = date('Y-m-d');
@@ -391,6 +391,9 @@ class UserController extends Controller
     }
     public function availableSlotDetailDate($date)
     {
+        if (!session()->has('cid')) {
+            return redirect('user/login');
+        }
         
         $time = array();
 
@@ -550,6 +553,11 @@ class UserController extends Controller
         return view('user.slot_detail_date', compact('time', 'date', 'company', 'previous_date', 'next_date', 'not_current', 'date_jp','comp_list','this_date'));
     }
     public function contactDetail($id,$date,$time,$status){
+
+        if (!session()->has('cid')) {
+            return redirect('user/login');
+        }
+
         $company = Company::with('business_hours')->where('id', $id)->first();
         if ($company->business_hours == null) {
             $bh = new stdClass();
@@ -580,12 +588,6 @@ class UserController extends Controller
         $date_jp = $date_jp.'('.$dyj.')';
         return view('user.contact_detail', compact('company','company_status','date_jp','date','time','status','bh','company_images'));
     }
-   
-    
-
-   
-
-
     public function pagenotfound()
     {
         return view('notfound');

@@ -48,11 +48,10 @@ class CareTaxiController extends Controller
         }
         return view('care-taxi.booking');
     }
-
-   
     public function editDetailDate($id, $date)
     {
-        if (!session()->has('cid')) {
+        if (session()->get('id') != $id) {
+            Session::flush();
             return redirect('care-taxi/login');
         } else {
             $cid = session()->get('cid');
@@ -216,6 +215,10 @@ class CareTaxiController extends Controller
         return view('care-taxi.update_status', compact('this_time_str','time', 'date', 'company','id','not_current','previous_date','next_date','date_jp', 'has_no_schedule'));
     }
     public function edit($id){
+        if (session()->get('id') != $id) {
+            Session::flush();
+            return redirect('care-taxi/login');
+        }
         $company = Company::with('business_hours')->where('id',$id)->first();
         if(!isset($company->business_hours)){
             $bh = new stdClass();
@@ -379,6 +382,10 @@ class CareTaxiController extends Controller
     }
     public function statusUpdate(Request $request)
     {
+        if (!session()->has('cid')) {
+            Session::flush();
+            return redirect('care-taxi/login');
+        } 
         $data=array();
         $current_date = $request->get('date');
         $company_id =  $request->get('id');
@@ -433,6 +440,10 @@ class CareTaxiController extends Controller
     }
     public function slotDetailDate($id, $date)
     {
+        if (session()->get('id') != $id) {
+            Session::flush();
+            return redirect('care-taxi/login');
+        }
         if (!session()->has('cid')) {
             return redirect('care-taxi/login');
         } else {

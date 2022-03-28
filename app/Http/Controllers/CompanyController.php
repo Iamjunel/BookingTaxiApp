@@ -42,6 +42,10 @@ class CompanyController extends Controller
     }
     public function getCompanyById($id)
     {
+        if (!session()->has('cid')) {
+            return redirect('admin/login');
+        }
+        
         $company = Company::where('id',$id)->first();
         return response()->json(array(
             'success' => true,
