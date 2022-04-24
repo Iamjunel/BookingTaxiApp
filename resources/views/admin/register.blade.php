@@ -18,7 +18,7 @@
                             <div class="mb-2">
                                 <label class="form-label">ID:</label>
                                {{--  <input type="type" name="cid" class="form-control" id="exampleInputEmail2"  onChange="halfWidth(this)" value=""  required/> --}}
-                               <input type="text" name="name" class="form-control .input"   id="exampleInputEmail1" value="" maxlength="5"
+                               <input type="text" name="cid" class="form-control .input"   id="exampleInputEmail1" value="" maxlength="5"
                                oninvalid="this.setCustomValidity('必須事項が入力されていません。')"
                                 oninput="this.setCustomValidity('')"
                                required/>
