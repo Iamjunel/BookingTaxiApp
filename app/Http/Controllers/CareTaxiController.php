@@ -389,23 +389,17 @@ class CareTaxiController extends Controller
         $data=array();
         $current_date = $request->get('date');
         $company_id =  $request->get('id');
-        
+        $company_status = CompanyStatus::Where('company_id', $company_id)->where('date', $current_date)->first();
+        if (!empty($company_status->id)) {
+            CompanyStatus::Where('company_id', $company_id)->where('date', $current_date)->delete();
+        }
         foreach ($request->all() as $key => $value) {
             if($key !="_token" && $key != 'date' && $key != 'id'){
                 $time = explode('-', $key);
               if(count($time)>1){
                     $status = 'status-' . $time[1];
                     $comment = 'comment-' . $time[1];
-                    if ($key == $status) {
-                        $company_status = CompanyStatus::Where('company_id', $company_id)->where('date', $current_date)->where('time', $time[1])->first();
-                        if (!empty($company_status->id)) {
-                            //$com_status = CompanyStatus::Where('company_id', $company_id)->delete();
-                            
-                            DB::table('company_status')->Where('company_id', $company_id)->delete();
-                            /* $company_status->time =  $time[1];
-                            $company_status->status = $request->get($status);
-                            $company_status->comment = $request->get($comment);
-                            $company_status->update(); */
+                    if ($key == $status) {                       
                             $company_status = new CompanyStatus();
                             $company_status->time = date("h:ia", strtotime($time[1]));
                             $company_status->status = $request->get($status);
@@ -413,15 +407,6 @@ class CareTaxiController extends Controller
                             $company_status->company_id = $company_id;
                             $company_status->date = $current_date;
                             $company_status->save();
-                        } else {
-                            $company_status = new CompanyStatus();
-                            $company_status->time = date("h:ia", strtotime($time[1]));
-                            $company_status->status = $request->get($status);
-                            $company_status->comment = $request->get($comment);
-                            $company_status->company_id = $company_id;
-                            $company_status->date = $current_date;
-                            $company_status->save();
-                        }
                      }    
                 }
              
